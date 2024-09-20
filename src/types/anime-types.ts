@@ -2,11 +2,10 @@ import type {
   ISearch,
   MediaStatus,
   MediaFormat,
-  ITitle,
   FuzzyDate,
   Trailer,
-} from "@consumet/extensions/dist/models";
-
+  ITitle,
+} from "@consumet/extensions/dist/models/types";
 
 
 export interface AnimeDataResponse extends ISearch<IAnimeInfo> {
@@ -15,7 +14,7 @@ export interface AnimeDataResponse extends ISearch<IAnimeInfo> {
 }
 
 export interface IAnimeInfo extends IAnimeResult {
-  title: ITitle | string;
+  title: ITitle | string ;
   malId?: number | string;
   genres?: string[];
   description?: string;

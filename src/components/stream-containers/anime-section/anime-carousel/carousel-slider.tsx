@@ -6,7 +6,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import type { ISearch } from "@consumet/extensions/dist/models";
+import type { ISearch } from "@consumet/extensions/dist/models/types";
 import AnimeCarouselCard from "./anime-carousel-card";
 import type { AnimeDataResponse, IAnimeInfo } from "@/types";
 import Autoplay from "embla-carousel-autoplay";
@@ -21,7 +21,6 @@ export default function CarouselSlider({
   return (
     <div>
       <Carousel
-
         plugins={[
           Autoplay({
             delay: 5000,

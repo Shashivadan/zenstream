@@ -8,8 +8,10 @@ import { Play } from "lucide-react";
 import Image from "next/image";
 import { BsFillBadgeCcFill } from "react-icons/bs";
 import {  Md18UpRating } from "react-icons/md";
+import type { ITitle } from "@consumet/extensions/dist/models";
 
 export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
+
   return (
     <Card className="h-[600px] w-full border-solid dark:border-zinc-900 md:h-[400px]">
       <CardContent
@@ -20,7 +22,7 @@ export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
         <div className="absolute inset-0">
           <div className="flex h-full flex-col md:flex-row">
             <Image
-              alt={show.title.english as string}
+              alt={(show.title as ITitle).english}
               className="inset-x-3 inset-y-4 hidden overflow-hidden rounded-lg object-contain md:absolute md:block"
               src={show.image ?? ""}
               width={260}
@@ -29,17 +31,17 @@ export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
             <div className="z-10 flex flex-1 flex-col justify-end rounded-md p-3 md:ml-[280px] md:p-6">
               <div className="w-full rounded-lg bg-black/80 p-3 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none">
                 <h2 className="mb-2 line-clamp-2 text-3xl font-bold text-white">
-                  {show.title.english || show.title.romaji}
+                  {(show.title as ITitle).english}
                 </h2>
                 <div className="mb-2 flex items-center gap-2 text-sm text-gray-300">
                   <p className="">{show.releaseDate}</p>
-                  <div className="text-center gap-2 flex">
+                  <div className="flex gap-2 text-center">
                     {show.hasSub && <BsFillBadgeCcFill />}
-                    {show.isAdult && <Md18UpRating/>}
+                    {show.isAdult && <Md18UpRating />}
                   </div>
                 </div>
                 <p
-                  className="mb-4 line-clamp-3 text-sm text-white"
+                  className="mb-4 line-clamp-3 text-sm text-white md:w-1/2"
                   dangerouslySetInnerHTML={{ __html: show.description ?? "" }}
                 ></p>
                 <Button className="w-fit bg-purple-600 text-white hover:bg-purple-700">
