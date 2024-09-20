@@ -5,6 +5,8 @@ import type { TvShowType, TvShowResultsType, MovieTypes, MovieResponseType } fro
 
 const BASE_URL = "https://api.themoviedb.org/3";
 const TRENDING_TV_ENDPOINT = "/trending/tv/day";
+
+const CONSUMET_API_URL = env.CONSUMET_API_URL;
 export async function fetchTvCarousalData(): Promise<TvShowType[]> {
   const url = new URL(`${PROXY}${BASE_URL}${TRENDING_TV_ENDPOINT}`);
   url.searchParams.append("api_key", API_KEY);
