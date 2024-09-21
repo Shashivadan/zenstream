@@ -4,7 +4,7 @@ import React from "react";
 import type { IAnimeInfo } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Play } from "lucide-react";
+import { PlayCircle } from "lucide-react";
 import Image from "next/image";
 import { BsFillBadgeCcFill } from "react-icons/bs";
 import {  Md18UpRating } from "react-icons/md";
@@ -18,11 +18,11 @@ export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
         className="relative h-full w-full overflow-hidden rounded-md bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${show.image})` }}
       >
-        <div className="inset-0 bg-black bg-opacity-65 backdrop-blur-md backdrop-filter md:absolute" />
+        <div className="inset-0 bg-black/70 backdrop-blur-3xl backdrop-filter md:absolute" />
         <div className="absolute inset-0">
           <div className="flex h-full flex-col md:flex-row">
             <Image
-              alt={(show.title as ITitle).english}
+              alt={(show.title as ITitle).romaji ?? ""}
               className="inset-x-3 inset-y-4 hidden overflow-hidden rounded-lg object-contain md:absolute md:block"
               src={show.image ?? ""}
               width={260}
@@ -44,8 +44,11 @@ export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
                   className="mb-4 line-clamp-3 text-sm text-white md:w-1/2"
                   dangerouslySetInnerHTML={{ __html: show.description ?? "" }}
                 ></p>
-                <Button className="w-fit bg-purple-600 text-white hover:bg-purple-700">
-                  <Play className="mr-2 h-4 w-4" /> PLAY NOW
+                <Button
+                  variant={"ringHover"}
+                  className="bg-purple-600 font-semibold ring-purple-700 hover:ring hover:ring-offset-1"
+                >
+                  <PlayCircle className="mr-2 h-5 w-5" /> Watch Now
                 </Button>
               </div>
             </div>

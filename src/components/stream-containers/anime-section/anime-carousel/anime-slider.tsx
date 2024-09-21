@@ -8,8 +8,7 @@ import CarouselSlider from "./carousel-slider";
 
 export default async function AnimeSlider() {
   const anilist = new Anilist(new Gogoanime());
-  const data: AnimeDataResponse | ISearch<IAnimeInfo> =
-    await anilist.fetchPopularAnime(1, 20);
+  const data: AnimeDataResponse | ISearch<IAnimeInfo> = await anilist.fetchPopularAnime(1, 20);
 
   if (!data) {
     return <div>None Found</div>;
