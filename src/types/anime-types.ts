@@ -2,8 +2,6 @@ import type {
   ISearch,
   MediaStatus,
   MediaFormat,
-  FuzzyDate,
-  
 } from "@consumet/extensions/dist/models/types";
 
 

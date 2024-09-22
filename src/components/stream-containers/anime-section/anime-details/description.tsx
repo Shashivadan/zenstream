@@ -1,6 +1,5 @@
 "use client";
 
-import { type IAnimeInfo } from "@consumet/extensions/dist/models";
 import React from "react";
 import {
   Accordion,

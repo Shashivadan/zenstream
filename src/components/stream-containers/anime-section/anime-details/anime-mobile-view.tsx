@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from '@/components/ui/button';
-import { IAnimeInfo } from '@/types';
+import type { IAnimeInfo } from '@/types';
 import type { ITitle } from '@consumet/extensions/dist/models';
 import { Play, ThumbsUp } from 'lucide-react';
 import React from 'react'

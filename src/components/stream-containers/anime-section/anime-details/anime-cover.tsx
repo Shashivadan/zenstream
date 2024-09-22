@@ -15,7 +15,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import AnimeMobileView from "./anime-mobile-view";
-import { IAnimeInfo } from "@/types";
+import type { IAnimeInfo } from "@/types";
 
 export default function AnimeCover({ data }: { data: IAnimeInfo }) {
   return (
