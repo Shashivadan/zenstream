@@ -5,8 +5,7 @@ import type { IAnimeInfo } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlayCircle } from "lucide-react";
-import { BsFillBadgeCcFill } from "react-icons/bs";
-import {  Md18UpRating } from "react-icons/md";
+
 import type { ITitle } from "@consumet/extensions/dist/models";
 
 export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {

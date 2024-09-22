@@ -9,8 +9,6 @@ import Characters from './characters';
 export const AnimeDetails: React.FC<{ data: IAnimeInfo }> = ({ data }) => {
 
   console.log("dafadf" , data);
-
-
   return (
     <div className="md:p-6">
       <AnimeCover data={data} />

@@ -18,11 +18,17 @@ export interface ITitle {
   userPreferred?: string;
 }
 
-export interface Trailer {
+export interface ITrailer {
   id: string;
   site?: string;
   thumbnail?: string;
   thumbnailHash?: string | null;
+}
+
+interface IDate {
+  year: number | null;
+  month: number | null;
+  day: number | null;
 }
 
 
@@ -31,59 +37,120 @@ export interface IAnimeInfo {
   id: string;
   title: ITitle;
   malId: number;
-  trailer: Trailer;
+  synonyms: string[];
+  isLicensed: boolean;
+  isAdult: boolean;
+  countryOfOrigin: string;
+  trailer: ITrailer;
   image: string;
+  imageHash: string;
   popularity: number;
   color: string;
+  cover: string;
+  coverHash: string;
   description: string;
   status: string;
   releaseDate: number;
-  startDate: {
-    year: number;
-    month: number;
-    day: number;
-  };
-  endDate: {
-    year: number;
-    month: number;
-    day: number;
-  };
+  startDate: IDate;
+  endDate: IDate;
+  nextAiringEpisode: INextAiringEpisode;
+  totalEpisodes: number;
+  currentEpisode: number;
   rating: number;
+  duration: number;
   genres: string[];
   season: string;
   studios: string[];
+  subOrDub: string;
   type: string;
-  recommendations: {
-    id: string;
-    malId: string;
-    title: string[];
-    status: string;
-    episodes: number;
-    image: string;
-    cover: string;
-    rating: number;
-    type: string;
-  };
+  recommendations: IAnimeRecommendation[];
   characters: ICharacter[];
-  relations: {
-    id: number;
-    relationType: string;
-    malId: number;
-    title: string[];
-    status: string;
-    episodes: number;
-    image: string;
-    color: string;
-    type: string;
-    cover: string;
-    rating: number;
-  };
-  episodes: {
-    id: string;
-    title: string;
-    episode: string;
-  };
+  relations: IRelation[];
+  mappings: IMapping[];
+  artwork: IArtwork[];
+  episodes: IEpisode[];
 }
+
+
+
+
+interface IMapping {
+  id: string;
+  providerId: string;
+  similarity: number;
+  providerType: string;
+}
+
+interface IArtwork {
+  img: string;
+  type: string;
+  providerId: string;
+}
+
+interface IEpisode {
+  id: string;
+  title: string;
+  description: string | null;
+  number: number;
+  image: string;
+  imageHash: string;
+  airDate: string | null;
+}
+
+
+interface IRelation {
+  id: number;
+  relationType: string;
+  malId: number;
+  title: ITitle;
+  status: string;
+  episodes: number | null;
+  image: string;
+  imageHash: string;
+  color: string;
+  type: string;
+  cover: string;
+  coverHash: string;
+  rating: number;
+}
+
+
+
+interface INextAiringEpisode {
+  airingTime: number;
+  timeUntilAiring: number;
+  episode: number;
+}
+
+
+
+
+type IAnimeRecommendation = {
+  id: number;
+  malId: number;
+  title: ITitle;
+  status: string;
+  episodes: number;
+  image: string;
+  imageHash: string;
+  cover: string;
+  coverHash: string;
+  rating: number;
+  type: string;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  interface ICharacterName {

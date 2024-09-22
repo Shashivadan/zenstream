@@ -83,25 +83,25 @@ export async function fetchRecentAnime(
 }
 
 export async function fetchAnilistInfoById(
-  id: string
+  id: string,
+  provider = "gogoanime",
 ): Promise<IAnimeInfo | string> {
-const url = new URL(`${ANIME_URL}/info/${id}`);
-// url.searchParams.append("id", id.toString());
+  const url = new URL(`${ANIME_URL}/info/${id}`);
+  url.searchParams.append("provider", provider);
 
-try {
+  try {
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 }, // 1 day
+    });
 
-  const response = await fetch(url.toString(), {
-    next: { revalidate: 60 * 60 * 24 }, // 1 day
-  });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    const data = (await response.json()) as IAnimeInfo;
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch trending anime data:", error);
+    return (error as Error).message;
   }
-
-  const data = (await response.json()) as IAnimeInfo;
-  return data;
-} catch (error) {
-  console.error("Failed to fetch trending anime data:", error);
-  return (error as Error).message;
-}
 }
