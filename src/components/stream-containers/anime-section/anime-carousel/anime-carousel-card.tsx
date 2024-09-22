@@ -5,7 +5,6 @@ import type { IAnimeInfo } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlayCircle } from "lucide-react";
-import Image from "next/image";
 import { BsFillBadgeCcFill } from "react-icons/bs";
 import {  Md18UpRating } from "react-icons/md";
 import type { ITitle } from "@consumet/extensions/dist/models";
@@ -21,12 +20,11 @@ export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
         <div className="inset-0 bg-black/70 backdrop-blur-3xl backdrop-filter md:absolute" />
         <div className="absolute inset-0">
           <div className="flex h-full flex-col md:flex-row">
-            <Image
+            <img
               alt={(show.title as ITitle).romaji ?? ""}
-              className="inset-x-3 inset-y-4 hidden overflow-hidden rounded-lg object-contain md:absolute md:block"
+              className="inset-x-3 inset-y-4 hidden overflow-hidden rounded-md object-contain md:absolute md:block  h-[370px]"
               src={show.image ?? ""}
-              width={260}
-              height={300}
+
             />
             <div className="z-10 flex flex-1 flex-col justify-end rounded-md p-3 md:ml-[280px] md:p-6">
               <div className="w-full rounded-lg bg-black/80 p-3 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none">

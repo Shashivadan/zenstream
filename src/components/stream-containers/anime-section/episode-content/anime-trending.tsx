@@ -1,29 +1,25 @@
 "use client";
 
-import Gogoanime from "@consumet/extensions/dist/providers/anime/gogoanime";
-import Anilist from "@consumet/extensions/dist/providers/meta/anilist";
 import { useQuery } from "@tanstack/react-query";
-import type { AnimeDataResponse, IAnimeInfo } from "@/types";
+import type {  IAnimeInfo } from "@/types";
 import React from "react";
-import { type ISearch } from "@consumet/extensions/dist/models";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
 import AnimeCard from "./anime-card";
+import { fetchTrendingAnime } from "@/ data-access/animeApis/anilist-api";
 
-async function getRecentAnime() {
-  const anilist = new Anilist(new Gogoanime());
-  const anime: AnimeDataResponse | ISearch<IAnimeInfo> =
-    await anilist.fetchRecentEpisodes( "gogoanime",1, 20);
-  return anime;
+async function getTrendingAnime() {
+  const data = await fetchTrendingAnime(1, 20);
+  return data;
 }
 
-export default function RecentAnime() {
+export default function AnimeTrending() {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["get-recent-anime"],
-    queryFn: getRecentAnime,
+    queryKey: ["get-trending-anime"],
+    queryFn: getTrendingAnime,
   });
 
   if (isError) {

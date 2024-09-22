@@ -16,8 +16,6 @@ export default function CarouselSlider({
 }: {
   data: AnimeDataResponse | ISearch<IAnimeInfo>;
 }) {
-
-
   return (
     <div>
       <Carousel
@@ -30,7 +28,6 @@ export default function CarouselSlider({
         <CarouselContent className="mx-auto flex w-full">
           {data.results?.map((item: IAnimeInfo) => (
             <CarouselItem key={item.id}>
-              {" "}
               <AnimeCarouselCard show={item} />
             </CarouselItem>
           ))}
