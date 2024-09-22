@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
-import type { IAnimeInfo, ITitle } from "@consumet/extensions/dist/models";
+import type {  ITitle } from "@consumet/extensions/dist/models";
 import { LucideImage, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -13,6 +15,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import AnimeMobileView from "./anime-mobile-view";
+import { IAnimeInfo } from "@/types";
 
 export default function AnimeCover({ data }: { data: IAnimeInfo }) {
   return (
@@ -56,7 +59,7 @@ export default function AnimeCover({ data }: { data: IAnimeInfo }) {
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem>
-                    <BreadcrumbLink href="/">home</BreadcrumbLink>
+                    <BreadcrumbLink href="/">get-started</BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator />
                   <BreadcrumbItem>
@@ -93,8 +96,9 @@ export default function AnimeCover({ data }: { data: IAnimeInfo }) {
               </Button>
             </div>
             <div>
+              <p className="text-sm font-semibold mb-2">Description</p>
               <div
-                className="w-[1100px] text-sm"
+                className="md:w-[1100px] text-sm"
                 dangerouslySetInnerHTML={{ __html: data.description ?? "" }}
               />
             </div>

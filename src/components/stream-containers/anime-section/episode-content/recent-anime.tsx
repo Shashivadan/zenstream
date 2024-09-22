@@ -31,7 +31,13 @@ export default function RecentAnime() {
   }
 
   return (
-    <Carousel className="">
+    <Carousel
+      opts={{
+        align: "start",
+        dragFree: true,
+      }}
+      className=""
+    >
       <CarouselContent className="">
         {data?.results.map((item: IAnimeInfo) => (
           <CarouselItem key={item.id} className="basis-2/3 md:basis-1/6">

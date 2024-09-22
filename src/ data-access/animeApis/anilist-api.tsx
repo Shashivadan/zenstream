@@ -2,7 +2,7 @@
 import { env } from "@/env";
 // import { getInfoURL, API_KEY, PROXY } from "../apiConstants";
 import type { AnimeDataResponse } from "@/types";
-import type { IAnimeInfo } from "@consumet/extensions/dist/models";
+import type { IAnimeInfo } from "@/types";
 
 //https://api-consumet-org-rust.vercel.app/meta/anilist
 const ANIME_URL = env.CONSUMET_API_ANILIST_URL;

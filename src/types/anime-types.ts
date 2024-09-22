@@ -3,8 +3,7 @@ import type {
   MediaStatus,
   MediaFormat,
   FuzzyDate,
-  Trailer,
-  ITitle,
+  
 } from "@consumet/extensions/dist/models/types";
 
 
@@ -13,31 +12,113 @@ export interface AnimeDataResponse extends ISearch<IAnimeInfo> {
   hasNextPage: boolean;
 }
 
-export interface IAnimeInfo extends IAnimeResult {
-  title: ITitle | string ;
-  malId?: number | string;
-  genres?: string[];
-  description?: string;
-  status?: MediaStatus;
-  totalEpisodes?: number;
-  subOrDub?: SubOrSub;
-  hasSub?: boolean;
-  hasDub?: boolean;
-  synonyms?: string[];
-  countryOfOrigin?: string;
-  isAdult?: boolean;
-  isLicensed?: boolean;
-  season?: string;
-  studios?: string[];
-  color?: string;
-  cover?: string;
-  trailer?: Trailer;
-  episodes?: IAnimeEpisode[];
-  startDate?: FuzzyDate;
-  endDate?: FuzzyDate;
-  recommendations?: IAnimeResult[];
-  relations?: IAnimeResult[];
+
+export interface ITitle {
+  romaji?: string;
+  english?: string;
+  native?: string;
+  userPreferred?: string;
 }
+
+export interface Trailer {
+  id: string;
+  site?: string;
+  thumbnail?: string;
+  thumbnailHash?: string | null;
+}
+
+
+
+export interface IAnimeInfo {
+  id: string;
+  title: ITitle;
+  malId: number;
+  trailer: Trailer;
+  image: string;
+  popularity: number;
+  color: string;
+  description: string;
+  status: string;
+  releaseDate: number;
+  startDate: {
+    year: number;
+    month: number;
+    day: number;
+  };
+  endDate: {
+    year: number;
+    month: number;
+    day: number;
+  };
+  rating: number;
+  genres: string[];
+  season: string;
+  studios: string[];
+  type: string;
+  recommendations: {
+    id: string;
+    malId: string;
+    title: string[];
+    status: string;
+    episodes: number;
+    image: string;
+    cover: string;
+    rating: number;
+    type: string;
+  };
+  characters: ICharacter[];
+  relations: {
+    id: number;
+    relationType: string;
+    malId: number;
+    title: string[];
+    status: string;
+    episodes: number;
+    image: string;
+    color: string;
+    type: string;
+    cover: string;
+    rating: number;
+  };
+  episodes: {
+    id: string;
+    title: string;
+    episode: string;
+  };
+}
+
+
+ interface ICharacterName {
+  first: string;
+  last: string;
+  full: string;
+  userPreferred: string;
+  native: string;
+}
+export interface ICharacter {
+  id: string;
+  role: string;
+  name: ICharacterName;
+  image: string;
+  voiceActors: {
+    id: string;
+    name: ICharacterName;
+    language: string;
+    image: string;
+  };
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 export interface IAnimeResult {
   id: string;

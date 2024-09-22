@@ -19,13 +19,14 @@ export default function CarouselSlider({
   return (
     <div>
       <Carousel
+
         plugins={[
           Autoplay({
             delay: 5000,
           }),
         ]}
       >
-        <CarouselContent className="mx-auto flex w-full">
+        <CarouselContent  className="mx-auto flex w-full">
           {data.results?.map((item: IAnimeInfo) => (
             <CarouselItem key={item.id}>
               <AnimeCarouselCard show={item} />

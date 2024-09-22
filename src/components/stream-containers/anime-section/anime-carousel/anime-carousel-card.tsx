@@ -33,10 +33,7 @@ export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
                 </h2>
                 <div className="mb-2 flex items-center gap-2 text-sm text-gray-300">
                   <p className="">{show.releaseDate}</p>
-                  <div className="flex gap-2 text-center">
-                    {show.hasSub && <BsFillBadgeCcFill />}
-                    {show.isAdult && <Md18UpRating />}
-                  </div>
+
                 </div>
                 <p
                   className="mb-4 line-clamp-3 text-sm text-white md:w-1/2"
