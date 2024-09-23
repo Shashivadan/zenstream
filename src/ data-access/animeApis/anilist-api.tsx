@@ -59,11 +59,11 @@ export async function fetchPopularAnime(
 
 export async function fetchRecentAnime(
   page = 1,
-  perPage = 10,
+  type = 3,
 ): Promise<AnimeDataResponse> {
   const url = new URL(`${ANIME_URL}/recent-episodes`);
   url.searchParams.append("page", page.toString());
-  url.searchParams.append("perPage", perPage.toString());
+  url.searchParams.append("type", type.toString());
 
   try {
     const response = await fetch(url.toString(), {

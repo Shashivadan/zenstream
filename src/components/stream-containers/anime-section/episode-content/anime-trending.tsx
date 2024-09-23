@@ -22,6 +22,9 @@ export default function AnimeTrending() {
     queryFn: getTrendingAnime,
   });
 
+
+
+
   if (isError) {
     return <div>Error</div>;
   }

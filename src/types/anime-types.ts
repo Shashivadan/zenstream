@@ -1,15 +1,27 @@
 import type {
   ISearch,
-  MediaStatus,
   MediaFormat,
 } from "@consumet/extensions/dist/models/types";
+
+
+
+
+
+export enum MediaStatus {
+  ONGOING = "Ongoing",
+  COMPLETED = "Completed",
+  HIATUS = "Hiatus",
+  CANCELLED = "Cancelled",
+  NOT_YET_AIRED = "Not yet aired",
+  UNKNOWN = "Unknown",
+}
+
 
 
 export interface AnimeDataResponse extends ISearch<IAnimeInfo> {
   currentPage: number;
   hasNextPage: boolean;
 }
-
 
 export interface ITitle {
   romaji?: string;
@@ -31,8 +43,6 @@ interface IDate {
   day: number | null;
 }
 
-
-
 export interface IAnimeInfo {
   id: string;
   title: ITitle;
@@ -49,7 +59,7 @@ export interface IAnimeInfo {
   cover: string;
   coverHash: string;
   description: string;
-  status: string;
+  status: MediaStatus;
   releaseDate: number;
   startDate: IDate;
   endDate: IDate;
@@ -71,9 +81,6 @@ export interface IAnimeInfo {
   episodes: IEpisode[];
 }
 
-
-
-
 interface IMapping {
   id: string;
   providerId: string;
@@ -87,7 +94,7 @@ interface IArtwork {
   providerId: string;
 }
 
-interface IEpisode {
+export interface IEpisode {
   id: string;
   title: string;
   description: string | null;
@@ -97,13 +104,12 @@ interface IEpisode {
   airDate: string | null;
 }
 
-
 interface IRelation {
   id: number;
   relationType: string;
   malId: number;
   title: ITitle;
-  status: string;
+  status: MediaStatus;
   episodes: number | null;
   image: string;
   imageHash: string;
@@ -114,22 +120,17 @@ interface IRelation {
   rating: number;
 }
 
-
-
 interface INextAiringEpisode {
   airingTime: number;
   timeUntilAiring: number;
   episode: number;
 }
 
-
-
-
 type IAnimeRecommendation = {
   id: number;
   malId: number;
   title: ITitle;
-  status: string;
+  status: MediaStatus;
   episodes: number;
   image: string;
   imageHash: string;
@@ -139,21 +140,7 @@ type IAnimeRecommendation = {
   type: string;
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- interface ICharacterName {
+interface ICharacterName {
   first: string;
   last: string;
   full: string;
@@ -172,18 +159,6 @@ export interface ICharacter {
     image: string;
   };
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 export interface IAnimeResult {
   id: string;
