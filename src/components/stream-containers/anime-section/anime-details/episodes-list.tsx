@@ -1,4 +1,4 @@
-"use client";
+
 
 import React from "react";
 import Image from "next/image";
@@ -13,8 +13,19 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { fetchAnilistInfoById } from "@/data-access/index";
 
-export default function EpisodesList({ data }: { data: IEpisode[] }) {
+export default async function EpisodesList({  id }: {  id: string }) {
+  const animeData = await fetchAnilistInfoById(id);
+
+
+  if (typeof animeData === "string") {
+    return null; // or some other error handling
+  }
+  const data = animeData.episodes
+
+
+
   return (
     <div className="mx-auto h-fit w-full overflow-hidden rounded-lg px-4 text-white dark:bg-zinc-900/50">
       <Accordion type="single" collapsible className="w-full">

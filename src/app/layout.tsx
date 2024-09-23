@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 import { cn } from "@/lib/utils";
 import Provider from "./_components/provider";
 import { SiteHeader } from "@/components/site-headers/site-header";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
   title: "ZenStream - Your Ultimate Streaming Hub",
@@ -39,10 +40,28 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`} suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background")}>
+    <html
+      lang="en"
+      className={`${GeistSans.variable}`}
+      suppressHydrationWarning
+    >
+      <body
+        className={cn("mx-auto min-h-screen max-w-screen-2xl bg-background")}
+      >
         <Provider>
           <SiteHeader />
+          <NextTopLoader
+            color="#bf37ff"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={true}
+            easing="ease"
+            speed={200}
+      
+
+          />
           {children}
         </Provider>
       </body>

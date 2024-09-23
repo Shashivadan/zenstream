@@ -9,7 +9,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import AnimeCard from "./anime-card";
-import { fetchRecentAnime } from "@/ data-access/animeApis/anilist-api";
+import { fetchRecentAnime } from "@/data-access/index";
 
 async function getRecentAnime() {
   const data: AnimeDataResponse = await fetchRecentAnime(1, 20);
@@ -40,7 +40,10 @@ export default function RecentAnime() {
     >
       <CarouselContent className="">
         {data?.results.map((item: IAnimeInfo) => (
-          <CarouselItem key={item.id} className="basis-2/3 md:basis-1/6">
+          <CarouselItem
+            key={item.id}
+            className="basis-2/3 sm:basis-1/3  lg:basis-1/6"
+          >
             <div className="p-1">
               <AnimeCard anime={item} />
             </div>

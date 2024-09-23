@@ -1,35 +1,37 @@
 import React from "react";
 import type { IAnimeInfo } from "@/types";
-import type { ITitle } from "@consumet/extensions/dist/models";
-import { Card, CardContent } from "@/components/ui/card";
+
 import Link from "next/link";
+import Image from "next/image";
+import { ImageIcon } from "lucide-react";
 
 export default function AnimeCard({ anime }: { anime: IAnimeInfo }) {
   return (
-    <div>
-      <Link
-        href={`/anime/${encodeURIComponent(anime.id)}`}
-        className="w-full cursor-pointer space-y-2"
-      >
-        <Card className="relative h-[300px] overflow-hidden rounded-xl border-solid border-zinc-900">
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-black to-transparent"></div>
-          <img
-            src={anime.image}
-            alt="Anime cover"
-            className="h-full w-full object-cover"
-          />
-          <CardContent className="absolute bottom-0 left-0 right-0 z-20 p-4">
-            <h2 className="mb-1 text-base font-bold text-white">
-              {(anime.title as ITitle).english ??
-                (anime.title as ITitle).romaji}
-            </h2>
-            <p className="text-sm text-gray-300">
-              {anime.releaseDate ?? "2024"},{" "}
-              {anime.genres?.map((genre) => genre).join(", ")}
-            </p>
-          </CardContent>
-        </Card>
-      </Link>
-    </div>
+    <Link href={`/anime/${anime.id}`}>
+      <div className="relative flex aspect-video h-[300px] w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
+        {anime.image ? (
+          <>
+            <Image
+              fill
+              className="h-full w-full object-cover"
+              src={anime.image}
+              alt={anime.title.english ?? ""}
+              sizes="100%"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+            <div className="absolute bottom-2 left-2 right-4 text-white">
+              <h2 className="font-bold">
+                {anime.title.english ?? anime.title.romaji}
+              </h2>
+              {anime.releaseDate && (
+                <p className="text-sm opacity-80">{anime.releaseDate}</p>
+              )}
+            </div>
+          </>
+        ) : (
+          <ImageIcon className="text-muted" />
+        )}
+      </div>
+    </Link>
   );
 }

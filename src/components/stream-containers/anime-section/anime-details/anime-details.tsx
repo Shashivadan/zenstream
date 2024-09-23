@@ -1,4 +1,4 @@
-"use client";
+
 
 import React from 'react'
 import{  type IAnimeInfo } from "@/types";
@@ -11,7 +11,7 @@ import EpisodesList from './episodes-list';
 
 export const AnimeDetails: React.FC<{ data: IAnimeInfo }> = ({ data }) => {
 
-  console.log("dafadf" , data);
+
 
 
 
@@ -24,7 +24,7 @@ export const AnimeDetails: React.FC<{ data: IAnimeInfo }> = ({ data }) => {
           <div className=' md:hidden'>
             <SubContainer data={data} />
           </div>
-          <EpisodesList data={data.episodes} />
+          <EpisodesList id={data.id} />
           <Characters data={data.characters ?? []} />
         </div>
         <div className='hidden md:block'>

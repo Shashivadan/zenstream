@@ -9,11 +9,15 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import AnimeCard from "./anime-card";
-import { fetchTrendingAnime } from "@/ data-access/animeApis/anilist-api";
+import { fetchTrendingAnime } from "@/data-access/index";
 
 async function getTrendingAnime() {
-  const data = await fetchTrendingAnime(1, 20);
-  return data;
+ try {
+   const data = await fetchTrendingAnime(1, 20);
+   return data;
+ } catch (error) {
+  console.log("error" , error);
+ }
 }
 
 export default function AnimeTrending() {
@@ -23,9 +27,9 @@ export default function AnimeTrending() {
   });
 
 
-
-
   if (isError) {
+    console.log("sdfsd" , isError);
+
     return <div>Error</div>;
   }
 
@@ -43,7 +47,10 @@ export default function AnimeTrending() {
     >
       <CarouselContent className="">
         {data?.results.map((item: IAnimeInfo) => (
-          <CarouselItem key={item.id} className="basis-2/3 md:basis-1/6">
+          <CarouselItem
+            key={item.id}
+            className="basis-2/3 sm:basis-1/3 lg:basis-1/6"
+          >
             <div className="p-1">
               <AnimeCard anime={item} />
             </div>

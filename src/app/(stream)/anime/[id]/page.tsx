@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { AnimeDetails } from '@/components/stream-containers/anime-section/anime-details/anime-details';
-import { fetchAnilistInfoById } from '@/ data-access/animeApis/anilist-api';
+import { fetchAnilistInfoById } from '@/data-access/index';
 
 
 export default async function page({params} : { params: { id: string } }) {

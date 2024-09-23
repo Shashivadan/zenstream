@@ -11,7 +11,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import AnimeCard from "./anime-card";
-import { fetchPopularAnime } from "@/ data-access/animeApis/anilist-api";
+import { fetchPopularAnime } from "@/data-access/index";
 
 export async function getPopularAnime() {
   const data : AnimeDataResponse = await fetchPopularAnime(1, 20);
@@ -42,7 +42,10 @@ export default function PopularAnime() {
     >
       <CarouselContent className="">
         {data?.results.map((item: IAnimeInfo) => (
-          <CarouselItem key={item.id} className="basis-2/3 md:basis-1/6">
+          <CarouselItem
+            key={item.id}
+            className="basis-2/3 sm:basis-1/3 lg:basis-1/6"
+          >
             <div className="p-1">
               <AnimeCard anime={item} />
             </div>

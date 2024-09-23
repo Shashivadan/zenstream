@@ -24,7 +24,11 @@ export async function fetchTrendingAnime(
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
+
+
+
     const data = (await response.json()) as AnimeDataResponse;
+
     return data;
   } catch (error) {
     console.error("Failed to fetch trending anime data:", error);
