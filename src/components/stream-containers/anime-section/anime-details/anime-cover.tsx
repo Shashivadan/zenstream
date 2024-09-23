@@ -16,26 +16,31 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import AnimeMobileView from "./anime-mobile-view";
 import type { IAnimeInfo } from "@/types";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+
+
 
 export default function AnimeCover({ data }: { data: IAnimeInfo }) {
   return (
-    <Card className="relative mx-auto w-full overflow-hidden rounded-2xl bg-cover shadow-lg md:h-[550px] dark:border-zinc-900">
+    <Card className="relative mx-auto w-full overflow-hidden rounded-2xl bg-cover shadow-lg dark:border-zinc-900 md:h-[550px]">
       <div className="relative aspect-video">
-        <img
-          src={data.image}
-          alt={"dsfdf"}
-          className="h-[600px] w-full object-cover md:h-fit md:blur-3xl"
-        />
+        <AspectRatio ratio={3 / 4}>
+          <Image
+            fill
+            src={data.image}
+            alt={data.title.english ?? ""}
+            className="h-[600px] w-full object-cover md:h-fit md:blur-3xl"
+          />
+        </AspectRatio>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent md:hidden" />
-      <div className="absolute hidden inset-0 bg-black/75 bg-gradient-to-t to-transparent md:block" />
 
+      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent md:hidden" />
+      <div className="absolute inset-0 hidden bg-black/75 bg-gradient-to-t to-transparent md:block" />
       {/* Mobile view content */}
       <div className="block md:hidden">
         {" "}
         <AnimeMobileView data={data} />
       </div>
-
       {/* Desktop view content */}
       <div className="absolute inset-0 hidden p-10 text-white md:block">
         <div className="flex h-full w-full gap-10">
@@ -96,9 +101,9 @@ export default function AnimeCover({ data }: { data: IAnimeInfo }) {
               </Button>
             </div>
             <div>
-              <p className="text-sm font-semibold mb-2">Description</p>
+              <p className="mb-2 text-sm font-semibold">Description</p>
               <div
-                className="md:w-[1100px] text-sm"
+                className="text-sm md:w-[1100px]"
                 dangerouslySetInnerHTML={{ __html: data.description ?? "" }}
               />
             </div>

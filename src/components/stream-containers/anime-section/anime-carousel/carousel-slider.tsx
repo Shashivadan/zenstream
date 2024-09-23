@@ -19,10 +19,14 @@ export default function CarouselSlider({
   return (
     <div>
       <Carousel
-
+        opts={{
+          align: "start",
+          loop: true,
+        }}
         plugins={[
           Autoplay({
             delay: 5000,
+
           }),
         ]}
       >

@@ -1,19 +1,19 @@
 "use client";
 
 import React from 'react'
-import{ MediaStatus, type IAnimeInfo } from "@/types";
+import{  type IAnimeInfo } from "@/types";
 import AnimeCover from './anime-cover';
 import DescriptionSection from './description';
 import Characters from './characters';
 
 import SubContainer from './sub-container';
-import Episodes from './episodes';
+import EpisodesList from './episodes-list';
 
 export const AnimeDetails: React.FC<{ data: IAnimeInfo }> = ({ data }) => {
 
   console.log("dafadf" , data);
 
-  console.log("status" , MediaStatus.COMPLETED);
+
 
   return (
     <div className="md:p-6">
@@ -24,9 +24,8 @@ export const AnimeDetails: React.FC<{ data: IAnimeInfo }> = ({ data }) => {
           <div className=' md:hidden'>
             <SubContainer data={data} />
           </div>
-          <Episodes data={data.episodes} />
+          <EpisodesList data={data.episodes} />
           <Characters data={data.characters ?? []} />
-
         </div>
         <div className='hidden md:block'>
           <SubContainer data={data} />
