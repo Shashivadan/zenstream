@@ -8,7 +8,7 @@ import { encodeParam } from "@/lib/url-param-encoder";
 
 export default function AnimeCard({ anime }: { anime: IAnimeInfo }) {
   return (
-    <Link href={`/anime/${encodeParam(anime.id)}`}>
+    <Link href={`/anime/${encodeParam(anime.id)}`} className="  border  border-none">
       <div className="relative flex aspect-video h-[300px] w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
         {anime.image ? (
           <>

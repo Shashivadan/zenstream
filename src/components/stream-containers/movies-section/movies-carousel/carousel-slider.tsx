@@ -12,9 +12,6 @@ import MovieCarouselCard from "./movie-carousel-card";
 
 export default function CarouselSlider({ data }: { data: IMovieTypes[] }) {
 
-
-  console.log("sdasd" ,data);
-
   return (
     <div>
       <Carousel

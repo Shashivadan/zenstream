@@ -28,7 +28,7 @@ export const movieURL = {
   search: `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`,
 };
 
-export const getInfoURL = (movieId: string | number) =>
+export const getMovieInfoURL = (movieId: string | number) =>
   `${PROXY}https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`;
 
 export const getTVInfoURL = (tvId: string | number) =>

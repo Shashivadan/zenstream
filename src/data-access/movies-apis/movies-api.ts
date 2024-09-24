@@ -1,11 +1,12 @@
 "use server";
 import { env } from "@/env";
-import { getInfoURL, API_KEY, PROXY } from "../apiConstants";
+import {  API_KEY, getMovieInfoURL, PROXY } from "../api-contents";
 import type {
   TvShowType,
   TvShowResultsType,
   IMovieTypes,
   IMovieResponseType,
+  IMovieInfoType,
 } from "@/types/index";
 
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -108,5 +109,20 @@ export async function fetchNowPlayingMovies() {
     return data.results;
   } catch (error) {
     console.log(error);
+  }
+}
+
+
+export async function fetchMovieInfoById(id : string | number) : Promise<IMovieInfoType | string> {
+  try {
+    const url = new URL(getMovieInfoURL(id));
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 * 7 },
+    });
+    if (!response.ok) throw new Error("Failed to fetch data");
+    const data = (await response.json()) as IMovieInfoType;
+    return data
+  } catch (error) {
+    return (error as Error).message
   }
 }
