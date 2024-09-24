@@ -40,7 +40,7 @@ export default async function EpisodesList({  id }: {  id: string }) {
                No episodes found
              </p>
            ) : (
-              <ScrollArea className="h-[80vh] w-full rounded-md border border-none p-4">
+              <ScrollArea className=" min-h-fit h-[500px]   w-full rounded-md border border-none p-4">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {data.map((episode) => (
                   <Card
