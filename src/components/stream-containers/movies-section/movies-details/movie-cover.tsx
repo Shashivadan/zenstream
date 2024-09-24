@@ -9,7 +9,7 @@ export default function MovieCover({data} : {data: IMovieInfoType}) {
         <img
           src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
           alt="Kantara movie banner"
-          className="w-full rounded-3xl object-cover object-center h-[500px]   md:h-[700px]   "
+          className="w-full rounded-3xl object-cover object-center h-[500px] md:h-[700px]   "
         />
         <div className="absolute inset-0  rounded-3xl bg-gradient-to-t from-black/80 to-transparent">
 
@@ -17,7 +17,8 @@ export default function MovieCover({data} : {data: IMovieInfoType}) {
         <div className="absolute bottom-4 left-4 w-full text-center md:p-6">
           <h1 className="mb-2 md:text-3xl font-bold">{data.title}</h1>
           <p className="mb-4 text-sm text-zinc-400 ">
-            {data.genres.map((genre) => genre.name).join(", ")}
+
+            {data.tagline ? data.tagline : data.overview}
           </p>
           <div className="flex justify-center gap-3">
             <Button variant={"ringHover"} className=" font-semibold">

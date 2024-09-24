@@ -33,3 +33,5 @@ export const getMovieInfoURL = (movieId: string | number) =>
 
 export const getTVInfoURL = (tvId: string | number) =>
   `${PROXY}https://api.themoviedb.org/3/tv/${tvId}?api_key=${API_KEY}`;
+export const getCastInfoURL = (movieId: string | number) =>
+  `${PROXY}https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`;

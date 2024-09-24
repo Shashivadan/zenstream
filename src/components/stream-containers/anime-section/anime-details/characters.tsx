@@ -6,7 +6,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import type { ICharacter, ITitle } from "@/types";
+import type { ICharacter } from "@/types";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
 

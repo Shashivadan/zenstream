@@ -16,6 +16,7 @@ export default function MobileViewCarousel({ show }: { show: IMovieTypes
           <div className="flex w-9/12 items-center justify-center text-pretty text-center text-3xl font-bold">
             {show.title || show.name}
           </div>
+          <div className='text-sm opacity-50'  >{show.tagline}</div>
           {/* <div className="opacity-50">
               {show.genres?.name?.join(",") || "Comedy"}{" "}
               {" • " + (show.release_date || show.first_air_date).split("-")[0]}

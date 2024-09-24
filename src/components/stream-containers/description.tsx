@@ -11,8 +11,11 @@ import {
 export default function DescriptionSection({ data }: { data: string }) {
   return (
     <Accordion
+      defaultValue="item-1"
+
       type="single"
       collapsible
+
       className="w-full rounded-lg border-none bg-zinc-300 px-2 dark:bg-zinc-900/50 sm:px-4"
     >
       <AccordionItem value="item-1" className="border-none">

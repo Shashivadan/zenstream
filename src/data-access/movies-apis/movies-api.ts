@@ -1,12 +1,14 @@
 "use server";
 import { env } from "@/env";
-import {  API_KEY, getMovieInfoURL, PROXY } from "../api-contents";
+import { API_KEY, getCastInfoURL, getMovieInfoURL, PROXY } from "../api-contents";
 import type {
   TvShowType,
   TvShowResultsType,
   IMovieTypes,
   IMovieResponseType,
   IMovieInfoType,
+  IMovieCast,
+  ICastMember,
 } from "@/types/index";
 
 const BASE_URL = "https://api.themoviedb.org/3";
@@ -112,8 +114,9 @@ export async function fetchNowPlayingMovies() {
   }
 }
 
-
-export async function fetchMovieInfoById(id : string | number) : Promise<IMovieInfoType | string> {
+export async function fetchMovieInfoById(
+  id: string | number,
+): Promise<IMovieInfoType | string> {
   try {
     const url = new URL(getMovieInfoURL(id));
     const response = await fetch(url.toString(), {
@@ -121,8 +124,24 @@ export async function fetchMovieInfoById(id : string | number) : Promise<IMovieI
     });
     if (!response.ok) throw new Error("Failed to fetch data");
     const data = (await response.json()) as IMovieInfoType;
-    return data
+    return data;
   } catch (error) {
-    return (error as Error).message
+    return (error as Error).message;
+  }
+}
+
+export async function fetchCastInfoById(
+  id: string | number,
+): Promise<ICastMember[] | string> {
+  try {
+    const url = new URL(getCastInfoURL(id));
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 * 7 },
+    });
+    if (!response.ok) throw new Error("Failed to fetch data");
+    const data = (await response.json()) as IMovieCast;
+    return data.cast;
+  } catch (error) {
+    return (error as Error).message;
   }
 }

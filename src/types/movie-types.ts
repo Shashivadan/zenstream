@@ -38,8 +38,7 @@ export interface IMovieTypes {
   spoken_languages: string[];
 }
 
-
-export interface IMovieInfoType  {
+export interface IMovieInfoType {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: null;
@@ -81,4 +80,24 @@ export interface IMovieInfoType  {
   video: boolean;
   vote_average: number;
   vote_count: number;
+}
+
+export interface ICastMember {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+export interface IMovieCast {
+  id: number;
+  cast: ICastMember[];
 }

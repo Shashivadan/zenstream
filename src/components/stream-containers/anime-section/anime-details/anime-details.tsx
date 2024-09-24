@@ -3,9 +3,8 @@
 import React from 'react'
 import{  type IAnimeInfo } from "@/types";
 import AnimeCover from './anime-cover';
-import DescriptionSection from './description';
+import DescriptionSection from "@/components/stream-containers/description";
 import Characters from './characters';
-
 import SubContainer from './sub-container';
 import EpisodesList from './episodes-list';
 
