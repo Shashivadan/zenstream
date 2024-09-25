@@ -1,40 +1,20 @@
 "use server";
-import { env } from "@/env";
+
 import { API_KEY, getCastInfoURL, getMovieInfoURL, PROXY } from "../api-contents";
 import type {
-  TvShowType,
-  TvShowResultsType,
-  IMovieTypes,
-  IMovieResponseType,
+
+  IMovieTVResponseType as IMovieResponseType,
   IMovieInfoType,
   IMovieCast,
   ICastMember,
+  IMovieTvTypes,
 } from "@/types/index";
 
-const BASE_URL = "https://api.themoviedb.org/3";
-const TRENDING_TV_ENDPOINT = "/trending/tv/day";
-export async function fetchTvCarousalData(): Promise<TvShowType[]> {
-  const url = new URL(`${PROXY}${BASE_URL}${TRENDING_TV_ENDPOINT}`);
-  url.searchParams.append("api_key", API_KEY);
 
-  try {
-    const response = await fetch(url.toString(), {
-      next: { revalidate: 60 * 60 * 24 * 7 }, // 7 days
-    });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
 
-    const data = (await response.json()) as TvShowResultsType;
-    return data.results;
-  } catch (error) {
-    console.error("Failed to fetch TV carousel data:", error);
-    throw error;
-  }
-}
 
-export async function fetchMoviesCarousalData(type: string) {
+export async function fetchMoviesCarousalData() {
   try {
     const url = new URL(
       `${PROXY}https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`,
@@ -44,7 +24,7 @@ export async function fetchMoviesCarousalData(type: string) {
     });
     if (!response.ok) throw new Error("Failed to fetch data");
     const data = (await response.json()) as IMovieResponseType;
-    return data.results;
+    return data.results 
   } catch (error) {
     console.log(error);
   }

@@ -9,17 +9,14 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import type { IMovieTypes } from "@/types";
+import type { IMovieTvTypes as IMovieTypes } from "@/types";
 
-export async function getUpcomingMovies() {
-  const data = await fetchUpcomingMovies();
-  return data;
-}
+
 
 export default function UpcomingMovies() {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["get-upcoming-movies"],
-    queryFn: getUpcomingMovies,
+    queryFn: async () =>  await fetchUpcomingMovies(),
   });
 
   if (!data) {

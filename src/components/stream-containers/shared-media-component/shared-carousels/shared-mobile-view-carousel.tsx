@@ -1,9 +1,8 @@
-import type { IMovieTvTypes as IMovieTypes } from '@/types';
-import { format } from 'date-fns';
-import React from 'react'
+import type { IMovieTvTypes } from "@/types";
+import { format } from "date-fns";
+import React from "react";
 
-export default function MobileViewCarousel({ show }: { show: IMovieTypes
- }) {
+export default function ShardMobileViewCarousel({ show }: { show: IMovieTvTypes }) {
   return (
     <div className="relative flex h-[600px] md:hidden">
       <img
@@ -15,15 +14,14 @@ export default function MobileViewCarousel({ show }: { show: IMovieTypes
         <div></div>
         <div className="flex flex-col items-center">
           <div className="flex w-9/12 items-center justify-center text-pretty text-center text-3xl font-bold">
-            {show.title}
+            {show.title || show.name}
           </div>
           <div className="flex w-9/12 items-center justify-center text-xs text-zinc-300">
-            {show.release_date
-              ? format(new Date(show.release_date), "PPP")
-              : "Unknown"}
+            {
+              format(new Date(show.release_date || show.first_air_date), "PPP")}
           </div>
-          <div className="overflow-hidden text-ellipsis whitespace-nowrap text-xs normal-case opacity-50 w-1/2 text-center">
-            {show.overview}
+          <div className="w-1/2 overflow-hidden text-ellipsis whitespace-nowrap text-center text-xs normal-case opacity-50">
+            {show.tagline || show.overview}
           </div>
         </div>
       </div>

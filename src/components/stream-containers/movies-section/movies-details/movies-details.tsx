@@ -1,7 +1,7 @@
 import { type IMovieInfoType } from "@/types";
 import React from "react";
 import MovieCover from "./movie-cover";
-import DescriptionSection from "@/components/stream-containers/description";
+import DescriptionSection from "@/components/stream-containers/shared-media-component/description";
 import SubContainer from "./sub-container";
 import Cast from "./cast";
 

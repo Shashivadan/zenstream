@@ -1,25 +1,21 @@
 "use client";
 
-import { fetchNowPlayingMovies } from "@/data-access";
+
 import React from "react";
-import MoviesCard from "./movies-card";
 import { useQuery } from "@tanstack/react-query";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import type { IMovieTvTypes as IMovieTypes } from "@/types";
+import type { IMovieTvTypes as ITvTypes } from "@/types";
+import TvShowsCard from "./tv-shows-card";
+import { fetchAiringTodayTvShows } from "@/data-access/index";
 
-export async function getNowPlayingMovies() {
-  const data = await fetchNowPlayingMovies();
-  return data;
-}
-
-export default function NowPlayingMovies() {
+export default function AiringToday() {
   const { data, isError, isLoading } = useQuery({
-    queryKey: ["get-now-playing-movies"],
-    queryFn: getNowPlayingMovies,
+    queryKey: ["get-airing-today-shows"],
+    queryFn: async () => await fetchAiringTodayTvShows(),
   });
 
   if (!data) {
@@ -45,13 +41,13 @@ export default function NowPlayingMovies() {
       className=""
     >
       <CarouselContent className="">
-        {data.map((item: IMovieTypes) => (
+        {data.map((item: ITvTypes) => (
           <CarouselItem
             key={item.id}
             className="basis-2/3 sm:basis-1/3 lg:basis-1/4"
           >
             <div className="p-1">
-              <MoviesCard data={item} />
+              <TvShowsCard data={item} />
             </div>
           </CarouselItem>
         ))}

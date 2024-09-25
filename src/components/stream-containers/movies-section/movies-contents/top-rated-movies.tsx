@@ -9,17 +9,14 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import type { IMovieTypes } from "@/types";
+import type { IMovieTvTypes as IMovieTypes } from "@/types";
 
-export async function getTopRatedMovies() {
-  const data = await fetchTopRatedMovies();
-  return data;
-}
+
 
 export default function TopRatedMovies() {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["get-top-rated-movies"],
-    queryFn: getTopRatedMovies,
+    queryFn: async () =>  await fetchTopRatedMovies(),
   });
 
   if (!data) {

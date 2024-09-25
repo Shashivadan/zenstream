@@ -6,12 +6,18 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import type { IMovieTvTypes as IMovieTypes } from "@/types";
+import type { IMovieTvTypes } from "@/types";
 import Autoplay from "embla-carousel-autoplay";
-import MovieCarouselCard from "./movie-carousel-card";
+import SharedCarouselCard from "./shared-carousel-card";
+// import MovieCarouselCard from "./movie-carousel-card";
 
-export default function CarouselSlider({ data }: { data: IMovieTypes[] }) {
-
+export default function ShardCarouselSlider({
+  data,
+  route,
+}: {
+  data: IMovieTvTypes[];
+  route: "movies" | "tv-shows" | "drama";
+}) {
   return (
     <div>
       <Carousel
@@ -26,9 +32,9 @@ export default function CarouselSlider({ data }: { data: IMovieTypes[] }) {
         ]}
       >
         <CarouselContent className="mx-auto flex w-full">
-          {data.map((item: IMovieTypes) => (
+          {data.map((item: IMovieTvTypes) => (
             <CarouselItem key={item.id}>
-              <MovieCarouselCard route="movies" show={item} />
+              <SharedCarouselCard route={route} show={item} />
             </CarouselItem>
           ))}
         </CarouselContent>

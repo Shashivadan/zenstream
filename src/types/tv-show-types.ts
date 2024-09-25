@@ -1,9 +1,12 @@
-export interface TvShowResultsType {
+export interface ITvShowResultsType {
   page: number;
-  results: TvShowType[];
+  results: ITVShowTypes[];
 }
 
-export interface TvShowType {
+
+
+
+export type ITVShowTypes = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -18,4 +21,4 @@ export interface TvShowType {
   name: string;
   vote_average: number;
   vote_count: number;
-}
+};

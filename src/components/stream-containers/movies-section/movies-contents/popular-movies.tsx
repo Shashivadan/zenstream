@@ -5,22 +5,19 @@ import React from "react";
 import MoviesCard from "./movies-card";
 import { useQuery } from "@tanstack/react-query";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import type { IMovieTypes } from "@/types";
+import type { IMovieTvTypes as IMovieTypes } from "@/types";
 
 
 
 
-export async function getPopularMovies() {
-  const data = await fetchPopularMovies();
-  return data;
-}
+
 
 
 
 export default  function PopularMovies() {
   const { data  , isError , isLoading} = useQuery({
     queryKey: ["get-popular-movies"],
-    queryFn: getPopularMovies,
+    queryFn: async () =>  await fetchPopularMovies(),
   })
 
   if (!data) {

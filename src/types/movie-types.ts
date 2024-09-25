@@ -1,9 +1,12 @@
-export interface IMovieResponseType {
+export interface IMovieTVResponseType {
   page: number;
-  results: IMovieTypes[];
+  results: IMovieTvTypes[];
 }
 
-export interface IMovieTypes {
+
+
+
+export interface IMovieTvTypes {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -12,10 +15,7 @@ export interface IMovieTypes {
   original_title: string;
   original_name: string;
   name: string;
-  genres: {
-    id: number;
-    name: string[];
-  }[];
+  genres: string[];
   tagline: string;
   media_type: string;
   overview: string;

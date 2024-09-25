@@ -3,7 +3,7 @@
 import React from 'react'
 import{  type IAnimeInfo } from "@/types";
 import AnimeCover from './anime-cover';
-import DescriptionSection from "@/components/stream-containers/description";
+import DescriptionSection from "@/components/stream-containers/shared-media-component/description";
 import Characters from './characters';
 import SubContainer from './sub-container';
 import EpisodesList from './episodes-list';
