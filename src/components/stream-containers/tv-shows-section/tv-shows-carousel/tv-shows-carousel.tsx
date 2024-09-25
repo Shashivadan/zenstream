@@ -4,7 +4,6 @@ import ShardCarouselSlider from '../../shared-media-component/shared-carousels/s
 
 export default async function TvShowsCarousel() {
    const data = await fetchTvCarousalData();
-   console.log("page tv-shows", data);
   return (
     <ShardCarouselSlider data={data} route='tv-shows'/>
   )

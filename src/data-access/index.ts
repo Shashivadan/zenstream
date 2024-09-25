@@ -7,7 +7,6 @@ export {
 } from "./anime-apis/anilist-api";
 export {
   fetchMoviesCarousalData,
-
   fetchPopularMovies,
   fetchNowPlayingMovies,
   fetchTopRatedMovies,
@@ -15,9 +14,10 @@ export {
 } from "./movies-apis/movies-api";
 
 export {
+  fetchTvShowInfoById,
   fetchTvCarousalData,
   fetchPopularTvShows,
   fetchAiringTodayTvShows,
-  fetchOnTheAirTvShows
-  , fetchTopRatedTvShows
+  fetchOnTheAirTvShows,
+  fetchTopRatedTvShows,
 } from "./tv-show-apis/tv-show-apis";

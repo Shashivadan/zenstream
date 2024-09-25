@@ -22,6 +22,7 @@ export const tvURL = {
   airingToday: `${PROXY}https://api.themoviedb.org/3/tv/airing_today?api_key=${API_KEY}`,
   popular: `${PROXY}https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`,
   search: `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=`,
+  info: (tvId : string | number) => `${PROXY}https://api.themoviedb.org/3/tv/${tvId}?api_key=${API_KEY}`,
 };
 
 export const movieURL = {

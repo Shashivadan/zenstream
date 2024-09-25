@@ -4,10 +4,10 @@ import { API_KEY, PROXY, tvURL } from "../api-contents";
 import type {
   IMovieTVResponseType as TvShowResponseType,
   IMovieTvTypes as ITvShowTypes,
+  IDetailedTVShow,
 } from "@/types/index";
 
 const BASE_URL = "https://api.themoviedb.org/3";
-const TRENDING_TV_ENDPOINT = "/trending/tv/day";
 
 //api.themoviedb.org/3/trending/movie/day
 
@@ -104,6 +104,27 @@ export async function fetchTopRatedTvShows(): Promise<ITvShowTypes[]> {
 
     const data = (await response.json()) as TvShowResponseType;
     return data.results;
+  } catch (error) {
+    console.error("Failed to fetch TV carousel data:", error);
+    throw error;
+  }
+}
+
+export async function fetchTvShowInfoById(id: string): Promise<IDetailedTVShow> {
+  const url = new URL(tvURL.info(id));
+
+  try {
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 * 7 }, // 7 days
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = (await response.json()) as IDetailedTVShow;
+
+    return data;
   } catch (error) {
     console.error("Failed to fetch TV carousel data:", error);
     throw error;

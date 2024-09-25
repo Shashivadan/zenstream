@@ -2,12 +2,10 @@
 
 import { API_KEY, getCastInfoURL, getMovieInfoURL, PROXY } from "../api-contents";
 import type {
-
   IMovieTVResponseType as IMovieResponseType,
   IMovieInfoType,
   IMovieCast,
   ICastMember,
-  IMovieTvTypes,
 } from "@/types/index";
 
 
@@ -24,7 +22,7 @@ export async function fetchMoviesCarousalData() {
     });
     if (!response.ok) throw new Error("Failed to fetch data");
     const data = (await response.json()) as IMovieResponseType;
-    return data.results 
+    return data.results
   } catch (error) {
     console.log(error);
   }
