@@ -1,6 +1,6 @@
 "use server";
 
-import type { IDetailedDrama, IDramaResponse, IDramaResult } from "@/types";
+import type { IDetailedDrama, IDramaResponse } from "@/types";
 import { dramaURL } from "../api-contents";
 
 export async function fetchPopularDrama(id = 1): Promise<IDramaResponse> {

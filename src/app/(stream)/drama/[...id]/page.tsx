@@ -1,3 +1,4 @@
+import DramaDetails from '@/components/stream-containers/drama-section/drama-details/drama-details';
 import { fetchDramaInfoById } from '@/data-access';
 import React from 'react'
 
@@ -7,6 +8,6 @@ const id = params.id.join("/")
 const data = await fetchDramaInfoById(id);
 
   return (
-    <div>{JSON.stringify(data)} {id}</div>
+    <div><DramaDetails data={data} /></div>
   )
 }
