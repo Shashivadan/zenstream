@@ -31,6 +31,10 @@ export default function OnTheAir() {
   }
 
 
+  // console.log("data on the air" , data);
+
+
+
 
   return (
     <Carousel

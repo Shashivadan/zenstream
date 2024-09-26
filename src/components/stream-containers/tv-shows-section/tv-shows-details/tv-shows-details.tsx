@@ -1,4 +1,4 @@
-import { IDetailedTVShow, type IMovieInfoType } from "@/types";
+import type { IDetailedTVShow } from "@/types";
 import React from "react";
 import TvShowCover from "./tv-shows-cover";
 import DescriptionSection from "@/components/stream-containers/shared-media-component/description";
@@ -6,6 +6,7 @@ import SubContainer from "./sub-container";
 import Cast from "./cast";
 
 export default function TvShowDetails({ data }: { data: IDetailedTVShow }) {
+  
   return (
     <div>
       <div className="md:p-6">

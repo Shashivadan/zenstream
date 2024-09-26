@@ -1,9 +1,9 @@
-import type { IDetailedTVShow, IMovieInfoType } from "@/types";
+import type { IDetailedTVShow } from "@/types";
 import React from "react";
-import { Calendar, CircleDollarSign,  LayoutGridIcon,  Star, Timer } from "lucide-react";
+import { Calendar,   LayoutGridIcon,  Star, Timer } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
-import { formatCurrency } from "@/lib/format-currency";
+
 
 export default function SubContainer({ data }: { data: IDetailedTVShow }) {
   return (

@@ -15,6 +15,5 @@ export default async function page({ params }: { params: { id: string } }) {
     return <div>None Found</div>;
   }
 
-
   return <TvShowDetails data={data} />;
 }

@@ -1,15 +1,12 @@
 "use server";
 
-import { API_KEY, PROXY, tvURL } from "../api-contents";
+import {  tvURL } from "../api-contents";
 import type {
   IMovieTVResponseType as TvShowResponseType,
   IMovieTvTypes as ITvShowTypes,
   IDetailedTVShow,
 } from "@/types/index";
 
-const BASE_URL = "https://api.themoviedb.org/3";
-
-//api.themoviedb.org/3/trending/movie/day
 
 export async function fetchTvCarousalData(): Promise<ITvShowTypes[]> {
   const url = new URL(tvURL.popular);
@@ -32,7 +29,7 @@ export async function fetchTvCarousalData(): Promise<ITvShowTypes[]> {
 }
 
 export async function fetchPopularTvShows(): Promise<ITvShowTypes[]> {
-  const url = new URL(`${PROXY}${BASE_URL}/tv/popular?api_key=${API_KEY}`);
+  const url = new URL(tvURL.popular);
 
   try {
     const response = await fetch(url.toString(), {
@@ -111,7 +108,7 @@ export async function fetchTopRatedTvShows(): Promise<ITvShowTypes[]> {
 }
 
 export async function fetchTvShowInfoById(id: string): Promise<IDetailedTVShow> {
-  const url = new URL(tvURL.info(id));
+  const url = new URL(tvURL.tvInfo(id));
 
   try {
     const response = await fetch(url.toString(), {

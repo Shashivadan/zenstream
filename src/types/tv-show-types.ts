@@ -77,10 +77,56 @@ interface ISpokenLanguage {
   name: string;
 }
 
+
+interface ICreator {
+  id: number;
+  credit_id: string;
+  name: string;
+  original_name: string;
+  gender: number;
+  profile_path: string | null;
+}
+
+// interface IDetailedTVShow {
+//   adult: boolean;
+//   backdrop_path: string;
+//   created_by: ICreator[]; // Updated to use the new ICreator interface
+//   episode_run_time: number[];
+//   first_air_date: string;
+//   genres: IGenre[];
+//   homepage: string;
+//   id: number;
+//   in_production: boolean;
+//   languages: string[];
+//   last_air_date: string;
+//   last_episode_to_air: IEpisode;
+//   name: string;
+//   next_episode_to_air: IEpisode | null;
+//   networks: INetwork[];
+//   number_of_episodes: number;
+//   number_of_seasons: number;
+//   origin_country: string[];
+//   original_language: string;
+//   original_name: string;
+//   overview: string;
+//   popularity: number;
+//   poster_path: string;
+//   production_companies: IProductionCompany[];
+//   production_countries: IProductionCountry[];
+//   seasons: ISeason[];
+//   spoken_languages: ISpokenLanguage[];
+//   status: string;
+//   tagline: string;
+//   type: string;
+//   vote_average: number;
+//   vote_count: number;
+// }
+
+
 export interface IDetailedTVShow {
   adult: boolean;
   backdrop_path: string;
-  created_by: any[]; // You might want to define a more specific interface if there's usually data here
+  created_by: ICreator[]; // You might want to define a more specific interface if there's usually data here
   episode_run_time: number[];
   first_air_date: string;
   genres: IGenre[];
