@@ -3,7 +3,7 @@
 import type { IDetailedDrama, IDramaResponse, IDramaResult } from "@/types";
 import { dramaURL } from "../api-contents";
 
-export async function fetchPopularDrama(id = 1): Promise<IDramaResult[]> {
+export async function fetchPopularDrama(id = 1): Promise<IDramaResponse> {
   const url = new URL(dramaURL.popular(id));
 
   try {
@@ -16,14 +16,14 @@ export async function fetchPopularDrama(id = 1): Promise<IDramaResult[]> {
     }
 
     const data = (await response.json()) as IDramaResponse;
-    return data.results;
+    return data;
   } catch (error) {
     console.error("Failed to fetch TV carousel data:", error);
     throw error;
   }
 }
 
-export async function fetchDramaInfo(id: string): Promise<IDetailedDrama> {
+export async function fetchDramaInfoById(id: string): Promise<IDetailedDrama> {
   const url = new URL(dramaURL.dramaInfo(id));
 
   try {
@@ -34,8 +34,9 @@ export async function fetchDramaInfo(id: string): Promise<IDetailedDrama> {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
+    const data = (await response.json()) as IDetailedDrama;
+    return data
 
-    return (await response.json()) as IDetailedDrama;
   } catch (error) {
     console.error("Failed to fetch TV carousel data:", error);
     throw error;

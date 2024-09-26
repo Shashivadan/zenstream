@@ -49,7 +49,7 @@ export default function SharedCarouselCard({
                 <div className="overflow-hidden text-ellipsis whitespace-nowrap text-xs normal-case opacity-50 md:w-1/2 md:text-center">
                   {show?.overview}
                 </div>
-               
+
               </div>
             </div>
           </div>
