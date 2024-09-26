@@ -11,7 +11,6 @@ export default async function page() {
   return (
     <section className="">
       <TvShowsCarousel />
-
       <div className="mt-2 p-4">
         <div className="flex flex-col gap-4">
           <div>

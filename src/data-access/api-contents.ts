@@ -3,6 +3,7 @@ import { env } from "@/env";
 export const API_KEY = "c252dde529d0b4d39533949ed198e5d9";
 export const PROXY = "https://sup-proxy.zephex0-f6c.workers.dev/api-json?url=";
 export const API_ANILIST_URL = env.CONSUMET_API_ANILIST_URL;
+export const API_DARAMA_URL = env.CONSUMET_API_URL;
 
 export const animeURL = {
   popular: "https://animetize-api.vercel.app/popular",
@@ -47,3 +48,11 @@ export const movieURL = {
 
 export const getCastInfoURL = (movieId: string | number) =>
   `${PROXY}https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`;
+
+
+export const dramaURL = {
+  popular: (page: number | string) =>
+    `https://api-consumet-org-rust.vercel.app/movies/dramacool/popular?page=${page}`,
+  dramaInfo: (id: string ) =>
+    `https://api-consumet-org-rust.vercel.app/movies/dramacool/info?id=${id}`,
+};
