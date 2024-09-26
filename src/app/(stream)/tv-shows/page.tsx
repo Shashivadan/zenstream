@@ -5,6 +5,8 @@ import PopularTvShows from "@/components/stream-containers/tv-shows-section/tv-s
 import TopRated from "@/components/stream-containers/tv-shows-section/tv-shows-contents/top-rated";
 import React from "react";
 
+
+export const dynamic = "force-static";
 export default async function page() {
   return (
     <section className="">

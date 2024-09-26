@@ -4,6 +4,10 @@ import PopularAnime from "@/components/stream-containers/anime-section/episode-c
 import RecentAnime from "@/components/stream-containers/anime-section/episode-content/recent-anime";
 import React from "react";
 
+
+export const dynamic = "force-static";
+
+
 export default function page() {
   return (
     <div>

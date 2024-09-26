@@ -27,14 +27,13 @@ export default function Characters({ data }: { data: ICharacter[] }) {
         </div>
         <CarouselContent className="mx-auto w-full">
           {data.map((item: ICharacter) => (
-            <CarouselItem key={item.id} className="basis-1/3 lg:basis-1/6">
+            <CarouselItem key={item.id} className="   sm:basis-1/2   basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Card className="relative overflow-hidden rounded-lg border-none object-cover object-center">
                   <AspectRatio ratio={2/3}>
                     <Image
                       loading="lazy"
                       sizes="100%"
-
                       src={item.image}
                       alt={item.name.full ?? ""}
                       fill

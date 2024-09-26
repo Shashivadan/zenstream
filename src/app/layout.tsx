@@ -59,7 +59,7 @@ export default function RootLayout({
             showSpinner={true}
             easing="ease"
             speed={200}
-      
+
 
           />
           {children}

@@ -19,6 +19,7 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import React from "react";
 
+
 export default function Cast({ id }: { id: string | number }) {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["cast", id],
@@ -65,10 +66,7 @@ export default function Cast({ id }: { id: string | number }) {
                         <Image
                           loading="lazy"
                           sizes="100%"
-                          src={
-                            "https://image.tmdb.org/t/p/w500" +
-                            item.profile_path
-                          }
+                          src={"https://image.tmdb.org/t/p/w500/" + item.profile_path}
                           alt={item.name}
                           fill
                         />

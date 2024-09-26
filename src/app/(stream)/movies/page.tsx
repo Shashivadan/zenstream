@@ -5,6 +5,9 @@ import TopRatedMovies from '@/components/stream-containers/movies-section/movies
 import UpcomingMovies from '@/components/stream-containers/movies-section/movies-contents/upcoming-movies';
 import React from 'react'
 
+
+export const dynamic = "force-static";
+
 export default function page() {
   return (
     <section className="">

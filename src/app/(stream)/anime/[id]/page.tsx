@@ -9,7 +9,6 @@ export default async function page({params} : { params: { id: string } }) {
   const id = decodeParam(params.id)
   const data  = await fetchAnilistInfoById(id);
 
-
   if(typeof data === "string") {
     return <div>{data}</div>;
   }
