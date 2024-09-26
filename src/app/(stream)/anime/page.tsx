@@ -5,7 +5,7 @@ import RecentAnime from "@/components/stream-containers/anime-section/episode-co
 import React from "react";
 
 
-export const dynamic = "force-static";
+
 
 
 export default function page() {

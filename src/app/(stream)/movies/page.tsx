@@ -6,7 +6,7 @@ import UpcomingMovies from '@/components/stream-containers/movies-section/movies
 import React from 'react'
 
 
-export const dynamic = "force-static";
+
 
 export default function page() {
   return (

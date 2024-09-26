@@ -37,15 +37,17 @@ export default async function EpisodesList({ id }: { id: string}) {
             ) : (
               <ScrollArea className="h-[300px] pr-4 sm:h-[400px]">
                 {data.episodes.map((episode: IDramaEpisode, i: number) => (
-                  <Card key={episode.id} className="mb-4">
+                  <Card
+                    key={episode.id}
+                    className="mb-4 border border-solid dark:border-zinc-800/50"
+                  >
                     <CardContent className="flex items-center justify-between p-4">
-                      <div>
+                      <div className="">
                         <h3 className="text-sm font-semibold sm:text-base">
                           {episode.title}
                         </h3>
                         <p className="text-xs text-muted-foreground sm:text-sm">
                           {format(new Date(episode.releaseDate), "PPP")}
-                         
                         </p>
                       </div>
                       <Button

@@ -12,7 +12,7 @@ export default function TvShowsCard({ data }: { data: ITvTypes  }) {
 
   return (
     <Link href={`/tv-shows/${encodeParam(data.id)}`}>
-      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border bg-background/50 shadow">
+      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
         {data.backdrop_path ? (
           <>
             <Image

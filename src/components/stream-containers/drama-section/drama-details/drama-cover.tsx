@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function DramaCover( {data} : {data : IDetailedDrama}) {
   return (
-    <div className="flex w-full flex-col gap-3 md:flex-row">
+    <div className="flex w-full  gap-3 md:flex-row">
       <Image
         src={data.image}
         alt={data.title}

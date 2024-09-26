@@ -9,7 +9,7 @@ import React from 'react'
 export default function MoviesCard({data} : {data : IMovieTypes}) {
   return (
     <Link href={`/movies/${encodeParam(data.id)}`}>
-      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border bg-background/50 shadow">
+      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
         {data.backdrop_path ? (
           <>
             <Image
