@@ -1,8 +1,51 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Icon } from "@/components/ui/icon";
 import type { icons } from "lucide-react";
-import { featureList } from "@/contents/landing-page/landing-page-content";
 
+interface FeaturesProps {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export const featureList: FeaturesProps[] = [
+  {
+    icon: "Zap",
+    title: "Ultra-Fast Streaming",
+    description:
+      "Experience lightning-fast loading times and adaptive streaming quality that adjusts to your internet speed for uninterrupted viewing.",
+  },
+  {
+    icon: "HeartHandshake",
+    title: "Exclusive Content",
+    description:
+      "Enjoy a wide range of original anime series, movies, and web shows available only on our platform. Be the first to watch new releases.",
+  },
+  {
+    icon: "Users",
+    title: "Watch Parties",
+    description:
+      "Host virtual watch parties with friends and family. Sync playback and chat in real-time, bringing the social experience to online streaming.",
+  },
+  {
+    icon: "Fingerprint",
+    title: "Advanced Parental Controls",
+    description:
+      "Set up kid-friendly profiles with customizable content restrictions. Ensure a safe viewing environment for the whole family.",
+  },
+  {
+    icon: "History",
+    title: "Continue Watching",
+    description:
+      "Pick up right where you left off with our smart resume feature. Never lose track of your progress across episodes and movies.",
+  },
+  {
+    icon: "Star",
+    title: "Personalized Watchlist",
+    description:
+      "Curate your own watchlist of must-see content. Our AI-powered system learns from your choices to suggest new titles you'll love.",
+  },
+];
 
 export const FeaturesSection = () => {
   return (

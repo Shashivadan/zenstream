@@ -4,7 +4,46 @@ import { Icon } from "@/components/ui/icon";
 import { Marquee } from "@devnomic/marquee";
 import "@devnomic/marquee/dist/index.css";
 import type { icons } from "lucide-react";
-import { techStackProps } from "@/contents/landing-page/landing-page-content";
+
+interface TechStackProps {
+  icon: string;
+  name: string;
+}
+
+export const techStackProps: TechStackProps[] = [
+  {
+    icon: "LayoutDashboard",
+    name: "Next.js",
+  },
+  {
+    icon: "Database",
+    name: "Prisma",
+  },
+  {
+    icon: "Cylinder",
+    name: "PostgreSQL",
+  },
+  {
+    icon: "Atom",
+    name: "React.js",
+  },
+  {
+    icon: "Paintbrush",
+    name: "Tailwind CSS",
+  },
+  {
+    icon: "ServerCrash",
+    name: "Vercel",
+  },
+  {
+    icon: "ShieldCheck",
+    name: "NextAuth.js",
+  },
+  {
+    icon: "Workflow",
+    name: "TypeScript",
+  },
+];
 
 export const SponsorsSection = () => {
   return (

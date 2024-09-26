@@ -5,11 +5,44 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { serviceList } from "@/contents/landing-page/landing-page-content";
 enum ProService {
   YES = 1,
   NO = 0,
 }
+
+
+interface ServiceProps {
+  title: string;
+  pro: ProService;
+  description: string;
+}
+
+export const serviceList: ServiceProps[] = [
+  {
+    title: "HD Streaming",
+    description:
+      "Enjoy crystal-clear video quality with our standard HD streaming option for all users.",
+    pro: ProService.NO,
+  },
+  {
+    title: "Ad-Free Experience",
+    description:
+      "Watch your favorite content without interruptions. No ads, just pure entertainment.",
+    pro: ProService.YES,
+  },
+  {
+    title: "Offline Downloads",
+    description:
+      "Download episodes and movies to watch offline on your mobile devices.",
+    pro: ProService.YES,
+  },
+  {
+    title: "Multiple Profiles",
+    description:
+      "Create up to 5 personalized profiles under a single account for your whole family.",
+    pro: ProService.NO,
+  },
+];
 
 
 export const ServicesSection = () => {

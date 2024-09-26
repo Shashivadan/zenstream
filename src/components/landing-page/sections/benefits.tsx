@@ -1,7 +1,39 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Icon } from "@/components/ui/icon";
 import { type icons } from "lucide-react";
-import { benefitList } from "@/contents/landing-page/landing-page-content";
+interface BenefitProps {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export const benefitList: BenefitProps[] = [
+  {
+    icon: "Tv",
+    title: "Vast Content Library",
+    description:
+      "Access thousands of anime titles, blockbuster movies, and binge-worthy web series all in one place. Never run out of things to watch!",
+  },
+
+  {
+    icon: "Download",
+    title: "Offline Viewing",
+    description:
+      "Download your favorite content and watch it offline. Perfect for long trips or areas with limited internet connectivity.",
+  },
+  {
+    icon: "PersonStanding",
+    title: "Personalized Recommendations",
+    description:
+      "Our smart algorithm learns your preferences to suggest new titles you'll love, helping you discover hidden gems and new favorites.",
+  },
+  {
+    icon: "Languages",
+    title: "Multiple Audio & Subtitles",
+    description:
+      "Choose from a variety of audio languages and subtitle options. Enjoy content in your preferred language or learn a new one!",
+  },
+];
 
 export const BenefitsSection = () => {
   return (

@@ -5,8 +5,17 @@ import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { landingPageContent } from "@/contents/landing-page/landing-page-content";
+
 import { siteConfig } from "@/config/site";
+
+
+
+export const landingPageContent = {
+  title: "ZenStream",
+  subtitle: "The Next Generation of Video Streaming",
+  description:
+    "Discover a world of entertainment with ZenStream. Enjoy high-quality streaming of anime, movies, and web series.",
+};
 
 export const HeroSection = () => {
   const { theme } = useTheme();

@@ -4,9 +4,6 @@ export const API_KEY = "c252dde529d0b4d39533949ed198e5d9";
 export const PROXY = "https://sup-proxy.zephex0-f6c.workers.dev/api-json?url=";
 export const API_ANILIST_URL = env.CONSUMET_API_ANILIST_URL;
 
-
-
-
 export const animeURL = {
   popular: "https://animetize-api.vercel.app/popular",
   topAiring: "https://animetize-api.vercel.app/top-airing",
@@ -18,8 +15,6 @@ export const animeURL = {
   search: "https://animetize-api.vercel.app/",
   genre: "https://animetize-api.vercel.app/genre",
 };
-
-
 
 export const aniListURL = {
   popular: `${PROXY}${API_ANILIST_URL}/popular`,
