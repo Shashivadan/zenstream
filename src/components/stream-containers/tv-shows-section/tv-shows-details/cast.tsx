@@ -24,6 +24,7 @@ export default function Cast({ id }: { id: string | number }) {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["cast", id],
     queryFn: () => fetchCastInfoById(id),
+    enabled : !!id
   });
 
   if (typeof data === "string") {

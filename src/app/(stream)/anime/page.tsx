@@ -2,11 +2,6 @@ import AnimeSlider from "@/components/stream-containers/anime-section/anime-caro
 import AnimeTrending from "@/components/stream-containers/anime-section/episode-content/anime-trending";
 import PopularAnime from "@/components/stream-containers/anime-section/episode-content/popular-anime";
 import RecentAnime from "@/components/stream-containers/anime-section/episode-content/recent-anime";
-import React from "react";
-
-
-
-
 
 export default function page() {
   return (
