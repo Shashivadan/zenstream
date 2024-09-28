@@ -1,10 +1,10 @@
 "use client";
 import { format } from "date-fns";
-import { Play } from "lucide-react";
+
 import Link from "next/link";
 import React from "react";
 import type { IMovieTvTypes } from "@/types";
-import { Button } from "@/components/ui/button";
+
 import ShardMobileViewCarousel from "./shared-mobile-view-carousel";
 import { encodeParam } from "@/lib/url-param-encoder";
 

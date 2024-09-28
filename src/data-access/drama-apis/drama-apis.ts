@@ -1,6 +1,6 @@
 "use server";
 
-import type { IDetailedDrama, IDramaResponse } from "@/types";
+import type { IDetailedDrama, IDramaResponse, IDramaStreamingData } from "@/types";
 import { dramaURL } from "../api-contents";
 
 export async function fetchPopularDrama(id = 1): Promise<IDramaResponse> {
@@ -35,8 +35,31 @@ export async function fetchDramaInfoById(id: string): Promise<IDetailedDrama> {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = (await response.json()) as IDetailedDrama;
-    return data
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch TV carousel data:", error);
+    throw error;
+  }
+}
 
+export async function fetchDramaStreamingLinks(
+  episodeId: string,
+  mediaId: string,
+  server?: "asianload" | "mixdrop" | "streamtape" | "streamsb",
+): Promise<IDramaStreamingData> {
+  const url = new URL(dramaURL.streamLinks(episodeId, mediaId, server));
+  try {
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 * 7 }, // 7 days
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+
+    const data = (await response.json()) as IDramaStreamingData;
+    return data;
   } catch (error) {
     console.error("Failed to fetch TV carousel data:", error);
     throw error;

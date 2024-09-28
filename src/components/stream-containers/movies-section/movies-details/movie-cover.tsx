@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
-import { PlayCircle, PlayIcon, Plus } from 'lucide-react'
+import { PlayCircle, PlayIcon } from 'lucide-react'
 import type  { IMovieInfoType } from '@/types'
 import Link from 'next/link';
 import { encodeParam } from '@/lib/url-param-encoder';

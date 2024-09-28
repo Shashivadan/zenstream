@@ -23,4 +23,4 @@ export {
   fetchTopRatedTvShows,
 } from "./tv-show-apis/tv-show-apis";
 
-export { fetchDramaInfoById, fetchPopularDrama } from "./drama-apis/drama-apis";
+export { fetchDramaInfoById, fetchPopularDrama , fetchDramaStreamingLinks } from "./drama-apis/drama-apis";

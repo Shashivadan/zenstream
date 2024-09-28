@@ -1,5 +1,5 @@
 // Main response type
-export  interface IDramaResponse {
+export interface IDramaResponse {
   currentPage: string;
   totalPages: number;
   hasNextPage: boolean;
@@ -7,14 +7,12 @@ export  interface IDramaResponse {
 }
 
 // Individual drama result type
- export interface IDramaResult {
+export interface IDramaResult {
   id: string;
   title: string;
   url: string;
   image: string;
 }
-
-
 
 export interface IDetailedDrama {
   id: string;
@@ -52,4 +50,20 @@ export interface IDramaEpisode {
   subType: string;
   releaseDate: string;
   url: string;
+}
+
+export interface IDramaStreamingData {
+  sources: IDramaSource[];
+  subtitles?:IDramaSubtitle[];
+  download: string;
+}
+
+export interface IDramaSource {
+  url: string;
+  isM3U8: boolean;
+}
+
+export interface IDramaSubtitle {
+  url: string;
+  lang: string;
 }
