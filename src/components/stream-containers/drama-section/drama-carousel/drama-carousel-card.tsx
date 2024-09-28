@@ -37,7 +37,7 @@ export default function DramaCarouselCard({
                     {show.title}
                   </h2>
 
-                  <Link href={`/${route}/${show.id}`}>
+                  <Link href={`/${route}/${encodeURIComponent(show.id)}`}>
                     <Button
                       variant={"ringHover"}
                       className="bg-purple-600 font-semibold ring-purple-700 hover:ring hover:ring-offset-1"

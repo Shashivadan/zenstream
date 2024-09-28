@@ -1,9 +1,7 @@
 import { fetchDramaInfoById } from '@/data-access';
-import { IDramaEpisode } from '@/types';
+import type { IDramaEpisode } from '@/types';
 import React from 'react'
-import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Accordion,
@@ -19,8 +17,7 @@ import { format } from 'date-fns';
 
 
 export default async function EpisodesList({ id }: { id: string}) {
-
-  const data =  await  fetchDramaInfoById(id);
+  const data =  await fetchDramaInfoById(id);
   return (
     <div className="mx-auto h-fit w-full overflow-hidden rounded-lg px-4 text-white dark:bg-zinc-900/50">
       <Accordion type="single" collapsible className="w-full">
@@ -36,7 +33,7 @@ export default async function EpisodesList({ id }: { id: string}) {
               </p>
             ) : (
               <ScrollArea className="h-[300px] pr-4 sm:h-[400px]">
-                {data.episodes.map((episode: IDramaEpisode, i: number) => (
+                {data.episodes.map((episode: IDramaEpisode,) => (
                   <Card
                     key={episode.id}
                     className="mb-4 border border-solid dark:border-zinc-800/50"

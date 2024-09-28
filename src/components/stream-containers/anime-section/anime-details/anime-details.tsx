@@ -10,8 +10,6 @@ import EpisodesList from './episodes-list';
 
 export const AnimeDetails: React.FC<{ data: IAnimeInfo }> = ({ data }) => {
 
-
-
   return (
     <div className="md:p-6 ">
       <AnimeCover data={data} />
@@ -21,7 +19,7 @@ export const AnimeDetails: React.FC<{ data: IAnimeInfo }> = ({ data }) => {
           <div className=' md:hidden'>
             <SubContainer data={data} />
           </div>
-          <EpisodesList id={data.id} />
+          <EpisodesList style='grid' id={data.id} />
           <Characters data={data.characters ?? []} />
         </div>
         <div className='hidden md:block'>

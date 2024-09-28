@@ -6,8 +6,8 @@ import React from "react";
 
 export default function DramaCard({ data }: { data: IDramaResult }) {
   return (
-    <Link href={`/drama/${data.id}`} className="block w-full ">
-      <div className="relative aspect-[2/3] w-full overflow-hidden rounded-md border bg-background/50 shadow border-none" >
+    <Link href={`/drama/${encodeURIComponent(data.id)}`} className="block w-full">
+      <div className="relative aspect-[2/3] w-full overflow-hidden rounded-md border border-none bg-background/50 shadow">
         {data.image ? (
           <>
             <Image

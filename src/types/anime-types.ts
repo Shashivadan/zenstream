@@ -3,9 +3,18 @@ import type {
   MediaFormat,
 } from "@consumet/extensions/dist/models/types";
 
+export interface IEpisodeSource {
+  headers: {
+    Referer: string;
+  };
+  sources: Isources[];
+}
 
-
-
+export interface Isources {
+  url: string;
+  isM3u8: boolean;
+  quality: string;
+}
 
 export enum MediaStatus {
   ONGOING = "Ongoing",
@@ -15,8 +24,6 @@ export enum MediaStatus {
   NOT_YET_AIRED = "Not yet aired",
   UNKNOWN = "Unknown",
 }
-
-
 
 export interface AnimeDataResponse extends ISearch<IAnimeInfo> {
   currentPage: number;

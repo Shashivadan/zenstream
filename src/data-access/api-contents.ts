@@ -3,7 +3,7 @@ import { env } from "@/env";
 export const API_KEY = "c252dde529d0b4d39533949ed198e5d9";
 export const PROXY = "https://sup-proxy.zephex0-f6c.workers.dev/api-json?url=";
 export const API_ANILIST_URL = env.CONSUMET_API_ANILIST_URL;
-export const API_DARAMA_URL = env.CONSUMET_API_URL;
+export const RUST_ANIME_API = env.CONSUMET_API_URL
 
 export const animeURL = {
   popular: "https://animetize-api.vercel.app/popular",
@@ -21,7 +21,9 @@ export const aniListURL = {
   popular: `${PROXY}${API_ANILIST_URL}/popular`,
   trending: `${PROXY}${API_ANILIST_URL}/trending`,
   recentEpisodes: `${PROXY}${API_ANILIST_URL}/recent-episodes`,
-  animeInfo: (id: string ) => `${PROXY}${API_ANILIST_URL}/info/${id}`,
+  animeInfo: (id: string) => `${PROXY}${API_ANILIST_URL}/info/${id}`,
+  episodeSources: (id: string) =>
+    `${PROXY}${RUST_ANIME_API}/anime/gogoanime/watch/${id}`,
 };
 
 export const tvURL = {

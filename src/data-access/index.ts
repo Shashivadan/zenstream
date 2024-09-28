@@ -3,7 +3,7 @@ export {
   fetchTrendingAnime,
   fetchPopularAnime,
   fetchRecentAnime,
-
+  fetchEpisodeSources,
 } from "./anime-apis/anilist-api";
 export {
   fetchMoviesCarousalData,

@@ -1,12 +1,10 @@
 "use server";
 
-
-import type { AnimeDataResponse } from "@/types";
+import type { AnimeDataResponse, IEpisodeSource } from "@/types";
 import type { IAnimeInfo } from "@/types";
 import { aniListURL } from "../api-contents";
 
 //https://api-consumet-org-rust.vercel.app/meta/anilist
-
 
 export async function fetchTrendingAnime(
   page = 1,
@@ -85,7 +83,7 @@ export async function fetchRecentAnime(
 export async function fetchAnilistInfoById(
   id: string,
   provider = "gogoanime",
-): Promise<IAnimeInfo | string> {
+): Promise<IAnimeInfo> {
   const url = new URL(aniListURL.animeInfo(id));
   url.searchParams.append("provider", provider);
 
@@ -102,6 +100,25 @@ export async function fetchAnilistInfoById(
     return data;
   } catch (error) {
     console.error("Failed to fetch trending anime data:", error);
-    return (error as Error).message;
+    throw error;
+  }
+}
+
+export async function fetchEpisodeSources(
+  episodeId: string,
+): Promise<IEpisodeSource> {
+  const url = new URL(aniListURL.episodeSources(episodeId));
+  try {
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 }, // 1 day
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = (await response.json()) as IEpisodeSource;
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch trending anime data:", error);
+    throw error;
   }
 }
