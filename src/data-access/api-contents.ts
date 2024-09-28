@@ -46,6 +46,8 @@ export const movieURL = {
   nowPlaying: `${PROXY}https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`,
   onTheAir: `${PROXY}https://api.themoviedb.org/3/movie/on_the_air?api_key=${API_KEY}`,
   triending: `${PROXY}https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`,
+  trending: `${PROXY}https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`,
+  movieRecommendation : (id: string) => `${PROXY}https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`,
 };
 
 export const getCastInfoURL = (movieId: string | number) =>

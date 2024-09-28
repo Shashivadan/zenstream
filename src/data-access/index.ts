@@ -11,6 +11,7 @@ export {
   fetchNowPlayingMovies,
   fetchTopRatedMovies,
   fetchUpcomingMovies,
+  fetchMovieRecommendationById,
 } from "./movies-apis/movies-api";
 
 export {

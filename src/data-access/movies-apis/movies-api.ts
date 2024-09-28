@@ -6,6 +6,7 @@ import type {
   IMovieInfoType,
   IMovieCast,
   ICastMember,
+  IMovieRecommendationResponse,
 } from "@/types/index";
 
 export async function fetchMoviesCarousalData() {
@@ -80,7 +81,7 @@ export async function fetchNowPlayingMovies() {
 
 export async function fetchMovieInfoById(
   id: string | number,
-): Promise<IMovieInfoType | string> {
+): Promise<IMovieInfoType > {
   try {
     const url = new URL(movieURL.movieInfo(id));
     const response = await fetch(url.toString(), {
@@ -90,7 +91,7 @@ export async function fetchMovieInfoById(
     const data = (await response.json()) as IMovieInfoType;
     return data;
   } catch (error) {
-    return (error as Error).message;
+    throw new Error((error as Error).message);
   }
 }
 
@@ -105,6 +106,24 @@ export async function fetchCastInfoById(
     if (!response.ok) throw new Error("Failed to fetch data");
     const data = (await response.json()) as IMovieCast;
     return data.cast;
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+}
+
+
+
+export async function fetchMovieRecommendationById(
+  id: string ,
+): Promise<IMovieRecommendationResponse> {
+  try {
+    const url = new URL(movieURL.movieRecommendation(id));
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 * 7 },
+    });
+    if (!response.ok) throw new Error("Failed to fetch data");
+    const data = (await response.json()) as IMovieRecommendationResponse;
+    return data
   } catch (error) {
     throw new Error((error as Error).message);
   }

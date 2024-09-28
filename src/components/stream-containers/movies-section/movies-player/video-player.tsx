@@ -8,7 +8,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import { fetchMovieInfoById } from "@/data-access/movies-apis/movies-api";
+import SubContainer from "../movies-details/sub-container";
 
 export const movieSrc = {
   vidsrcMe: (id: string): string => `https://vidsrc.xyz/embed/movie/${id}`,
@@ -34,13 +36,18 @@ export const movieSrc = {
 };
 
 export default function VideoPlayer({ id }: { id: string }) {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["movie", id],
+    queryFn: async () => await fetchMovieInfoById(id),
+  });
+
+
   const [selectedServer, setSelectedServer] =
     useState<keyof typeof movieSrc>("vidsrcPro");
 
   const handleServerChange = (value: string) => {
     setSelectedServer(value as keyof typeof movieSrc);
   };
-
   return (
     <div className="w-screen-2xl grid gap-3 md:grid-cols-6">
       <iframe
@@ -70,11 +77,16 @@ export default function VideoPlayer({ id }: { id: string }) {
           </SelectContent>
         </Select>
         <div className="mt-3 flex flex-col gap-2">
-            <Button asChild className="font-semibold">
-          <a href={movieSrc.vidSrcVip(id)} target="_blank">
+          <Button asChild className="font-semibold">
+            <a href={movieSrc.vidSrcVip(id)} target="_blank">
               Download
-          </a>
-              </Button>
+            </a>
+          </Button>
+          <div>
+            {isLoading && <p>Loading...</p>}
+            {isError && <p>Error</p>}
+            {data && <SubContainer data={data} />}
+          </div>
         </div>
       </div>
     </div>

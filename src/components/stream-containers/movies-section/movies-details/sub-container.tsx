@@ -7,7 +7,7 @@ import { formatCurrency } from "@/lib/format-currency";
 
 export default function SubContainer({ data }: { data: IMovieInfoType }) {
   return (
-    <div className="h-fit rounded-lg bg-zinc-300 p-5 dark:border-zinc-800 dark:bg-zinc-900/50 md:w-full">
+    <div className="  h-fit p-5  md:w-full">
       <div className="">
         <div className="mb-3 grid grid-cols-2 gap-4">
           <div className="">

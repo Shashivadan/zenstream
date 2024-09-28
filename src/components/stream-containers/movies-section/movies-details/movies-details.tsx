@@ -6,8 +6,6 @@ import SubContainer from "./sub-container";
 import Cast from "./cast";
 
 export default function MovieDetails({ data }: { data: IMovieInfoType }) {
-
-
   return (
     <div>
       <div className="md:p-6">
@@ -24,7 +22,9 @@ export default function MovieDetails({ data }: { data: IMovieInfoType }) {
             {/* <Characters data={data.characters ?? []} /> */}
           </div>
           <div className="hidden md:block">
-            <SubContainer data={data} />
+            <div className="rounded-lg bg-zinc-300 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <SubContainer data={data} />
+            </div>
           </div>
         </div>
       </div>
