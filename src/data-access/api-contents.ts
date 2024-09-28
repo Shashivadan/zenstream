@@ -1,9 +1,8 @@
-
 import { env } from "@/env";
 export const API_KEY = "c252dde529d0b4d39533949ed198e5d9";
 export const PROXY = "https://sup-proxy.zephex0-f6c.workers.dev/api-json?url=";
 export const API_ANILIST_URL = env.CONSUMET_API_ANILIST_URL;
-export const RUST_ANIME_API = env.CONSUMET_API_URL
+export const RUST_ANIME_API = env.CONSUMET_API_URL;
 
 export const animeURL = {
   popular: "https://animetize-api.vercel.app/popular",
@@ -33,7 +32,8 @@ export const tvURL = {
   airingToday: `${PROXY}https://api.themoviedb.org/3/tv/airing_today?api_key=${API_KEY}`,
   popular: `${PROXY}https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`,
   search: `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=`,
-  tvInfo: (tvId : string | number) => `${PROXY}https://api.themoviedb.org/3/tv/${tvId}?api_key=${API_KEY}`,
+  tvInfo: (tvId: string | number) =>
+    `${PROXY}https://api.themoviedb.org/3/tv/${tvId}?api_key=${API_KEY}`,
 };
 
 export const movieURL = {
@@ -51,10 +51,31 @@ export const movieURL = {
 export const getCastInfoURL = (movieId: string | number) =>
   `${PROXY}https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`;
 
-
 export const dramaURL = {
   popular: (page: number | string) =>
     `https://api-consumet-org-rust.vercel.app/movies/dramacool/popular?page=${page}`,
-  dramaInfo: (id: string ) =>
+  dramaInfo: (id: string) =>
     `https://api-consumet-org-rust.vercel.app/movies/dramacool/info?id=${id}`,
+};
+
+export const movieSrc = {
+  vidsrcMe: (id: string): string => `https://vidsrc.xyz/embed/movie/${id}`,
+  vidsrcRip: (id: string): string => `https://vidsrc.rip/embed/movie/${id}`,
+  autoembedCc: (id: string): string =>
+    `https://player.autoembed.cc/embed/movie/${id}`,
+  sdspXyz: (id: string): string => `https://v1.sdsp.xyz/embed/movie/${id}`,
+  smashystreamCom: (id: string): string =>
+    `https://player.smashy.stream/movie/${id}`,
+  superembedStream: (id: string): string =>
+    `https://multiembed.mov/directstream.php?video_id=${id}`,
+  embed2Cc: (id: string): string => `https://www.2embed.cc/embed/${id}`,
+  vidlinkPro: (id: string): string => `https://vidlink.pro/movie/${id}`,
+  vidsrcPro: (id: string): string => `https://vidsrc.pro/embed/movie/${id}`,
+  vidsrcIcu: (id: string): string => `https://vidsrc.icu/embed/movie/${id}`,
+  vidsrcCc: (id: string): string => `https://vidsrc.cc/v2/embed/movie/${id}`,
+  moviesapiClub: (id: string): string => `https://moviesapi.club/movie/${id}`,
+  movieeTv: (id: string): string => `https://moviee.tv/embed/movie/${id}`,
+  gomoTo: (id: string): string => `https://gomo.to/movie/${id}`,
+  vidbingeCom: (id: string): string =>
+    `https://www.vidbinge.com/media/tmdb-movie-${id}`,
 };

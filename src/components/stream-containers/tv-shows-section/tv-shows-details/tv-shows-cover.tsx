@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { PlayCircle, Plus } from 'lucide-react'
 import type  { IDetailedTVShow } from '@/types'
 export default function TvShowCover({ data }: { data: IDetailedTVShow}) {
+
   return (
     <div className="rounded-3xl bg-black text-white">
       <div className="relative rounded-3xl">

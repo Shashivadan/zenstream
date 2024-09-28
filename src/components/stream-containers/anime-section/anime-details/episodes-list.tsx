@@ -61,7 +61,7 @@ export default  function EpisodesList({ id , style }: { id: string , style: 'gri
                   type="hover"
                   className="h-[500px] min-h-fit w-full rounded-md border border-none p-4"
                 >
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3">
                     {data.map((episode) => (
                       <Link
                         href={`/anime/watch/${id}/${episode.id}`}
@@ -81,7 +81,7 @@ export default  function EpisodesList({ id , style }: { id: string , style: 'gri
                             />
                             <div className="absolute inset-0 z-10 bg-gradient-to-t from-black to-transparent"></div>
                             <CardContent className="absolute bottom-0 left-0 right-0 z-20 p-4">
-                              <h3 className="text-sm font-bold text-white">
+                              <h3 className="text-sm font-bold text-white hidden md:block">
                                 {/* {episode.title
                                   ? episode.title
                                   : episode.id} */}

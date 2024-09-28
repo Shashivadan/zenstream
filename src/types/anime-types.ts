@@ -58,7 +58,7 @@ export interface IAnimeInfo {
   isLicensed: boolean;
   isAdult: boolean;
   countryOfOrigin: string;
-  trailer: ITrailer;
+  trailer?: ITrailer;
   image: string;
   imageHash: string;
   popularity: number;

@@ -27,9 +27,7 @@ export default function AnimeTrending() {
   });
 
 
-  if (isError) {
-    console.log("sdfsd" , isError);
-
+  if (isError){
     return <div>Error</div>;
   }
 

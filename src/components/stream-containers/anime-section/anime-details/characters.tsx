@@ -27,7 +27,7 @@ export default function Characters({ data }: { data: ICharacter[] }) {
         </div>
         <CarouselContent className="mx-auto w-full">
           {data.map((item: ICharacter) => (
-            <CarouselItem key={item.id} className="   sm:basis-1/2   basis-1/3 lg:basis-1/6">
+            <CarouselItem key={item.id} className="  basis-1/2   ms:basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Card className="relative overflow-hidden rounded-lg border-none object-cover object-center">
                   <AspectRatio ratio={2/3}>
@@ -37,7 +37,7 @@ export default function Characters({ data }: { data: ICharacter[] }) {
                       src={item.image}
                       alt={item.name.full ?? ""}
                       fill
-                      className="object-cover h-64 "
+                      className="object-cover  h-[300px]  md:h-[200px] "
                     />
                   </AspectRatio>
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black to-transparent" />

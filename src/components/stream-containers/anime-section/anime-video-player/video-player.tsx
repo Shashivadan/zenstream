@@ -1,19 +1,22 @@
-import React from "react";
-import { MediaPlayer, MediaProvider } from "@vidstack/react";
-
-import "@vidstack/react/player/styles/base.css";
 import "@vidstack/react/player/styles/default/theme.css";
+import "@vidstack/react/player/styles/default/layouts/audio.css";
 import "@vidstack/react/player/styles/default/layouts/video.css";
 
-type VideoPlayerProps = {
-  video: string | undefined;
-} & Omit<React.ComponentPropsWithoutRef<typeof MediaPlayer>, "src">;
+import { MediaPlayer, MediaProvider } from "@vidstack/react";
+import {
+  DefaultVideoLayout,
+  defaultLayoutIcons,
+} from "@vidstack/react/player/layouts/default";
 
-export default function VideoPlayer({ video, ...props }: VideoPlayerProps) {
+export default function VideoPlayer({ src }: { src: string }) {
   return (
-    <MediaPlayer src={video} {...props}>
-      <MediaProvider />
-      {/* <DefaultVideoLayout icons={defaultLayoutIcons} /> */}
+    <MediaPlayer
+      autoPlay
+      src={src}
+      
+    >
+      <MediaProvider></MediaProvider>
+      <DefaultVideoLayout icons={defaultLayoutIcons} />
     </MediaPlayer>
   );
 }

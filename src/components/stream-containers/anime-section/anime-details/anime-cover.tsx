@@ -9,6 +9,8 @@ import type { IAnimeInfo } from "@/types";
 export default function AnimeCover({ data }: { data: IAnimeInfo }) {
   const anime = data;
 
+
+
   return (
     <div className="group relative h-[500px] overflow-hidden rounded-xl sm:h-64 md:h-[300px]">
       <img

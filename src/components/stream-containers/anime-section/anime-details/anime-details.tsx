@@ -10,10 +10,6 @@ import EpisodesList from './episodes-list';
 import Trailer from './trailer';
 
 export const AnimeDetails: React.FC<{ data: IAnimeInfo }> = ({ data }) => {
-
-  console.log("anime details" , data.trailer.id);
-
-
   return (
     <div className="md:p-6">
       <AnimeCover data={data} />
@@ -28,12 +24,11 @@ export const AnimeDetails: React.FC<{ data: IAnimeInfo }> = ({ data }) => {
         </div>
         <div className="hidden md:block">
           <SubContainer data={data} />
-
-          <div className='mt-3'>
-            <Trailer
-              src={`https://www.youtube.com/watch?v=${data.trailer.id}`}
-            />
-          </div>
+          {data.trailer && (
+            <div className="mt-3">
+              <Trailer src={`https://www.youtube.com/watch?v=${data.trailer.id}`} />
+            </div>
+          )}
         </div>
       </div>
     </div>

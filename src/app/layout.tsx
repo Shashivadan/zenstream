@@ -46,7 +46,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className={cn("mx-auto min-h-screen max-w-screen-2xl bg-background")}
+        className={cn(
+          "",
+        )}
       >
         <Provider>
           <SiteHeader />
@@ -59,8 +61,6 @@ export default function RootLayout({
             showSpinner={true}
             easing="ease"
             speed={200}
-
-
           />
           {children}
         </Provider>
