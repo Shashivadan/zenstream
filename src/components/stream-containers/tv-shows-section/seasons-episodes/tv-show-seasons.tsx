@@ -9,7 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { type ITvShowSeasons } from "@/types";
-import { useQuery } from "@tanstack/react-query";
+
 import TvShowSeasonsEposides from "./tv-shows-seasons-episodes";
 
 export default function TvShowSeasons({

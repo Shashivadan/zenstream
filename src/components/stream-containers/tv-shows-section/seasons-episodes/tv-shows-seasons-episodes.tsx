@@ -20,11 +20,15 @@ export default function TvShowSeasonsEpisodes({
       await fetchTvShowSeasonsEpisodes(id, season.season_number.toString()),
   });
 
-  const skeletonCount = 13
+  const skeletonCount = 16
+
+  if (isError) {
+    return <div>Error</div>;
+  }
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-5 gap-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12">
+      <div className="grid grid-cols-6 gap-3 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-16">
         {isLoading &&
           Array.from({ length: skeletonCount }).map((_, index) => (
             <Skeleton

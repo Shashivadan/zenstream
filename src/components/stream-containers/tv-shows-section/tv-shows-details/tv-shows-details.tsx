@@ -4,7 +4,7 @@ import TvShowCover from "./tv-shows-cover";
 import DescriptionSection from "@/components/stream-containers/shared-media-component/description";
 import SubContainer from "./sub-container";
 import Cast from "./cast";
-import SeasonsEpisodes from "./seasons-episodes/seasons-episodes";
+import { SeasonsEpisodes } from "@/components/stream-containers/tv-shows-section/seasons-episodes/index";
 
 export default function TvShowDetails({ data }: { data: IDetailedTVShow }) {
   return (

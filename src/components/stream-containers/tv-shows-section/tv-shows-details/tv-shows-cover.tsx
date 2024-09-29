@@ -16,7 +16,7 @@ export default function TvShowCover({ data }: { data: IDetailedTVShow }) {
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/80 to-transparent">
           <div className="absolute bottom-4 left-4 flex w-full flex-col items-center text-center md:p-6">
             <h1 className="mb-2 font-bold md:text-3xl">{data.name}</h1>
-            <p className="mb-4 overflow-hidden text-ellipsis whitespace-nowrap text-xs normal-case opacity-50 md:w-1/2 md:text-center">
+            <p className="mb-4 overflow-hidden text-ellipsis whitespace-nowrap text-xs normal-case opacity-50 w-1/2 md:text-center">
               {data.tagline ? data.tagline : data.overview}
             </p>
             <div className="flex justify-center gap-3">
