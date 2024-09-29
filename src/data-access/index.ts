@@ -21,6 +21,7 @@ export {
   fetchAiringTodayTvShows,
   fetchOnTheAirTvShows,
   fetchTopRatedTvShows,
+  fetchTvShowSeasonsEpisodes,
 } from "./tv-show-apis/tv-show-apis";
 
 export { fetchDramaInfoById, fetchPopularDrama , fetchDramaStreamingLinks } from "./drama-apis/drama-apis";

@@ -4,9 +4,9 @@ import TvShowCover from "./tv-shows-cover";
 import DescriptionSection from "@/components/stream-containers/shared-media-component/description";
 import SubContainer from "./sub-container";
 import Cast from "./cast";
+import SeasonsEpisodes from "./seasons-episodes/seasons-episodes";
 
 export default function TvShowDetails({ data }: { data: IDetailedTVShow }) {
-  
   return (
     <div>
       <div className="md:p-6">
@@ -17,7 +17,9 @@ export default function TvShowDetails({ data }: { data: IDetailedTVShow }) {
             <div className="md:hidden">
               <SubContainer data={data} />
             </div>
-            {/* <EpisodesList id={data.id} /> */}
+            <div className="rounded-lg bg-zinc-900/50 px-3">
+              <SeasonsEpisodes id={data.id} />
+            </div>
             <Cast id={data.id} />
             {/* <Characters data={data.characters ?? []} /> */}
           </div>

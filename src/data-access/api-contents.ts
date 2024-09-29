@@ -34,6 +34,8 @@ export const tvURL = {
   search: `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=`,
   tvInfo: (tvId: string | number) =>
     `${PROXY}https://api.themoviedb.org/3/tv/${tvId}?api_key=${API_KEY}`,
+  fetchSeasonEpisode: (id: string, seasonNumber: string): string =>
+    `${PROXY}https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=${API_KEY}`,
 };
 
 export const movieURL = {
@@ -47,7 +49,8 @@ export const movieURL = {
   onTheAir: `${PROXY}https://api.themoviedb.org/3/movie/on_the_air?api_key=${API_KEY}`,
   triending: `${PROXY}https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`,
   trending: `${PROXY}https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`,
-  movieRecommendation : (id: string) => `${PROXY}https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`,
+  movieRecommendation: (id: string) =>
+    `${PROXY}https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`,
 };
 
 export const getCastInfoURL = (movieId: string | number) =>

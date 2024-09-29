@@ -1,12 +1,12 @@
 "use server";
 
-import {  tvURL } from "../api-contents";
+import { tvURL } from "../api-contents";
 import type {
   IMovieTVResponseType as TvShowResponseType,
   IMovieTvTypes as ITvShowTypes,
   IDetailedTVShow,
+  ITVShowSeasonEpisodes,
 } from "@/types/index";
-
 
 export async function fetchTvCarousalData(): Promise<ITvShowTypes[]> {
   const url = new URL(tvURL.popular);
@@ -82,7 +82,7 @@ export async function fetchOnTheAirTvShows(): Promise<ITvShowTypes[]> {
     const data = (await response.json()) as TvShowResponseType;
     return data.results;
   } catch (error) {
-    console.error("Failed to fetch TV carousel data:", error);
+    console.error("Failed to fetchOnTheAirTvShows data:", error);
     throw error;
   }
 }
@@ -102,12 +102,14 @@ export async function fetchTopRatedTvShows(): Promise<ITvShowTypes[]> {
     const data = (await response.json()) as TvShowResponseType;
     return data.results;
   } catch (error) {
-    console.error("Failed to fetch TV carousel data:", error);
+    console.error("Failed to fetchTopRatedTvShows data:", error);
     throw error;
   }
 }
 
-export async function fetchTvShowInfoById(id: string): Promise<IDetailedTVShow> {
+export async function fetchTvShowInfoById(
+  id: string,
+): Promise<IDetailedTVShow> {
   const url = new URL(tvURL.tvInfo(id));
 
   try {
@@ -123,7 +125,31 @@ export async function fetchTvShowInfoById(id: string): Promise<IDetailedTVShow> 
 
     return data;
   } catch (error) {
-    console.error("Failed to fetch TV carousel data:", error);
+    console.error("Failed to         fetchTvShowInfoById data:", error);
+    throw error;
+  }
+}
+
+export async function fetchTvShowSeasonsEpisodes(
+  id: string,
+  seasonNumber: string,
+): Promise<ITVShowSeasonEpisodes> {
+  const url = new URL(tvURL.fetchSeasonEpisode(id, seasonNumber));
+
+  try {
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 * 7 }, // 7 days
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = (await response.json()) as ITVShowSeasonEpisodes;
+
+    return data;
+  } catch (error) {
+    console.error("Failed to fetchTvShowBySeason data:", error);
     throw error;
   }
 }

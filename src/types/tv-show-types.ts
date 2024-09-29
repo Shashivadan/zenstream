@@ -25,7 +25,7 @@ interface IGenre {
   name: string;
 }
 
-interface IEpisode {
+interface IEpisodeToAir {
   id: number;
   name: string;
   overview: string;
@@ -60,7 +60,7 @@ interface IProductionCountry {
   name: string;
 }
 
-interface ISeason {
+export interface ITvShowSeasons {
   air_date: string;
   episode_count: number;
   id: number;
@@ -76,7 +76,6 @@ interface ISpokenLanguage {
   iso_639_1: string;
   name: string;
 }
-
 
 interface ICreator {
   id: number;
@@ -122,7 +121,6 @@ interface ICreator {
 //   vote_count: number;
 // }
 
-
 export interface IDetailedTVShow {
   adult: boolean;
   backdrop_path: string;
@@ -135,9 +133,9 @@ export interface IDetailedTVShow {
   in_production: boolean;
   languages: string[];
   last_air_date: string;
-  last_episode_to_air: IEpisode;
+  last_episode_to_air: IEpisodeToAir;
   name: string;
-  next_episode_to_air: IEpisode | null;
+  next_episode_to_air: IEpisodeToAir | null;
   networks: INetwork[];
   number_of_episodes: number;
   number_of_seasons: number;
@@ -149,7 +147,7 @@ export interface IDetailedTVShow {
   poster_path: string;
   production_companies: IProductionCompany[];
   production_countries: IProductionCountry[];
-  seasons: ISeason[];
+  seasons: ITvShowSeasons[];
   spoken_languages: ISpokenLanguage[];
   status: string;
   tagline: string;
@@ -157,3 +155,69 @@ export interface IDetailedTVShow {
   vote_average: number;
   vote_count: number;
 }
+
+/// esposides
+
+export interface ITVShowSeasonEpisodes {
+  _id: string;
+  air_date: string;
+  episodes: ITvShowEpisode[];
+  name: string;
+  overview: string;
+  id: number;
+  poster_path: string | null;
+  season_number: number;
+  vote_average: number;
+}
+
+export interface ITvShowEpisode {
+  air_date: string;
+  episode_number: number;
+  episode_type: string;
+  id: number;
+  name: string;
+  overview: string;
+  production_code: string;
+  runtime: number | null;
+  season_number: number;
+  show_id: number;
+  still_path: string;
+  vote_average: number;
+  vote_count: number;
+  crew: ITvShowCrew[]; // This is empty in the provided JSON, so we'll leave it as any[]
+  guest_stars: IGuestStar[];
+}
+
+interface IGuestStar {
+  character: string;
+  credit_id: string;
+  order: number;
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+}
+
+
+
+
+interface ITvShowCrew {
+  job: string;
+  department: string;
+  credit_id: string;
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+}
+
+
+
