@@ -36,6 +36,8 @@ export const tvURL = {
     `${PROXY}https://api.themoviedb.org/3/tv/${tvId}?api_key=${API_KEY}`,
   fetchSeasonEpisode: (id: string, seasonNumber: string): string =>
     `${PROXY}https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=${API_KEY}`,
+  fetchShowRecommendations: (id: string, page = 1): string =>
+    `${PROXY}https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}&page=${page}`,
 };
 
 export const movieURL = {

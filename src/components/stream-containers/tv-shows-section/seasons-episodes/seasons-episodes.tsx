@@ -9,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import TvShowSeasons from "./tv-show-seasons";
+import { Skeleton } from "@/components/ui/skeleton";
 export default function SeasonsEpisodes({ id }: { id: string | number }) {
 
   const { data, isLoading, isError } = useQuery({
@@ -16,8 +17,15 @@ export default function SeasonsEpisodes({ id }: { id: string | number }) {
     queryFn: async () => await fetchTvShowInfoById(id.toString()),
   });
 
+  if (isError) {
+    return <div>Error</div>;
+  }
+
+
+
   return (
     <div>
+      {isLoading && <Skeleton className=" w-full rounded-lg bg-zinc-800"/>}
       <Accordion
         type="single"
         collapsible>

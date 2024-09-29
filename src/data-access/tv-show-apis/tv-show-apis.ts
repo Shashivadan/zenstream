@@ -6,6 +6,7 @@ import type {
   IMovieTvTypes as ITvShowTypes,
   IDetailedTVShow,
   ITVShowSeasonEpisodes,
+  ITvShowRecommendations,
 } from "@/types/index";
 
 export async function fetchTvCarousalData(): Promise<ITvShowTypes[]> {
@@ -146,6 +147,30 @@ export async function fetchTvShowSeasonsEpisodes(
     }
 
     const data = (await response.json()) as ITVShowSeasonEpisodes;
+
+    return data;
+  } catch (error) {
+    console.error("Failed to fetchTvShowBySeason data:", error);
+    throw error;
+  }
+}
+
+export async function fetchTvShowRecommendations(
+  id: string,
+  page?: number,
+): Promise<ITvShowRecommendations> {
+  const url = new URL(tvURL.fetchShowRecommendations(id, page));
+
+  try {
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 * 7 }, // 7 days
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = (await response.json()) as ITvShowRecommendations;
 
     return data;
   } catch (error) {

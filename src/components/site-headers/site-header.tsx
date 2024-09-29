@@ -22,10 +22,11 @@ export async function SiteHeader() {
           </div>
           <nav className="flex items-center gap-1">
             {user ? (
-              <>loged in</>
+              <div>loged in</div>
             ) : (
               <Button
-                className="hidden h-8 items-center justify-center font-semibold md:flex"
+                variant="default"
+                className="hidden h-8 items-center justify-center font-semibold  md:flex"
                 asChild
               >
                 <Link href="/login">Login</Link>
