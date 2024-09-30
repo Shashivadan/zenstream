@@ -72,8 +72,8 @@ export const HeroSection = () => {
             className="rouded-lg relative mx-auto flex w-full items-center rounded-lg border border-t-2 border-secondary border-t-primary/30 leading-none md:w-[1200px]"
             src={
               theme === "light"
-                ? "/landing-page/hero-light.png"
-                : "/landing-page/hero-dark.png"
+                ? "/landing-page/hero-light.webp"
+                : "/landing-page/hero-dark.webp"
             }
             alt="dashboard"
           />

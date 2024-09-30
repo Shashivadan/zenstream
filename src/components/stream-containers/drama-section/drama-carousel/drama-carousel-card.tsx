@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 
 export default function DramaCarouselCard({
   show,
-  isDetailsPage,
   route,
 }: {
   show: IDramaResult;

@@ -48,7 +48,7 @@ export interface IDramaEpisode {
   title: string;
   episode: number;
   subType: string;
-  releaseDate: string;
+  releaseDate: string | Date;
   url: string;
 }
 

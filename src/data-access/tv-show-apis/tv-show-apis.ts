@@ -29,7 +29,7 @@ export async function fetchTvCarousalData(): Promise<ITvShowTypes[]> {
   }
 }
 
-export async function fetchPopularTvShows(): Promise<ITvShowTypes[]> {
+export async function fetchPopularTvShows(): Promise<TvShowResponseType> {
   const url = new URL(tvURL.popular);
 
   try {
@@ -40,16 +40,15 @@ export async function fetchPopularTvShows(): Promise<ITvShowTypes[]> {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    const data = (await response.json()) as TvShowResponseType;
-    return data.results;
+    const data = (await response.json()) ;
+    return data;
   } catch (error) {
     console.error("Failed to fetch TV carousel data:", error);
     throw error;
   }
 }
 
-export async function fetchAiringTodayTvShows(): Promise<ITvShowTypes[]> {
+export async function fetchAiringTodayTvShows(): Promise<TvShowResponseType> {
   const url = new URL(tvURL.airingToday);
 
   try {
@@ -62,13 +61,13 @@ export async function fetchAiringTodayTvShows(): Promise<ITvShowTypes[]> {
     }
 
     const data = (await response.json()) as TvShowResponseType;
-    return data.results;
+    return data;
   } catch (error) {
     console.error("Failed to fetch TV carousel data:", error);
     throw error;
   }
 }
-export async function fetchOnTheAirTvShows(): Promise<ITvShowTypes[]> {
+export async function fetchOnTheAirTvShows(): Promise<TvShowResponseType> {
   const url = new URL(tvURL.onTheAir);
 
   try {
@@ -81,14 +80,14 @@ export async function fetchOnTheAirTvShows(): Promise<ITvShowTypes[]> {
     }
 
     const data = (await response.json()) as TvShowResponseType;
-    return data.results;
+    return data
   } catch (error) {
     console.error("Failed to fetchOnTheAirTvShows data:", error);
     throw error;
   }
 }
 
-export async function fetchTopRatedTvShows(): Promise<ITvShowTypes[]> {
+export async function fetchTopRatedTvShows(): Promise<TvShowResponseType> {
   const url = new URL(tvURL.topRated);
 
   try {
@@ -100,8 +99,8 @@ export async function fetchTopRatedTvShows(): Promise<ITvShowTypes[]> {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = (await response.json()) as TvShowResponseType;
-    return data.results;
+    const data = (await response.json()) ;
+    return data
   } catch (error) {
     console.error("Failed to fetchTopRatedTvShows data:", error);
     throw error;

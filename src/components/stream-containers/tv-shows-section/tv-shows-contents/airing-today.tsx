@@ -11,6 +11,7 @@ import {
 import type { IMovieTvTypes as ITvTypes } from "@/types";
 import TvShowsCard from "./tv-shows-card";
 import { fetchAiringTodayTvShows } from "@/data-access/index";
+import { LoadingSkeleton } from "../../shared-media-component/skeleton-loader";
 
 export default function AiringToday() {
   const { data, isError, isLoading } = useQuery({
@@ -18,17 +19,13 @@ export default function AiringToday() {
     queryFn: async () => await fetchAiringTodayTvShows(),
   });
 
-  if (!data) {
-    return <div>None Found</div>;
-  }
+
 
   if (isError) {
     return <div>Error</div>;
   }
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+
 
 
 
@@ -41,16 +38,20 @@ export default function AiringToday() {
       className=""
     >
       <CarouselContent className="">
-        {data.map((item: ITvTypes) => (
-          <CarouselItem
-            key={item.id}
-            className="basis-2/3 sm:basis-1/3 lg:basis-1/4"
-          >
-            <div className="p-1">
-              <TvShowsCard data={item} />
-            </div>
-          </CarouselItem>
-        ))}
+        {isLoading ? <LoadingSkeleton/> : (
+          <>
+            {data?.results.map((item: ITvTypes) => (
+              <CarouselItem
+                key={item.id}
+                className="basis-2/3 sm:basis-1/3 lg:basis-1/4"
+              >
+                <div className="p-1">
+                  <TvShowsCard data={item} />
+                </div>
+              </CarouselItem>
+            ))}
+          </>
+        )}
       </CarouselContent>
     </Carousel>
   );

@@ -23,7 +23,7 @@ export async function fetchMoviesCarousalData() {
   }
 }
 
-export async function fetchPopularMovies() {
+export async function fetchPopularMovies(): Promise<IMovieResponseType> {
   try {
     const url = new URL(movieURL.popular);
     const response = await fetch(url.toString(), {
@@ -31,27 +31,27 @@ export async function fetchPopularMovies() {
     });
     if (!response.ok) throw new Error("Failed to fetch data");
     const data = (await response.json()) as IMovieResponseType;
-    return data.results;
+    return data
   } catch (error) {
-    console.log(error);
+    throw error
   }
 }
 
-export async function fetchUpcomingMovies() {
+export async function fetchUpcomingMovies(): Promise<IMovieResponseType> {
   try {
     const url = new URL(movieURL.upcoming);
     const response = await fetch(url.toString(), {
       next: { revalidate: 60 * 60 * 24 * 7 },
     });
     if (!response.ok) throw new Error("Failed to fetch data");
-    const data = (await response.json()) as IMovieResponseType;
-    return data.results;
+    const data = (await response.json()) ;
+    return data;
   } catch (error) {
-    console.log(error);
+    throw error
   }
 }
 
-export async function fetchTopRatedMovies() {
+export async function fetchTopRatedMovies(): Promise<IMovieResponseType> {
   try {
     const url = new URL(movieURL.topRated);
     const response = await fetch(url.toString(), {
@@ -59,13 +59,13 @@ export async function fetchTopRatedMovies() {
     });
     if (!response.ok) throw new Error("Failed to fetch data");
     const data = (await response.json()) as IMovieResponseType;
-    return data.results;
+    return data
   } catch (error) {
-    console.log(error);
+    throw error
   }
 }
 
-export async function fetchNowPlayingMovies() {
+export async function fetchNowPlayingMovies(): Promise<IMovieResponseType> {
   try {
     const url = new URL(movieURL.nowPlaying);
     const response = await fetch(url.toString(), {
@@ -73,9 +73,9 @@ export async function fetchNowPlayingMovies() {
     });
     if (!response.ok) throw new Error("Failed to fetch data");
     const data = (await response.json()) as IMovieResponseType;
-    return data.results;
+    return data;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 }
 

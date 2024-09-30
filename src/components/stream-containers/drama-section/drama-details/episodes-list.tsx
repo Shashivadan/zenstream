@@ -1,6 +1,6 @@
-import { fetchDramaInfoById } from '@/data-access';
-import type { IDramaEpisode } from '@/types';
-import React from 'react'
+import { fetchDramaInfoById } from "@/data-access";
+import type { IDramaEpisode } from "@/types";
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
@@ -9,17 +9,20 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from '@/components/ui/button';
-import { format } from 'date-fns';
-import Link from 'next/link';
-import { encodeParam } from '@/lib/url-param-encoder';
+import { Button } from "@/components/ui/button";
+import { format } from "date-fns";
+import Link from "next/link";
+import { encodeParam } from "@/lib/url-param-encoder";
 
+export default async function EpisodesList({
+  id,
+  style = "list",
+}: {
+  id: string;
+  style?: "list" | "grid";
+}) {
+  const data = await fetchDramaInfoById(id);
 
-
-
-
-export default async function EpisodesList({ id , style = "list" }: { id: string , style? : "list" | "grid" }) {
-  const data =  await fetchDramaInfoById(id);
   return (
     <div className="mx-auto h-fit w-full overflow-hidden rounded-lg px-4 text-white dark:bg-zinc-900/50">
       {style === "list" ? (
@@ -52,9 +55,6 @@ export default async function EpisodesList({ id , style = "list" }: { id: string
                               <h3 className="text-sm font-semibold sm:text-base">
                                 {episode.title}
                               </h3>
-                              <p className="text-xs text-muted-foreground sm:text-sm">
-                                {format(new Date(episode.releaseDate), "PPP")}
-                              </p>
                             </div>
                             <Button
                               variant="outline"
@@ -88,12 +88,8 @@ export default async function EpisodesList({ id , style = "list" }: { id: string
                   <CardContent className="flex items-center justify-between p-4">
                     <div className="">
                       <h3 className="text-sm font-semibold sm:text-base">
-                        {episode.id}
-                      </h3>
-                      <p className="text-xs text-muted-foreground sm:text-sm">
-                        {/* {format(new Date(episode.airDate), "PPP")} */}
-                        {episode.releaseDate}
-                      </p>
+                        {episode.id.replace(/-/g, " ")}
+                      </h3> 
                     </div>
                     <Button
                       variant="outline"

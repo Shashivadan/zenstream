@@ -10,31 +10,18 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import type { IMovieTvTypes as IMovieTypes } from "@/types";
-
-export async function getNowPlayingMovies() {
-  const data = await fetchNowPlayingMovies();
-  return data;
-}
+import { Skeleton } from "@/components/ui/skeleton";
+import { LoadingSkeleton } from "@/components/stream-containers/shared-media-component/skeleton-loader";
 
 export default function NowPlayingMovies() {
   const { data, isError, isLoading } = useQuery({
     queryKey: ["get-now-playing-movies"],
-    queryFn: getNowPlayingMovies,
+    queryFn: async () => await fetchNowPlayingMovies(),
   });
 
-  if (!data) {
-    return <div>None Found</div>;
-  }
-
   if (isError) {
-    return <div>Error</div>;
+    return null;
   }
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-
 
   return (
     <Carousel
@@ -45,16 +32,22 @@ export default function NowPlayingMovies() {
       className=""
     >
       <CarouselContent className="">
-        {data.map((item: IMovieTypes) => (
-          <CarouselItem
-            key={item.id}
-            className="basis-2/3 sm:basis-1/3 lg:basis-1/4"
-          >
-            <div className="p-1">
-              <MoviesCard data={item} />
-            </div>
-          </CarouselItem>
-        ))}
+        {isLoading ? (
+          <LoadingSkeleton />
+        ) : (
+          <>
+            {data?.results.map((item: IMovieTypes) => (
+              <CarouselItem
+                key={item.id}
+                className="basis-2/3 sm:basis-1/3 lg:basis-1/4"
+              >
+                <div className="p-1">
+                  <MoviesCard data={item} />
+                </div>
+              </CarouselItem>
+            ))}
+          </>
+        )}
       </CarouselContent>
     </Carousel>
   );

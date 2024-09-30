@@ -1,12 +1,12 @@
-import { encodeParam } from '@/lib/url-param-encoder';
-import  type { IMovieTvTypes as IMovieTypes } from '@/types'
-import { format } from 'date-fns';
-import { ImageIcon } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react'
+import { encodeParam } from "@/lib/url-param-encoder";
+import type { IMovieTvTypes as IMovieTypes } from "@/types";
+import { format } from "date-fns";
+import { ImageIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
-export default function MoviesCard({data} : {data : IMovieTypes}) {
+export default function MoviesCard({ data }: { data: IMovieTypes }) {
   return (
     <Link href={`/movies/${encodeParam(data.id)}`}>
       <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
@@ -35,4 +35,4 @@ export default function MoviesCard({data} : {data : IMovieTypes}) {
       </div>
     </Link>
   );
-};
+}
