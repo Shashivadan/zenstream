@@ -3,7 +3,7 @@
 import Link from "next/link";
 import * as React from "react";
 import { siteConfig } from "@/config/site";
-import { Icons } from "@/components/site-headers/icon";
+import { Icons } from "./icon";
 import { motion, useAnimationControls } from "framer-motion";
 import {
   NavigationMenu,

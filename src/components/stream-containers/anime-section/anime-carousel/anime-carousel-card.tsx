@@ -7,6 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PlayCircle } from "lucide-react";
 
 import type { ITitle } from "@consumet/extensions/dist/models";
+import Link from "next/link";
+import { encodeParam } from "@/lib/url-param-encoder";
 
 export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
 
@@ -21,9 +23,8 @@ export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
           <div className="flex h-full flex-col md:flex-row">
             <img
               alt={(show.title as ITitle).romaji ?? ""}
-              className="inset-x-3 inset-y-4 hidden overflow-hidden rounded-md object-contain md:absolute md:block  h-[370px]"
+              className="inset-x-3 inset-y-4 hidden h-[370px] overflow-hidden rounded-md object-contain md:absolute md:block"
               src={show.image ?? ""}
-
             />
             <div className="z-10 flex flex-1 flex-col justify-end rounded-md p-3 md:ml-[280px] md:p-6">
               <div className="w-full rounded-lg bg-black/80 p-3 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none">
@@ -32,18 +33,19 @@ export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
                 </h2>
                 <div className="mb-2 flex items-center gap-2 text-sm text-gray-300">
                   <p className="">{show.releaseDate}</p>
-
                 </div>
                 <p
                   className="mb-4 line-clamp-3 text-sm text-white md:w-1/2"
                   dangerouslySetInnerHTML={{ __html: show.description ?? "" }}
                 ></p>
-                <Button
-                  variant={"ringHover"}
-                  className="bg-purple-600 font-semibold ring-purple-700 hover:ring hover:ring-offset-1"
-                >
-                  <PlayCircle className="mr-2 h-5 w-5" /> Watch Now
-                </Button>
+                <Link href={`/anime/${encodeParam(show.id)}`}>
+                  <Button
+                    variant={"ringHover"}
+                    className="bg-purple-600 font-semibold ring-purple-700 hover:ring hover:ring-offset-1"
+                  >
+                    <PlayCircle className="mr-2 h-5 w-5" /> Watch Now
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

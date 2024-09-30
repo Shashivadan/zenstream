@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { CommandMenu } from "@/components/site-headers/command-menu";
-import { Icons } from "@/components/site-headers/icon";
-import { MainNav } from "@/components/site-headers/main-nav";
-import  { MobileNav } from "@/components/site-headers/mobile-nav";
-import { ModeToggle } from "@/components/site-headers/mode-toggle";
+import { CommandMenu } from "./command-menu";
+import { Icons } from "./icon";
+import { MainNav } from "./main-nav";
+import  { MobileNav } from "./mobile-nav";
+import { ModeToggle } from "./mode-toggle";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { getCurrentUser } from "@/server/auth";
 

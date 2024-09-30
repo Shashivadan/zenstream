@@ -5,6 +5,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import NextTopLoader from "nextjs-toploader";
 import React from "react";
 
 
@@ -27,6 +28,16 @@ export default function Provider({ children }: { children: React.ReactNode }) {
           enableSystem
           disableTransitionOnChange
         >
+          <NextTopLoader
+            color="#bf37ff"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={true}
+            easing="ease"
+            speed={200}
+          />
           {children}
         </ThemeProvider>
       </QueryClientProvider>
