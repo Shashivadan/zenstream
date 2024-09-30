@@ -10,7 +10,6 @@ import { encodeParam } from "@/lib/url-param-encoder";
 
 export default function SharedCarouselCard({
   show,
-  isDetailsPage,
   route,
 }: {
   show: IMovieTvTypes;

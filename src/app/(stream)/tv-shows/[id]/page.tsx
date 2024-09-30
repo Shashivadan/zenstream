@@ -9,7 +9,7 @@ export default async function page({ params }: { params: { id: string } }) {
   const data = await fetchTvShowInfoById(id);
 
   if (typeof data === "string") {
-    return <>{data}</>;
+    return <NotFound />;
   }
   if (!data) {
     return <div>None Found</div>;

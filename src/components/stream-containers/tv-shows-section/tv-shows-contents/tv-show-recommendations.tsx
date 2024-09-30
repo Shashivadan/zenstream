@@ -5,10 +5,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchTvShowRecommendations } from "@/data-access/tv-show-apis/tv-show-apis";
 import { encodeParam } from "@/lib/url-param-encoder";
-import { ITvShowRecommendationsEntry } from "@/types";
+import type { ITvShowRecommendationsEntry } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
-import { ChevronLeft, ChevronRight, Divide, ImageIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight,  ImageIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -61,7 +61,9 @@ export default function TvShowRecommendations({ id }: { id: string }) {
           <>
             {data.results.map((item) => (
               <>
-                <TvShowRecommendationsCard data={item} />
+                <div key={item.id}>
+                  <TvShowRecommendationsCard data={item} />
+                </div>
               </>
             ))}
           </>

@@ -1,5 +1,4 @@
-// Encoding function
-export function encodeParam(param  :string| number) {
+export function encodeParam(param: string | number) {
   return btoa(encodeURIComponent(param))
     .replace(/\+/g, "-")
     .replace(/\//g, "_")

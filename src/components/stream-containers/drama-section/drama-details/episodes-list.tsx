@@ -89,7 +89,7 @@ export default async function EpisodesList({
                     <div className="">
                       <h3 className="text-sm font-semibold sm:text-base">
                         {episode.id.replace(/-/g, " ")}
-                      </h3> 
+                      </h3>
                     </div>
                     <Button
                       variant="outline"

@@ -3,7 +3,7 @@
 // import { fetchAnilistInfoById } from "@/data-access";
 import type { IAnimeInfo } from "@/types";
 import DescriptionSection from "../../shared-media-component/description";
-import Image from "next/image";
+
 import {  Star } from "lucide-react";
 import Link from "next/link";
 import { encodeParam } from "@/lib/url-param-encoder";

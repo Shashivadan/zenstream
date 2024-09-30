@@ -5,7 +5,7 @@ import { CarouselItem } from "@/components/ui/carousel";
 export default function AnimeSkeletonLoader() {
   return (
     <>
-      {[...Array(Number(20))].map((_, index) => (
+      {Array.from({ length: 20 }).map((_, index) => (
         <CarouselItem
           key={index}
           className="basis-2/3 sm:basis-1/3 lg:basis-1/6"
