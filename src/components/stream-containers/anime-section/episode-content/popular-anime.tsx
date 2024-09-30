@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import AnimeCard from "./anime-card";
 import { fetchPopularAnime } from "@/data-access/index";
+import AnimeSkeletonLoader from "./anime-skeleton-loader";
 
 export async function getPopularAnime() {
   const data : AnimeDataResponse = await fetchPopularAnime(1, 20);
@@ -25,12 +26,9 @@ export default function PopularAnime() {
   });
 
   if (isError) {
-    return <div>Error</div>;
+    return null
   }
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Carousel
@@ -41,16 +39,23 @@ export default function PopularAnime() {
       className=""
     >
       <CarouselContent className="">
-        {data?.results.map((item: IAnimeInfo) => (
-          <CarouselItem
-            key={item.id}
-            className="basis-2/3 sm:basis-1/3 lg:basis-1/6"
-          >
-            <div className="p-1">
-              <AnimeCard anime={item} />
-            </div>
-          </CarouselItem>
-        ))}
+        {isLoading ? (
+         <AnimeSkeletonLoader/>
+        ) : (
+          <>
+            {" "}
+            {data?.results.map((item: IAnimeInfo) => (
+              <CarouselItem
+                key={item.id}
+                className="basis-2/3 sm:basis-1/3 lg:basis-1/6"
+              >
+                <div className="p-1">
+                  <AnimeCard anime={item} />
+                </div>
+              </CarouselItem>
+            ))}
+          </>
+        )}
       </CarouselContent>
     </Carousel>
   );

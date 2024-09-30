@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import AnimeCard from "./anime-card";
 import { fetchTrendingAnime } from "@/data-access/index";
+import AnimeSkeletonLoader from "./anime-skeleton-loader";
 
 async function getTrendingAnime() {
  try {
@@ -28,12 +29,9 @@ export default function AnimeTrending() {
 
 
   if (isError){
-    return <div>Error</div>;
+    return null;
   }
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Carousel
@@ -44,16 +42,23 @@ export default function AnimeTrending() {
       className=""
     >
       <CarouselContent className="">
-        {data?.results.map((item: IAnimeInfo) => (
-          <CarouselItem
-            key={item.id}
-            className="basis-2/3 sm:basis-1/3 lg:basis-1/6"
-          >
-            <div className="p-1">
-              <AnimeCard anime={item} />
-            </div>
-          </CarouselItem>
-        ))}
+        {isLoading ? (
+          <AnimeSkeletonLoader />
+        ) : (
+          <>
+            {" "}
+            {data?.results.map((item: IAnimeInfo) => (
+              <CarouselItem
+                key={item.id}
+                className="basis-2/3 sm:basis-1/3 lg:basis-1/6"
+              >
+                <div className="p-1">
+                  <AnimeCard anime={item} />
+                </div>
+              </CarouselItem>
+            ))}
+          </>
+        )}
       </CarouselContent>
     </Carousel>
   );

@@ -6,7 +6,8 @@ import { type IDramaResult } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import DramaCard from "./drama-card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Drama } from "lucide-react";
+import DramaCardSkeleton from "./drama-card-skeleton";
 
 export default function DramaContent() {
   const [page, setPage] = useState(2);
@@ -20,9 +21,7 @@ export default function DramaContent() {
     return <div>Error</div>;
   }
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+
 
   const handlePrevPage = () => {
     setPage((prev) => Math.max(prev - 1, 1));
@@ -35,7 +34,7 @@ export default function DramaContent() {
   return (
     <div>
       <div className="mb-4 flex items-center justify-between">
-        <div className="text-2xl font-semibold"> Dramas</div>
+        <div className="text-2xl font-semibold">Dramas</div>
         <div className="mt-4 flex items-center justify-center space-x-2">
           <Button
             onClick={handlePrevPage}
@@ -52,9 +51,13 @@ export default function DramaContent() {
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
-        {data?.results.map((item: IDramaResult) => (
-          <DramaCard key={item.id} data={item} />
-        ))}
+        {isLoading ? <DramaCardSkeleton /> : (
+          <>
+            {data?.results.map((item: IDramaResult) => (
+              <DramaCard key={item.id} data={item} />
+            ))}
+          </>
+        )}
       </div>
       <div className="mt-4 flex items-center justify-center space-x-2">
         <Button
