@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { PlayCircle, PlayIcon } from 'lucide-react'
 import type  { IMovieInfoType } from '@/types'
 import Link from 'next/link';
-import { encodeParam } from '@/lib/url-param-encoder';
+
 export default function MovieCover({data} : {data: IMovieInfoType}) {
 
 
@@ -23,7 +23,7 @@ export default function MovieCover({data} : {data: IMovieInfoType}) {
             </p>
             <div className="flex justify-center gap-3">
               <Button variant={"ringHover"} className="font-semibold">
-                <Link href={`/movies/watch/${encodeParam(data.id)}`} className="flex gap-2"><PlayCircle className="mr-2 h-4 w-4" /> Play Now</Link>
+                <Link href={`/movies/watch/${data.id}`} className="flex gap-2"><PlayCircle className="mr-2 h-4 w-4" /> Play Now</Link>
               </Button>
               <Button variant="outline" className='font-semibold'>
                 <PlayIcon className="mr-2 h-4 w-4" /> Trailer

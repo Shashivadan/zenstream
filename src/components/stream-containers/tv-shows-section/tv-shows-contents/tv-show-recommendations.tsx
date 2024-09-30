@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchTvShowRecommendations } from "@/data-access/tv-show-apis/tv-show-apis";
-import { encodeParam } from "@/lib/url-param-encoder";
+
 import type { ITvShowRecommendationsEntry } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
@@ -80,7 +80,7 @@ function TvShowRecommendationsCard({
 }) {
   return (
     <div>
-      <Link href={`/tv-shows/${encodeParam(data.id)}`}>
+      <Link href={`/tv-shows/${data.id}`}>
         <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
           {data.backdrop_path ? (
             <>

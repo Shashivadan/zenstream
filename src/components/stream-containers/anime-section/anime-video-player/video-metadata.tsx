@@ -6,7 +6,7 @@ import DescriptionSection from "../../shared-media-component/description";
 
 import {  Star } from "lucide-react";
 import Link from "next/link";
-import { encodeParam } from "@/lib/url-param-encoder";
+
 export default function VideoMetadata({data} : {data: IAnimeInfo}) {
 
 
@@ -20,7 +20,7 @@ export default function VideoMetadata({data} : {data: IAnimeInfo}) {
           <h2 className="mb-4 text-2xl font-bold">Recommendations</h2>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {data.recommendations.map((anime) => (
-              <Link href={`/anime/${encodeParam(anime.id)}`} key={anime.id}>
+              <Link href={`/anime/${anime.id}`} key={anime.id}>
                 <div
                   key={anime.id}
                   className=" overflow-hidden rounded-lg bg-card shadow-md transition-transform hover:scale-105"

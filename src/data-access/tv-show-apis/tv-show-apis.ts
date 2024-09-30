@@ -40,7 +40,7 @@ export async function fetchPopularTvShows(): Promise<TvShowResponseType> {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const data = (await response.json()) ;
+    const data = (await response.json()) as TvShowResponseType;
     return data;
   } catch (error) {
     console.error("Failed to fetch TV carousel data:", error);
@@ -99,7 +99,7 @@ export async function fetchTopRatedTvShows(): Promise<TvShowResponseType> {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = (await response.json()) ;
+    const data = (await response.json()) as TvShowResponseType;
     return data
   } catch (error) {
     console.error("Failed to fetchTopRatedTvShows data:", error);

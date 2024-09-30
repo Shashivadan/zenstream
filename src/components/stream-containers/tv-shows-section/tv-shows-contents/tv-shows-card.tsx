@@ -1,4 +1,4 @@
-import { encodeParam } from "@/lib/url-param-encoder";
+
 import type {  IMovieTvTypes as ITvTypes } from "@/types";
 import { format } from "date-fns";
 import { ImageIcon } from "lucide-react";
@@ -11,7 +11,7 @@ export default function TvShowsCard({ data }: { data: ITvTypes  }) {
 
 
   return (
-    <Link href={`/tv-shows/${encodeParam(data.id)}`}>
+    <Link href={`/tv-shows/${data.id}`}>
       <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
         {data.backdrop_path ? (
           <>

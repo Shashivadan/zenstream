@@ -3,7 +3,7 @@ import React from "react";
 // import { PlayCircle, Plus } from "lucide-react";
 import type { IDetailedTVShow } from "@/types";
 // import Link from "next/link";
-// import { encodeParam } from "@/lib/url-param-encoder";
+
 export default function TvShowCover({ data }: { data: IDetailedTVShow }) {
   return (
     <div className="rounded-3xl bg-black text-white">
@@ -26,7 +26,7 @@ export default function TvShowCover({ data }: { data: IDetailedTVShow }) {
             {/* <div className="flex justify-center gap-3">
               <Button asChild variant={"ringHover"} className="font-semibold">
                 <Link
-                  href={`/tv-shows/watch/${encodeParam(data.id)}`}
+                  href={`/tv-shows/watch/${data.id}`}
                   className="flex items-center"
                 >
                   <PlayCircle className="mr-2 h-4 w-4" /> Play Now

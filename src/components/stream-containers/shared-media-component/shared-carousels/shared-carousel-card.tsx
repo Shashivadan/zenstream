@@ -6,7 +6,7 @@ import React from "react";
 import type { IMovieTvTypes } from "@/types";
 
 import ShardMobileViewCarousel from "./shared-mobile-view-carousel";
-import { encodeParam } from "@/lib/url-param-encoder";
+
 
 export default function SharedCarouselCard({
   show,
@@ -18,7 +18,7 @@ export default function SharedCarouselCard({
 }) {
   return (
     <>
-      <Link href={`/${route}/${encodeParam(show.id)}`}>
+      <Link href={`/${route}/${show.id}`}>
         <div className="md:hidden">
           <ShardMobileViewCarousel show={show} />
         </div>

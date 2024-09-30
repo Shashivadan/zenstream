@@ -10,7 +10,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import type { IMovieTvTypes as IMovieTypes } from "@/types";
-import { Skeleton } from "@/components/ui/skeleton";
+
 import { LoadingSkeleton } from "@/components/stream-containers/shared-media-component/skeleton-loader";
 
 export default function NowPlayingMovies() {

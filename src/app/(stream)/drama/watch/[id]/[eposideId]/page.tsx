@@ -1,6 +1,6 @@
 import DramaContent from "@/components/stream-containers/drama-section/drama-content/drama-content";
 import DramaVideoPlayer from "@/components/stream-containers/drama-section/drama-video-player/drama-video-player";
-import { decodeParam } from "@/lib/url-param-encoder";
+
 import React from "react";
 
 export default async function page({
@@ -8,7 +8,7 @@ export default async function page({
 }: {
   params: { id: string; eposideId: string };
 }) {
-  const id = decodeParam(params.id);
+  const id = decodeURIComponent(params.id);
   const eposideId = params.eposideId;
   return (
     <div>

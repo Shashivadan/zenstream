@@ -8,7 +8,7 @@ import { PlayCircle } from "lucide-react";
 
 import type { ITitle } from "@consumet/extensions/dist/models";
 import Link from "next/link";
-import { encodeParam } from "@/lib/url-param-encoder";
+
 
 export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
 
@@ -38,7 +38,7 @@ export default function AnimeCarouselCard({ show }: { show: IAnimeInfo }) {
                   className="mb-4 line-clamp-3 text-sm text-white md:w-1/2"
                   dangerouslySetInnerHTML={{ __html: show.description ?? "" }}
                 ></p>
-                <Link href={`/anime/${encodeParam(show.id)}`}>
+                <Link href={`/anime/${show.id}`}>
                   <Button
                     variant={"ringHover"}
                     className="bg-purple-600 font-semibold ring-purple-700 hover:ring hover:ring-offset-1"

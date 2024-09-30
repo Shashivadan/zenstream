@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchMovieRecommendationById } from "@/data-access";
-import { encodeParam } from "@/lib/url-param-encoder";
+
 import type {IRecommendedMovie}from "@/types/index"
 
 export default function MovieRecommendation({ id } : { id: string }) {
@@ -49,7 +49,7 @@ function MovieSkeleton() {
 
 function MovieCard({ movie } : { movie: IRecommendedMovie }) {
   return (
-    <Link href={`/movies/${encodeParam(movie.id)}`}>
+    <Link href={`/movies/${movie.id}`}>
       <Card className="relative mx-auto aspect-[16/9] w-full max-w-md overflow-hidden border dark:border-zinc-950">
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}

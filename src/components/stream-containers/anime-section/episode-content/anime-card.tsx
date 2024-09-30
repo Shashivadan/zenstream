@@ -4,11 +4,11 @@ import type { IAnimeInfo } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
 import { ImageIcon } from "lucide-react";
-import { encodeParam } from "@/lib/url-param-encoder";
+
 
 export default function AnimeCard({ anime }: { anime: IAnimeInfo }) {
   return (
-    <Link href={`/anime/${encodeParam(anime.id)}`} className="  border  border-none">
+    <Link href={`/anime/${anime.id}`} className="  border  border-none">
       <div className="relative flex aspect-video h-[300px] w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
         {anime.image ? (
           <>

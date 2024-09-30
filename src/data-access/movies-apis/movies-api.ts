@@ -44,7 +44,7 @@ export async function fetchUpcomingMovies(): Promise<IMovieResponseType> {
       next: { revalidate: 60 * 60 * 24 * 7 },
     });
     if (!response.ok) throw new Error("Failed to fetch data");
-    const data = (await response.json()) ;
+    const data = (await response.json()) as IMovieResponseType;
     return data;
   } catch (error) {
     throw error

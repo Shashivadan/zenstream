@@ -1,11 +1,11 @@
 import NotFound from '@/app/not-found';
 import MovieDetails from '@/components/stream-containers/movies-section/movies-details/movies-details';
 import { fetchMovieInfoById } from '@/data-access/movies-apis/movies-api';
-import { decodeParam } from '@/lib/url-param-encoder'
+
 import React from 'react'
 
 export default async function page({params} : { params: { id: string } }) {
-  const id = decodeParam(params.id)
+  const id = params.id
   const data = await fetchMovieInfoById(id);
 
 

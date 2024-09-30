@@ -16,7 +16,6 @@ import { fetchCastInfoById } from "@/data-access/movies-apis/movies-api";
 import type { ICastMember } from "@/types";
 
 import { useQuery } from "@tanstack/react-query";
-import { BookImage, User } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 

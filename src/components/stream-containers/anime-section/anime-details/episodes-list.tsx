@@ -16,13 +16,13 @@ import Anilist from "@consumet/extensions/dist/providers/meta/anilist";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAnilistInfoById } from "@/data-access";
-import { format } from "date-fns";
+
 import { Button } from "@/components/ui/button";
 import { removeHyphens } from "@/lib/regex";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default  function EpisodesList({ id , style }: { id: string , style: 'grid' | 'list' }) {
-  const anilist = new Anilist(new Gogoanime());
+  // const anilist = new Anilist(new Gogoanime());
   const { data:animeData  , isError , isLoading} = useQuery({
     queryKey: ["episodes", id],
     queryFn: async () =>  await fetchAnilistInfoById(id),

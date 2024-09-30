@@ -6,7 +6,7 @@ import { type IDramaResult } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import DramaCard from "./drama-card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Drama } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import DramaCardSkeleton from "./drama-card-skeleton";
 
 export default function DramaContent() {

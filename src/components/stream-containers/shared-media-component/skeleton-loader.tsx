@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 export const LoadingSkeleton = () => (
   <>
-    {[...Array(Number(4))].map((_, index) => (
+    {Array.from({ length: 4 }).map((_, index) => (
       <CarouselItem key={index} className="basis-2/3 sm:basis-1/3 lg:basis-1/4">
         <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-none bg-background/50 shadow">
           <Skeleton className="h-full w-full" />

@@ -10,9 +10,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { format } from "date-fns";
+
 import Link from "next/link";
-import { encodeParam } from "@/lib/url-param-encoder";
 
 export default async function EpisodesList({
   id,
@@ -43,7 +42,7 @@ export default async function EpisodesList({
                     {data.episodes.map((episode: IDramaEpisode) => (
                       <Link
                         key={episode.id}
-                        href={`/drama/watch/${encodeParam(id)}/${episode.id}`}
+                        href={`/drama/watch/${encodeURIComponent(id)}/${episode.id}`}
                         className="block w-full"
                       >
                         <Card
@@ -97,7 +96,7 @@ export default async function EpisodesList({
                       className="text-xs sm:text-sm"
                     >
                       <Link
-                        href={`/drama/watch/${encodeParam(id)}/${episode.id}`}
+                        href={`/drama/watch/${encodeURIComponent(id)}/${episode.id}`}
                       >
                         Watch
                       </Link>
