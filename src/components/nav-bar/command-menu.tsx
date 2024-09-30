@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { type DialogProps } from "@radix-ui/react-dialog";
+import { useDebounce } from "@uidotdev/usehooks";
 import {
   CircleIcon,
   FileIcon,
@@ -11,7 +12,6 @@ import {
   SunIcon,
 } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
-
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -24,11 +24,16 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
+import { useQueries } from "@tanstack/react-query";
+import { fetchSearchAnime } from "@/data-access/index";
 
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const { setTheme } = useTheme();
+
+  const [search, setSearch] = React.useState("");
+  const debouncedSearch = useDebounce(search, 400);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -56,6 +61,21 @@ export function CommandMenu({ ...props }: DialogProps) {
     command();
   }, []);
 
+  const data = useQueries({
+    queries: [
+      {
+        queryKey: ["anime-search", debouncedSearch],
+        queryFn: async () => await fetchSearchAnime(debouncedSearch),
+      },
+      {
+        queryKey: ["anime-searchs", debouncedSearch],
+        queryFn: async () => await fetchSearchAnime(debouncedSearch),
+      },
+    ],
+  });
+
+  // console.log(data[0].data?.results, "id");
+
   return (
     <>
       <Button
@@ -68,30 +88,29 @@ export function CommandMenu({ ...props }: DialogProps) {
       >
         <span className="hidden lg:inline-flex">Search something...</span>
         <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className=" border-none pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+        <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border border-none bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen}  >
-        <CommandInput placeholder="Type a search..." />
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandInput
+          className=""
+          value={search}
+          onValueChange={setSearch}
+          placeholder="Type a search..."
+        />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          {/* <CommandGroup heading="Links">
-            {docsConfig.mainNav
-              .filter((navitem) => !navitem?.external)
-              .map((navItem) => (
-                <CommandItem
-                  key={navItem.href}
-                  value={navItem.title}
-                  onSelect={() => {
-                    runCommand(() => router.push(navItem.href));
-                  }}
-                >
-                  <FileIcon className="mr-2 h-4 w-4" />
-                  {navItem.title}
-                </CommandItem>
-              ))}
-          </CommandGroup> */}
+
+          <CommandGroup heading="Anime">
+            {data[0].data?.results?.map((item) => (
+              <>
+                <CommandItem key={item.id} value={item.title.romaji}  onSelect={() => {runCommand(() => router.push(`/anime/${item.id}`))}}  >{item.title.romaji}</CommandItem>
+              </>
+            ))}
+          </CommandGroup>
+
+         
           {/* {docsConfig.sidebarNav.map((group) => (
             <CommandGroup key={group.title} heading={group.title}>
               {group.items.map((navItem) => (
@@ -110,7 +129,6 @@ export function CommandMenu({ ...props }: DialogProps) {
               ))}
             </CommandGroup>
           ))} */}
-
         </CommandList>
       </CommandDialog>
     </>

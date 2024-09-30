@@ -23,6 +23,7 @@ export const aniListURL = {
   animeInfo: (id: string) => `${PROXY}${API_ANILIST_URL}/info/${id}`,
   episodeSources: (id: string) =>
     `${PROXY}${RUST_ANIME_API}/anime/gogoanime/watch/${id}`,
+  searchAnime:  (query: string, page = 1) => `${PROXY}${API_ANILIST_URL}/${query}?page=${page}`,
 };
 
 export const tvURL = {

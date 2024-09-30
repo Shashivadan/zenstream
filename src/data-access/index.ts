@@ -4,6 +4,7 @@ export {
   fetchPopularAnime,
   fetchRecentAnime,
   fetchEpisodeSources,
+  fetchSearchAnime,
 } from "./anime-apis/anilist-api";
 export {
   fetchMoviesCarousalData,

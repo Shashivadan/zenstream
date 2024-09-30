@@ -1,6 +1,6 @@
 "use server";
 
-import type { AnimeDataResponse, IEpisodeSource } from "@/types";
+import type { AnimeDataResponse, IAnimeSearchResults, IEpisodeSource } from "@/types";
 import type { IAnimeInfo } from "@/types";
 import { aniListURL } from "../api-contents";
 
@@ -116,6 +116,23 @@ export async function fetchEpisodeSources(
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = (await response.json()) as IEpisodeSource;
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch trending anime data:", error);
+    throw error;
+  }
+}
+
+export async function fetchSearchAnime(search: string): Promise<IAnimeSearchResults> {
+  const url = new URL(aniListURL.searchAnime(search));
+  try {
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 }, // 1 day
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = (await response.json()) as IAnimeSearchResults;
     return data;
   } catch (error) {
     console.error("Failed to fetch trending anime data:", error);

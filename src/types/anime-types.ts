@@ -199,3 +199,36 @@ export enum SubOrSub {
   DUB = "dub",
   BOTH = "both",
 }
+
+
+
+export interface IAnimeSearchResults {
+  currentPage: number;
+  results: IAnimeSearch[]
+}
+
+
+export interface IAnimeSearch {
+  id: string;
+  malId: number;
+  title: {
+    romaji: string;
+    english: string | null;
+    native: string;
+    userPreferred: string;
+  };
+  status: string;
+  image: string;
+  imageHash: string;
+  cover: string | null;
+  coverHash: string;
+  popularity: number;
+  description: string;
+  rating: number | null;
+  genres: string[];
+  color: string;
+  totalEpisodes: number | null;
+  currentEpisodeCount: number | null;
+  type: string;
+  releaseDate: string | null;
+}
