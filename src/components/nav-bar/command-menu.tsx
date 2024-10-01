@@ -21,6 +21,7 @@ import {
   fetchTvShowSearch,
 } from "@/data-access/index";
 import { fetchDramaSearch } from "@/data-access/drama-apis/drama-apis";
+import { Skeleton } from "../ui/skeleton";
 
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter();
@@ -77,10 +78,10 @@ export function CommandMenu({ ...props }: DialogProps) {
     ],
   });
 
-  const animeSearch = queries[0].data;
-  const movieSearch = queries[1].data;
-  const dramaSearch = queries[2].data;
-  const tvShowSearch = queries[3].data;
+  const animeSearch = queries[0]
+  const movieSearch = queries[1]
+  const dramaSearch = queries[2]
+  const tvShowSearch = queries[3]
 
   return (
     <>
@@ -107,58 +108,92 @@ export function CommandMenu({ ...props }: DialogProps) {
         <CommandList className="flex flex-col gap-2">
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Anime">
-            {animeSearch?.results?.map((item) => (
-              <CommandItem
-                key={`anime-${item.id}`}
-                value={item.title.romaji}
-                onSelect={() => {
-                  runCommand(() => router.push(`/anime/${item.id}`));
-                }}
-              >
-                {item.title.romaji}
-              </CommandItem>
-            ))}
+            {animeSearch.isLoading ? (
+              <>
+                <Skeleton className="h-6 w-full" />
+              </>
+            ) : (
+              <>
+                {animeSearch.data?.results?.map((item) => (
+                  <CommandItem
+                    key={`anime-${item.id}`}
+                    value={item.title.romaji}
+                    onSelect={() => {
+                      runCommand(() => router.push(`/anime/${item.id}`));
+                    }}
+                  >
+                    {item.title.romaji}
+                  </CommandItem>
+                ))}
+              </>
+            )}
           </CommandGroup>
           <CommandGroup heading="Movies">
-            {movieSearch?.results?.map((item) => (
-              <CommandItem
-                key={`movie-${item.id}`}
-                value={item.title}
-                onSelect={() => {
-                  runCommand(() => router.push(`/movies/${item.id}`));
-                }}
-              >
-                {item.title}
-              </CommandItem>
-            ))}
+            {movieSearch.isLoading ? (
+              <>
+                <Skeleton className="h-6 w-full" />
+              </>
+            ) : (
+              <>
+                {" "}
+                {movieSearch.data?.results?.map((item) => (
+                  <CommandItem
+                    key={`movie-${item.id}`}
+                    value={item.title}
+                    onSelect={() => {
+                      runCommand(() => router.push(`/movies/${item.id}`));
+                    }}
+                  >
+                    {item.title}
+                  </CommandItem>
+                ))}
+              </>
+            )}
           </CommandGroup>
           <CommandGroup heading="Drama">
-            {dramaSearch?.results?.map((item) => (
-              <CommandItem
-                key={`drama-${item.id}`}
-                value={item.title}
-                onSelect={() => {
-                  runCommand(() =>
-                    router.push(`/drama/${encodeURIComponent(item.id)}`),
-                  );
-                }}
-              >
-                {item.title}
-              </CommandItem>
-            ))}
+            {dramaSearch.isLoading ? (
+              <>
+                <Skeleton className="h-6 w-full" />
+              </>
+            ) : (
+              <>
+                {" "}
+                {dramaSearch.data?.results?.map((item) => (
+                  <CommandItem
+                    key={`drama-${item.id}`}
+                    value={item.title}
+                    onSelect={() => {
+                      runCommand(() =>
+                        router.push(`/drama/${encodeURIComponent(item.id)}`),
+                      );
+                    }}
+                  >
+                    {item.title}
+                  </CommandItem>
+                ))}
+              </>
+            )}
           </CommandGroup>
           <CommandGroup heading="TV Shows">
-            {tvShowSearch?.results?.map((item) => (
-              <CommandItem
-                key={`tv-show-${item.id}`}
-                value={item.name}
-                onSelect={() => {
-                  runCommand(() => router.push(`/tv-shows/${item.id}`));
-                }}
-              >
-                {item.name}
-              </CommandItem>
-            ))}
+            {tvShowSearch.isLoading ? (
+              <>
+                <Skeleton className="h-6 w-full" />
+              </>
+            ) : (
+              <>
+                {tvShowSearch.data?.results?.map((item) => (
+                  <CommandItem
+                    key={`tv-show-${item.id}`}
+                    value={item.name}
+                    onSelect={() => {
+                      runCommand(() => router.push(`/tv-shows/${item.id}`));
+                    }}
+                  >
+                    {item.name}
+                  </CommandItem>
+                ))}
+              </>
+            )}
           </CommandGroup>
         </CommandList>
       </CommandDialog>

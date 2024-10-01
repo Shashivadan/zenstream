@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import Provider from "./_components/provider";
 import { SiteHeader } from "@/components/nav-bar/site-header";
 
-
 export const metadata: Metadata = {
   title: "ZenStream - Your Ultimate Streaming Hub",
   description:
@@ -45,14 +44,10 @@ export default function RootLayout({
       className={`${GeistSans.variable}`}
       suppressHydrationWarning
     >
-      <body
-        className={cn(
-          "",
-        )}
-      >
+      <body className={cn("")}>
         <Provider>
           <SiteHeader />
-          {children}
+          <div className="mx-auto max-w-screen-2xl"> {children}</div>
         </Provider>
       </body>
     </html>

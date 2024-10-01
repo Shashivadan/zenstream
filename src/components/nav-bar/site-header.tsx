@@ -8,6 +8,7 @@ import  { MobileNav } from "./mobile-nav";
 import { ModeToggle } from "./mode-toggle";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { getCurrentUser } from "@/server/auth";
+import AvaterMenu from "../profile/avater-menu";
 
 export async function SiteHeader() {
   const user = await getCurrentUser();
@@ -22,33 +23,37 @@ export async function SiteHeader() {
           </div>
           <nav className="flex items-center gap-1">
             {user ? (
-              <div>loged in</div>
+              <AvaterMenu />
             ) : (
               <Button
                 variant="default"
-                className="hidden h-8 items-center justify-center font-semibold  md:flex"
+                className="hidden h-8 items-center justify-center font-semibold md:flex"
                 asChild
               >
                 <Link href="/login">Login</Link>
               </Button>
             )}
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={cn(
-                  buttonVariants({
-                    variant: "ghost",
-                  }),
-                  "h-8 w-8 px-0",
-                )}
+
+            {!user && (
+              <Link
+                href={siteConfig.links.github}
+                target="_blank"
+                rel="noreferrer"
               >
-                <Icons.gitHub className="h-4 w-4" />
-                <span className="sr-only">GitHub</span>
-              </div>
-            </Link>
+                <div
+                  className={cn(
+                    buttonVariants({
+                      variant: "ghost",
+                    }),
+                    "h-8 w-8 px-0",
+                  )}
+                >
+                  <Icons.gitHub className="h-4 w-4" />
+                  <span className="sr-only">GitHub</span>
+                </div>
+              </Link>
+            )}
+
             <Link
               href={siteConfig.links.twitter}
               target="_blank"
