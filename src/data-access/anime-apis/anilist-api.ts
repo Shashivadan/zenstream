@@ -83,7 +83,7 @@ export async function fetchRecentAnime(
 export async function fetchAnilistInfoById(
   id: string,
   provider = "gogoanime",
-): Promise<IAnimeInfo> {
+): Promise<IAnimeInfo | null  > {
   const url = new URL(aniListURL.animeInfo(id));
   url.searchParams.append("provider", provider);
 
@@ -93,7 +93,7 @@ export async function fetchAnilistInfoById(
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      return null
     }
 
     const data = (await response.json()) as IAnimeInfo;
@@ -106,14 +106,14 @@ export async function fetchAnilistInfoById(
 
 export async function fetchEpisodeSources(
   episodeId: string,
-): Promise<IEpisodeSource> {
+): Promise<IEpisodeSource | null> {
   const url = new URL(aniListURL.episodeSources(episodeId));
   try {
     const response = await fetch(url.toString(), {
       next: { revalidate: 60 * 60 * 24 }, // 1 day
     });
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+     return null
     }
     const data = (await response.json()) as IEpisodeSource;
     return data;

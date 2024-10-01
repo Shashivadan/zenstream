@@ -67,3 +67,21 @@ export interface IDramaSubtitle {
   url: string;
   lang: string;
 }
+
+
+
+
+
+export interface IDramaSearchResults {
+  currentPage: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  results: IDramaSearch[];
+}
+
+export interface IDramaSearch {
+  id: string;
+  title: string;
+  url: string;
+  image: string;
+}

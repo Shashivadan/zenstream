@@ -7,6 +7,7 @@ import type {
   IMovieCast,
   ICastMember,
   IMovieRecommendationResponse,
+  IMovieSearchResults,
 } from "@/types/index";
 
 export async function fetchMoviesCarousalData() {
@@ -31,9 +32,9 @@ export async function fetchPopularMovies(): Promise<IMovieResponseType> {
     });
     if (!response.ok) throw new Error("Failed to fetch data");
     const data = (await response.json()) as IMovieResponseType;
-    return data
+    return data;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -47,7 +48,7 @@ export async function fetchUpcomingMovies(): Promise<IMovieResponseType> {
     const data = (await response.json()) as IMovieResponseType;
     return data;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -59,9 +60,9 @@ export async function fetchTopRatedMovies(): Promise<IMovieResponseType> {
     });
     if (!response.ok) throw new Error("Failed to fetch data");
     const data = (await response.json()) as IMovieResponseType;
-    return data
+    return data;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -81,17 +82,20 @@ export async function fetchNowPlayingMovies(): Promise<IMovieResponseType> {
 
 export async function fetchMovieInfoById(
   id: string | number,
-): Promise<IMovieInfoType > {
+): Promise<IMovieInfoType | null> {
   try {
     const url = new URL(movieURL.movieInfo(id));
     const response = await fetch(url.toString(), {
       next: { revalidate: 60 * 60 * 24 * 7 },
     });
-    if (!response.ok) throw new Error("Failed to fetch data");
+
+    if (!response.ok) {
+      return null;
+    }
     const data = (await response.json()) as IMovieInfoType;
     return data;
   } catch (error) {
-    throw new Error((error as Error).message);
+    throw error;
   }
 }
 
@@ -111,10 +115,8 @@ export async function fetchCastInfoById(
   }
 }
 
-
-
 export async function fetchMovieRecommendationById(
-  id: string ,
+  id: string,
 ): Promise<IMovieRecommendationResponse> {
   try {
     const url = new URL(movieURL.movieRecommendation(id));
@@ -123,7 +125,23 @@ export async function fetchMovieRecommendationById(
     });
     if (!response.ok) throw new Error("Failed to fetch data");
     const data = (await response.json()) as IMovieRecommendationResponse;
-    return data
+    return data;
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+}
+
+export async function fetchMovieSearch(
+  search: string,
+): Promise<IMovieSearchResults | null> {
+  try {
+    const url = new URL(movieURL.movieSearch(search));
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 * 7 },
+    });
+    if (!response.ok) return null;
+    const data = (await response.json()) as IMovieSearchResults;
+    return data;
   } catch (error) {
     throw new Error((error as Error).message);
   }

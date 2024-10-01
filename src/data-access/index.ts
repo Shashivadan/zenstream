@@ -13,6 +13,7 @@ export {
   fetchTopRatedMovies,
   fetchUpcomingMovies,
   fetchMovieRecommendationById,
+  fetchMovieSearch,
 } from "./movies-apis/movies-api";
 
 export {
@@ -23,6 +24,7 @@ export {
   fetchOnTheAirTvShows,
   fetchTopRatedTvShows,
   fetchTvShowSeasonsEpisodes,
+  fetchTvShowSearch,
 } from "./tv-show-apis/tv-show-apis";
 
 export { fetchDramaInfoById, fetchPopularDrama , fetchDramaStreamingLinks } from "./drama-apis/drama-apis";

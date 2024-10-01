@@ -7,6 +7,7 @@ import type {
   IDetailedTVShow,
   ITVShowSeasonEpisodes,
   ITvShowRecommendations,
+  ITvShowSearchResults,
 } from "@/types/index";
 
 export async function fetchTvCarousalData(): Promise<ITvShowTypes[]> {
@@ -109,7 +110,7 @@ export async function fetchTopRatedTvShows(): Promise<TvShowResponseType> {
 
 export async function fetchTvShowInfoById(
   id: string,
-): Promise<IDetailedTVShow> {
+): Promise<IDetailedTVShow | null> {
   const url = new URL(tvURL.tvInfo(id));
 
   try {
@@ -118,14 +119,13 @@ export async function fetchTvShowInfoById(
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      return null
     }
 
     const data = (await response.json()) as IDetailedTVShow;
 
     return data;
   } catch (error) {
-    console.error("Failed to         fetchTvShowInfoById data:", error);
     throw error;
   }
 }
@@ -175,5 +175,23 @@ export async function fetchTvShowRecommendations(
   } catch (error) {
     console.error("Failed to fetchTvShowBySeason data:", error);
     throw error;
+  }
+}
+
+
+
+export async function fetchTvShowSearch(
+  search: string,
+): Promise<ITvShowSearchResults | null> {
+  try {
+    const url = new URL(tvURL.tvSearch(search));
+    const response = await fetch(url.toString(), {
+      next: { revalidate: 60 * 60 * 24 * 7 },
+    });
+    if (!response.ok) return null;
+    const data = (await response.json()) as ITvShowSearchResults;
+    return data;
+  } catch (error) {
+    throw new Error((error as Error).message);
   }
 }

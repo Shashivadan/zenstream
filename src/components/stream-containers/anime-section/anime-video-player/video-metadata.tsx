@@ -7,7 +7,7 @@ import DescriptionSection from "../../shared-media-component/description";
 import {  Star } from "lucide-react";
 import Link from "next/link";
 
-export default function VideoMetadata({data} : {data: IAnimeInfo}) {
+export default function VideoMetadata({data} : {data: IAnimeInfo }) {
 
 
   return (

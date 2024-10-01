@@ -4,15 +4,6 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { type DialogProps } from "@radix-ui/react-dialog";
 import { useDebounce } from "@uidotdev/usehooks";
-import {
-  CircleIcon,
-  FileIcon,
-  LaptopIcon,
-  MoonIcon,
-  SunIcon,
-} from "@radix-ui/react-icons";
-import { useTheme } from "next-themes";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,15 +16,16 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import { useQueries } from "@tanstack/react-query";
-import { fetchSearchAnime } from "@/data-access/index";
+import { fetchMovieSearch, fetchSearchAnime, fetchTvShowSearch } from "@/data-access/index";
+import { fetchDramaSearch } from "@/data-access/drama-apis/drama-apis";
 
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
-  const { setTheme } = useTheme();
+
 
   const [search, setSearch] = React.useState("");
-  const debouncedSearch = useDebounce(search, 400);
+  const debouncedSearch = useDebounce(search, 500);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -61,20 +53,33 @@ export function CommandMenu({ ...props }: DialogProps) {
     command();
   }, []);
 
-  const data = useQueries({
+  const quearies = useQueries({
     queries: [
       {
         queryKey: ["anime-search", debouncedSearch],
-        queryFn: async () => await fetchSearchAnime(debouncedSearch),
+        queryFn: async () =>
+          await fetchSearchAnime(encodeURIComponent(debouncedSearch)),
       },
       {
-        queryKey: ["anime-searchs", debouncedSearch],
-        queryFn: async () => await fetchSearchAnime(debouncedSearch),
+        queryKey: ["movie-search", debouncedSearch],
+        queryFn: async () => await fetchMovieSearch(debouncedSearch),
+      },
+      {
+        queryKey: ["drama-search", debouncedSearch],
+        queryFn: async () => await fetchDramaSearch(debouncedSearch),
+      },
+      {
+        queryKey: ["tv-show-search", debouncedSearch],
+        queryFn: async () => await fetchTvShowSearch(debouncedSearch),
       },
     ],
   });
 
-  // console.log(data[0].data?.results, "id");
+  const animeSearch = quearies[0].data;
+  const movieSearch = quearies[1].data;
+  const dramaSearch = quearies[2].data;
+  const tvShowSearch = quearies[3].data;
+
 
   return (
     <>
@@ -99,36 +104,71 @@ export function CommandMenu({ ...props }: DialogProps) {
           onValueChange={setSearch}
           placeholder="Type a search..."
         />
-        <CommandList>
+        <CommandList className="flex flex-col gap-2">
           <CommandEmpty>No results found.</CommandEmpty>
-
           <CommandGroup heading="Anime">
-            {data[0].data?.results?.map((item) => (
+            {animeSearch?.results?.map((item) => (
               <>
-                <CommandItem key={item.id} value={item.title.romaji}  onSelect={() => {runCommand(() => router.push(`/anime/${item.id}`))}}  >{item.title.romaji}</CommandItem>
+                <CommandItem
+                  key={item.id}
+                  value={item.title.romaji}
+                  onSelect={() => {
+                    runCommand(() => router.push(`/anime/${item.id}`));
+                  }}
+                >
+                  {item.title.romaji}
+                </CommandItem>
+              </>
+            ))}
+          </CommandGroup>
+          <CommandGroup heading="Movies">
+            {movieSearch?.results?.map((item) => (
+              <>
+                <CommandItem
+                  key={item.id}
+                  value={item.title}
+                  onSelect={() => {
+                    runCommand(() => router.push(`/movies/${item.id}`));
+                  }}
+                >
+                  {item.title}
+                </CommandItem>
+              </>
+            ))}
+          </CommandGroup>
+          <CommandGroup heading="drama">
+            {dramaSearch?.results?.map((item) => (
+              <>
+                <CommandItem
+                  key={item.id}
+                  value={item.title}
+                  onSelect={() => {
+                    runCommand(() =>
+                      router.push(`/drama/${encodeURIComponent(item.id)}`),
+                    );
+                  }}
+                >
+                  {item.title}
+                </CommandItem>
               </>
             ))}
           </CommandGroup>
 
-         
-          {/* {docsConfig.sidebarNav.map((group) => (
-            <CommandGroup key={group.title} heading={group.title}>
-              {group.items.map((navItem) => (
+          <CommandGroup heading="tv-show">
+            {tvShowSearch?.results?.map((item) => (
+              <>
                 <CommandItem
-                  key={navItem.href}
-                  value={navItem.title}
+                  key={item.id}
+                  value={item.name}
                   onSelect={() => {
-                    runCommand(() => router.push(navItem.href));
+                    runCommand(() => router.push(`/tv-shows/${item.id}`));
                   }}
                 >
-                  <div className="mr-2 flex h-4 w-4 items-center justify-center">
-                    <CircleIcon className="h-3 w-3" />
-                  </div>
-                  {navItem.title}
+                  {item.name}
                 </CommandItem>
-              ))}
-            </CommandGroup>
-          ))} */}
+              </>
+            ))}
+          </CommandGroup>
         </CommandList>
       </CommandDialog>
     </>

@@ -22,6 +22,10 @@ export default async function EpisodesList({
 }) {
   const data = await fetchDramaInfoById(id);
 
+  if (!data) {
+    return <div>None Found</div>;
+  }
+
   return (
     <div className="mx-auto h-fit w-full overflow-hidden rounded-lg px-4 text-white dark:bg-zinc-900/50">
       {style === "list" ? (
@@ -38,7 +42,9 @@ export default async function EpisodesList({
                     No episodes found
                   </p>
                 ) : (
-                  <ScrollArea className="h-[300px] pr-4 sm:h-[400px]">
+                  <ScrollArea
+                    className={` ${data.episodes.length > 9 ? "h-[600px]" : "h-fit"} w-full overflow-hidden rounded-lg p-4  pr-4 `}
+                  >
                     {data.episodes.map((episode: IDramaEpisode) => (
                       <Link
                         key={episode.id}

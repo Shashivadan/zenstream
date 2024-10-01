@@ -7,6 +7,11 @@ import React from 'react'
 export default function page({params} : { params: { id: string } }) {
   const id = params.id
 
+
+  if (!id) {
+    return <div>None Found</div>;
+  }
+
   return (
     <div>
       <VideoPlayer id={id} />

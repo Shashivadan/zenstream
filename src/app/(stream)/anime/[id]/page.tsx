@@ -6,7 +6,7 @@ import { fetchAnilistInfoById } from '@/data-access/index';
 
 
 export default async function page({params} : { params: { id: string } }) {
-  const id = params.id
+  const id = params.id.replace(/[a-zA-Z]/g, "");
   const data  = await fetchAnilistInfoById(id);
 
   if(typeof data === "string") {

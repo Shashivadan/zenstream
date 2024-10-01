@@ -39,6 +39,8 @@ export const tvURL = {
     `${PROXY}https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=${API_KEY}`,
   fetchShowRecommendations: (id: string, page = 1): string =>
     `${PROXY}https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}&page=${page}`,
+  tvSearch: (query: string, page = 1) =>
+    `https://api.themoviedb.org/3/search/tv?query=${query}&api_key=${API_KEY}`,
 };
 
 export const movieURL = {
@@ -54,6 +56,8 @@ export const movieURL = {
   trending: `${PROXY}https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`,
   movieRecommendation: (id: string) =>
     `${PROXY}https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`,
+  movieSearch: (query: string, page = 1) =>
+    `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}`,
 };
 
 export const getCastInfoURL = (movieId: string | number) =>
@@ -70,4 +74,7 @@ export const dramaURL = {
     server?: "asianload" | "mixdrop" | "streamtape" | "streamsb",
   ): string =>
     `https://api-consumet-org-rust.vercel.app/movies/dramacool/watch?episodeId=${episodeId}&mediaId=${mediaId}&server=${server}`,
+
+  search: (query: string, page = 1) =>
+    `${RUST_ANIME_API}/movies/dramacool/${query}?page=${page}`,
 };

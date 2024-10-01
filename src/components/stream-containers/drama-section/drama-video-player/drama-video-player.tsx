@@ -20,6 +20,10 @@ export default async function DramaVideoPlayer({
 }) {
   const data = await fetchDramaStreamingLinks(eposideId , id);
 
+  if (!data) {
+    return <div>None Found</div>;
+  }
+
   return (
     <div className="grid gap-3 md:grid-cols-6">
       <MediaPlayer

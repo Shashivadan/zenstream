@@ -15,6 +15,10 @@ export default async function page({
   const { id, episodeid } = params;
   const data = await fetchEpisodeSources(episodeid);
   const animeData = await fetchAnilistInfoById(id);
+
+  if(!data || !animeData) {
+    return <div>None Found</div>;
+  }
   const videoSrc = data.sources.find((source) => source.quality === "default")?.url
   return (
     <div>
@@ -27,7 +31,7 @@ export default async function page({
         </Card>
       </div>
       <div className=" mt-2 ">
-        <VideoMetadata  data={animeData} />
+        {data && <VideoMetadata  data={animeData} />}
       </div>
     </div>
   );

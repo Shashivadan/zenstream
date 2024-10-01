@@ -7,6 +7,7 @@ import {
   ChevronUp,
   RefreshCw,
   MailIcon,
+  TriangleAlert,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -32,10 +33,9 @@ export default function GlobalError(
   return (
     <html>
       <body>
-        <div className="flex min-h-screen items-center justify-center bg-purple-50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white px-8 py-10 shadow-xl">
+        <div className="flex min-h-screen items-center justify-center bg-purple-50 p-4 dark:bg-zinc-900">
+          <div className="w-full max-w-2xl rounded-lg bg-white px-8 py-10 shadow-xl dark:bg-zinc-800/50">
             <div className="flex flex-col items-center text-center">
-              <ErrorIllustration className="mb-8 h-64 w-64" />
               <AlertCircle className="mb-4 h-12 w-12 text-purple-600" />
               <h1 className="mb-2 text-3xl font-bold text-purple-800">
                 {title}
@@ -52,7 +52,7 @@ export default function GlobalError(
                 )}
                 <Button
                   onClick={() =>
-                    (window.location.href = "mailto:support@yourplatform.com")
+                    (window.location.href = "mailto:shashivadan99@gmail.com")
                   }
                   className="focus:shadow-outline flex items-center rounded bg-purple-100 px-4 py-2 font-bold text-purple-700 transition duration-150 ease-in-out hover:bg-purple-200 focus:outline-none"
                 >
