@@ -12,7 +12,7 @@ import Image from "next/image";
 
 export default function Characters({ data }: { data: IDramaCharacter[] }) {
   return (
-    <div className="w-full rounded-md p-2 dark:bg-zinc-900/50 sm:p-3">
+    <div className="w-full rounded-md p-2 shadow-xl dark:bg-zinc-900/50 sm:p-3">
       <Carousel
         opts={{
           align: "start",
@@ -21,7 +21,7 @@ export default function Characters({ data }: { data: IDramaCharacter[] }) {
         className="max-w-[23rem] md:max-w-full"
       >
         <div className="mb-2 px-2 sm:px-3">
-          <h2 className="text-sm font-medium text-zinc-400 sm:text-base">
+          <h2 className="text-sm font-semibold dark:text-zinc-400 sm:text-base">
             Characters
           </h2>
         </div>

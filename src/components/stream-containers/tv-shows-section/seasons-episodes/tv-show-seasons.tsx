@@ -25,7 +25,7 @@ export default function TvShowSeasons({
           <Accordion
             type="single"
             collapsible
-            className="rounded-lg bg-zinc-800/30"
+            className="rounded-lg dark:bg-zinc-800/30 shadow-lg"
           >
             <AccordionItem className="border-none px-3 no-underline" value="item-1">
               <AccordionTrigger>{season.name}</AccordionTrigger>

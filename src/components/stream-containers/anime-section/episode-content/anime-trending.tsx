@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import type {  IAnimeInfo } from "@/types";
+import type { IAnimeInfo } from "@/types";
 import React from "react";
 import {
   Carousel,
@@ -12,26 +12,16 @@ import AnimeCard from "./anime-card";
 import { fetchTrendingAnime } from "@/data-access/index";
 import AnimeSkeletonLoader from "./anime-skeleton-loader";
 
-async function getTrendingAnime() {
- try {
-   const data = await fetchTrendingAnime(1, 20);
-   return data;
- } catch (error) {
-  console.log("error" , error);
- }
-}
 
 export default function AnimeTrending() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["get-trending-anime"],
-    queryFn: getTrendingAnime,
+    queryFn: async () => await fetchTrendingAnime(),
   });
 
-
-  if (isError){
+  if (isError) {
     return null;
   }
-
 
   return (
     <Carousel

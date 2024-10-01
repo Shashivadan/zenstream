@@ -51,11 +51,11 @@ export default  function EpisodesList({ id , style }: { id: string , style: 'gri
   const data = animeData.episodes
 
   return (
-    <div className="mx-auto h-fit w-full overflow-hidden rounded-lg px-4 text-white dark:bg-zinc-900/50">
+    <div className="mx-auto h-fit w-full overflow-hidden rounded-lg px-4 shadow-lg dark:bg-zinc-900/50">
       {style === "grid" ? (
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1" className="border-none">
-            <AccordionTrigger className="text-sm text-zinc-400 sm:text-base">
+            <AccordionTrigger className="text-sm dark:text-zinc-400 font-semibold sm:text-base">
               {" "}
               Episodes {data.length}{" "}
             </AccordionTrigger>

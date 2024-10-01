@@ -37,7 +37,7 @@ export default function VideoPlayer({ id }: { id: string }) {
         allowFullScreen
         className="col-span-4 aspect-[1.85/1] rounded-lg"
       ></iframe>
-      <div className="col-span-2 rounded-lg bg-zinc-900/50 p-4">
+      <div className="col-span-2 rounded-lg shadow-xl dark:bg-zinc-900/50 p-4">
         <h3 className="mb-2 text-lg font-semibold">Select Server</h3>
         <Select
           onValueChange={handleServerChange}

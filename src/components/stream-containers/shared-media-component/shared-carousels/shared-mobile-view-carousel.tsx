@@ -10,9 +10,9 @@ export default function ShardMobileViewCarousel({ show }: { show: IMovieTvTypes 
         className="inset-0 h-full w-full rounded-t-xl object-cover"
         src={`https://image.tmdb.org/t/p/original/${show.poster_path}`}
       />
-      <div className="absolute bottom-0 top-1/2 flex w-full flex-col justify-between border-white bg-gradient-to-t from-background to-transparent">
+      <div className="absolute bottom-0 top-1/2 flex w-full flex-col justify-between text-white  border-white bg-gradient-to-t from-black to-transparent">
         <div></div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mb-10">
           <div className="flex w-9/12 items-center justify-center text-pretty text-center text-3xl font-bold">
             {show.title || show.name}
           </div>

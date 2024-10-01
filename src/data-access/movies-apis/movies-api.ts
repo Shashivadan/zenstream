@@ -20,7 +20,7 @@ export async function fetchMoviesCarousalData() {
     const data = (await response.json()) as IMovieResponseType;
     return data.results;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 }
 

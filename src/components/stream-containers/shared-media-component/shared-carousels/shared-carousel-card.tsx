@@ -23,15 +23,17 @@ export default function SharedCarouselCard({
           <ShardMobileViewCarousel show={show} />
         </div>
 
-        <div className="relative mx-auto hidden h-[50vh] w-full md:flex">
+        <div className="relative mx-auto hidden h-[50vh] w-full md:flex rounded-xl">
           <img
             alt={show.title || show.name}
-            className="h-full w-full rounded-t-xl object-cover object-top"
+            className="h-full w-full rounded-xl object-cover object-top"
             src={`https://image.tmdb.org/t/p/original/${show.backdrop_path}`}
           />
-          <div className="to-from-background/10 absolute inset-0 flex flex-col justify-between bg-gradient-to-t from-background">
+         <div className="absolute inset-0 flex text-white flex-col justify-between bg-gradient-to-t from-black  to-transparent ">
+
+
             <div></div>
-            <div className="mx-auto w-[96%]">
+            <div className="mx-auto w-[96%] mb-10">
               <div className="flex flex-col items-center gap-1 text-pretty uppercase">
                 <div className="text-sm normal-case opacity-50">
                   {show.release_date || show.first_air_date

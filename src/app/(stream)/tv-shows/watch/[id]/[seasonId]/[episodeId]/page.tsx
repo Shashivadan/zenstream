@@ -15,7 +15,7 @@ export default function page({
         <TvShowsVideoPlayer id={id} eposideId={episodeId} seasonId={seasonId} />
       </div>
       <div className="mt-3 grid grid-cols-6 gap-3">
-        <div className="col-span-6 rounded-lg bg-zinc-300 px-3 dark:bg-zinc-900/50">
+        <div className="col-span-6 rounded-lg shadow-lg px-3 dark:bg-zinc-900/50">
           <SeasonsEpisodes id={id} />
         </div>
         <div className="col-span-6 rounded-lg ">

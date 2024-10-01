@@ -27,4 +27,12 @@ export {
   fetchTvShowSearch,
 } from "./tv-show-apis/tv-show-apis";
 
-export { fetchDramaInfoById, fetchPopularDrama , fetchDramaStreamingLinks } from "./drama-apis/drama-apis";
+export {
+  fetchDramaInfoById,
+  fetchPopularDrama,
+  fetchDramaStreamingLinks,
+  fetchDramaSearch,
+} from "./drama-apis/drama-apis";
+
+
+;

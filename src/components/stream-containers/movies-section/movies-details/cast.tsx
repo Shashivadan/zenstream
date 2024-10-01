@@ -41,10 +41,10 @@ export default function Cast({ id }: { id: string | number }) {
     <Accordion
       type="single"
       collapsible
-      className="w-full rounded-lg border-none bg-zinc-300 px-2 dark:bg-zinc-900/50 sm:px-4"
+      className="w-full rounded-lg border-none shadow-xl  px-2 dark:bg-zinc-900/50 sm:px-4"
     >
       <AccordionItem value="item-1" className="border-none">
-        <AccordionTrigger className="text-sm text-zinc-400 sm:text-sm">
+        <AccordionTrigger className="text-sm font-semibold dark:text-zinc-400 sm:text-sm">
           Cast&apos;s
         </AccordionTrigger>
         <AccordionContent>
@@ -78,7 +78,7 @@ export default function Cast({ id }: { id: string | number }) {
                             <div className="flex h-full w-full items-center justify-center bg-blue-950/50">
                               {/* <User className=" w-20"/>
                                */}
-                              <div className=" text-blue-500/20 font-[900] text-3xl p-2 text-center  ">NO IMAGE</div>
+                              <div className=" dark:text-blue-500/20 font-[900] text-3xl p-2 text-center text-blue-200  ">NO IMAGE</div>
                             </div>
                           </>
                         )}

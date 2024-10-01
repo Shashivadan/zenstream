@@ -25,12 +25,14 @@ export default function SeasonsEpisodes({ id }: { id: string | number }) {
 
   return (
     <div>
-      {isLoading && <Skeleton className=" w-full rounded-lg bg-zinc-800"/>}
+      {isLoading && <Skeleton className=" w-full rounded-lg dark:bg-zinc-800"/>}
       <Accordion
         type="single"
-        collapsible>
-        <AccordionItem value="item-1" className="border-none">
-          <AccordionTrigger className=" text-sm text-zinc-400 no-underline ">Seasons {data?.seasons.length}</AccordionTrigger>
+        collapsible
+        className=" "
+        >
+        <AccordionItem value="item-1" className="border-none ">
+          <AccordionTrigger className=" text-sm dark:text-zinc-400 font-semibold  ">Seasons {data?.seasons.length}</AccordionTrigger>
           <AccordionContent className="">
            {data?.seasons && <TvShowSeasons seasons={data?.seasons} id={id.toString()} />}
           </AccordionContent>

@@ -13,16 +13,18 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from "@/components/ui/command";
 import { useQueries } from "@tanstack/react-query";
-import { fetchMovieSearch, fetchSearchAnime, fetchTvShowSearch } from "@/data-access/index";
+import {
+  fetchMovieSearch,
+  fetchSearchAnime,
+  fetchTvShowSearch,
+} from "@/data-access/index";
 import { fetchDramaSearch } from "@/data-access/drama-apis/drama-apis";
 
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
-
 
   const [search, setSearch] = React.useState("");
   const debouncedSearch = useDebounce(search, 500);
@@ -53,7 +55,7 @@ export function CommandMenu({ ...props }: DialogProps) {
     command();
   }, []);
 
-  const quearies = useQueries({
+  const queries = useQueries({
     queries: [
       {
         queryKey: ["anime-search", debouncedSearch],
@@ -75,11 +77,10 @@ export function CommandMenu({ ...props }: DialogProps) {
     ],
   });
 
-  const animeSearch = quearies[0].data;
-  const movieSearch = quearies[1].data;
-  const dramaSearch = quearies[2].data;
-  const tvShowSearch = quearies[3].data;
-
+  const animeSearch = queries[0].data;
+  const movieSearch = queries[1].data;
+  const dramaSearch = queries[2].data;
+  const tvShowSearch = queries[3].data;
 
   return (
     <>
@@ -99,7 +100,6 @@ export function CommandMenu({ ...props }: DialogProps) {
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput
-          className=""
           value={search}
           onValueChange={setSearch}
           placeholder="Type a search..."
@@ -108,65 +108,56 @@ export function CommandMenu({ ...props }: DialogProps) {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Anime">
             {animeSearch?.results?.map((item) => (
-              <>
-                <CommandItem
-                  key={item.id}
-                  value={item.title.romaji}
-                  onSelect={() => {
-                    runCommand(() => router.push(`/anime/${item.id}`));
-                  }}
-                >
-                  {item.title.romaji}
-                </CommandItem>
-              </>
+              <CommandItem
+                key={`anime-${item.id}`}
+                value={item.title.romaji}
+                onSelect={() => {
+                  runCommand(() => router.push(`/anime/${item.id}`));
+                }}
+              >
+                {item.title.romaji}
+              </CommandItem>
             ))}
           </CommandGroup>
           <CommandGroup heading="Movies">
             {movieSearch?.results?.map((item) => (
-              <>
-                <CommandItem
-                  key={item.id}
-                  value={item.title}
-                  onSelect={() => {
-                    runCommand(() => router.push(`/movies/${item.id}`));
-                  }}
-                >
-                  {item.title}
-                </CommandItem>
-              </>
+              <CommandItem
+                key={`movie-${item.id}`}
+                value={item.title}
+                onSelect={() => {
+                  runCommand(() => router.push(`/movies/${item.id}`));
+                }}
+              >
+                {item.title}
+              </CommandItem>
             ))}
           </CommandGroup>
-          <CommandGroup heading="drama">
+          <CommandGroup heading="Drama">
             {dramaSearch?.results?.map((item) => (
-              <>
-                <CommandItem
-                  key={item.id}
-                  value={item.title}
-                  onSelect={() => {
-                    runCommand(() =>
-                      router.push(`/drama/${encodeURIComponent(item.id)}`),
-                    );
-                  }}
-                >
-                  {item.title}
-                </CommandItem>
-              </>
+              <CommandItem
+                key={`drama-${item.id}`}
+                value={item.title}
+                onSelect={() => {
+                  runCommand(() =>
+                    router.push(`/drama/${encodeURIComponent(item.id)}`),
+                  );
+                }}
+              >
+                {item.title}
+              </CommandItem>
             ))}
           </CommandGroup>
-
-          <CommandGroup heading="tv-show">
+          <CommandGroup heading="TV Shows">
             {tvShowSearch?.results?.map((item) => (
-              <>
-                <CommandItem
-                  key={item.id}
-                  value={item.name}
-                  onSelect={() => {
-                    runCommand(() => router.push(`/tv-shows/${item.id}`));
-                  }}
-                >
-                  {item.name}
-                </CommandItem>
-              </>
+              <CommandItem
+                key={`tv-show-${item.id}`}
+                value={item.name}
+                onSelect={() => {
+                  runCommand(() => router.push(`/tv-shows/${item.id}`));
+                }}
+              >
+                {item.name}
+              </CommandItem>
             ))}
           </CommandGroup>
         </CommandList>

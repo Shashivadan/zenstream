@@ -10,8 +10,8 @@ export default function SubContainer({ data }: { data: IMovieInfoType }) {
     <div className="h-fit p-5 md:w-full">
       <div className="">
         <div className="mb-3 grid grid-cols-2 gap-4">
-          <div className="">
-            <div className="flex items-center text-sm text-zinc-400">
+          <div className="dark:text-zinc-400">
+            <div className="flex items-center text-sm">
               <Calendar className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> Released On
             </div>
             {data.release_date && (
@@ -23,7 +23,7 @@ export default function SubContainer({ data }: { data: IMovieInfoType }) {
             )}
           </div>
           <div>
-            <div className="flex items-center text-sm text-zinc-400">
+            <div className="flex items-center text-sm ">
               <Timer className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
               duration
             </div>
@@ -32,7 +32,7 @@ export default function SubContainer({ data }: { data: IMovieInfoType }) {
             </p>
           </div>
           <div>
-            <div className="flex items-center text-sm text-zinc-400">
+            <div className="flex items-center text-sm ">
               <Star className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
               Rating
             </div>
@@ -41,8 +41,8 @@ export default function SubContainer({ data }: { data: IMovieInfoType }) {
             </p>
           </div>
 
-          <div>
-            <div className="flex items-center text-sm text-zinc-400">
+          <div className=" dark:text-zinc-400">
+            <div className="flex items-center text-sm ">
               <Calendar className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> Status
             </div>
             <div>
@@ -50,7 +50,7 @@ export default function SubContainer({ data }: { data: IMovieInfoType }) {
             </div>
           </div>
           <div>
-            <div className="flex items-center text-sm text-zinc-400">
+            <div className="flex items-center text-sm ">
               <Calendar className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> languages
             </div>
             <div>
@@ -64,7 +64,7 @@ export default function SubContainer({ data }: { data: IMovieInfoType }) {
 
           {data.budget > 0 && (
             <div>
-              <div className="flex items-center text-sm text-zinc-400">
+              <div className="flex items-center text-sm dark:text-zinc-400">
                 <CircleDollarSign className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
                 Budget
               </div>
@@ -75,14 +75,14 @@ export default function SubContainer({ data }: { data: IMovieInfoType }) {
           )}
         </div>
         <div>
-          <div className="flex items-center text-sm text-zinc-400">
+          <div className="flex items-center text-sm dark:text-zinc-400">
             <LayoutGridIcon className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> Gernes
           </div>
           <div className="mt-2 flex flex-wrap gap-2 text-sm font-bold">
             {data.genres.map((genre) => (
               <Badge
                 key={genre.id}
-                className="rounded-sm border-none bg-zinc-900 text-zinc-300"
+                className="rounded-sm  dark:bg-zinc-900 dark:text-zinc-300"
                 variant={"outline"}
               >
                 {genre.name}

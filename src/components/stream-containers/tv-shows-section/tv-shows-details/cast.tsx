@@ -61,11 +61,11 @@ export default function Cast({ id }: { id: string | number }) {
     <Accordion
       type="single"
       collapsible
-      className="w-full rounded-lg border-none bg-zinc-300 px-2 dark:bg-zinc-900/50 sm:px-4"
+      className="w-full rounded-lg border-none shadow-lg px-2 dark:bg-zinc-900/50 sm:px-4"
       onValueChange={(value) => setIsOpen(value === "item-1")}
     >
       <AccordionItem value="item-1" className="border-none">
-        <AccordionTrigger className="text-sm text-zinc-400 sm:text-sm">
+        <AccordionTrigger className="text-sm  font-semibold  dark:text-zinc-400 sm:text-sm">
           Cast&apos;s
         </AccordionTrigger>
         <AnimatePresence>
@@ -76,8 +76,7 @@ export default function Cast({ id }: { id: string | number }) {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                >
-
+              >
                 {data?.length === 0 ? (
                   <div>
                     <p className="text-sm sm:text-sm">No cast found</p>
@@ -119,7 +118,7 @@ export default function Cast({ id }: { id: string | number }) {
                                   <div className="flex h-full w-full items-center justify-center bg-blue-950/50">
                                     {/* <User className=" w-20"/>
                                      */}
-                                    <div className="p-2 text-center text-3xl font-[900] text-blue-500/20">
+                                    <div className="p-2 text-center text-3xl font-[900] text-blue-200 dark:text-blue-500/20">
                                       NO IMAGE
                                     </div>
                                   </div>

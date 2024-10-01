@@ -17,7 +17,7 @@ export default function TvShowDetails({ data }: { data: IDetailedTVShow }) {
             <div className="md:hidden">
               <SubContainer data={data} />
             </div>
-            <div className="rounded-lg bg-zinc-900/50 px-3">
+            <div className="rounded-lg dark:bg-zinc-900/50 px-3 shadow-lg">
               <SeasonsEpisodes id={data.id} />
             </div>
             <Cast id={data.id} />

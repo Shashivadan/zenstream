@@ -48,7 +48,7 @@ export default function TvShowsVideoPlayer({
           className="col-span-4 aspect-[1.85/1] rounded-lg"
         ></iframe>
       </div>
-      <div className="col-span-1 mt-3 rounded-lg bg-zinc-900/50 p-4 md:col-span-2 md:mt-0">
+      <div className="col-span-1 mt-3 rounded-lg p-4 dark:bg-zinc-900/50 md:col-span-2 md:mt-0">
         <h3 className="mb-2 text-lg font-semibold">Select Server</h3>
 
         <div className="mb-3 flex rounded-lg bg-yellow-500/15 p-2 text-xs font-semibold text-yellow-500">
@@ -79,11 +79,11 @@ export default function TvShowsVideoPlayer({
               Download
             </a>
           </Button>
-          <div className="flex items-center gap-3 rounded-lg bg-zinc-900/50 p-3 text-sm font-medium text-zinc-200 shadow-md">
-            <div className="rounded bg-zinc-800/50 px-2 py-1">
+          <div className="flex items-center gap-3 rounded-lg p-3 text-sm font-medium dark:text-zinc-200 shadow-xl dark:bg-zinc-900/50">
+            <div className="rounded   px-2 py-1 shadow-lg dark:bg-zinc-800/50">
               Season {seasonId}
             </div>
-            <div className="rounded bg-zinc-800/50 px-2 py-1">
+            <div className="rounded dark:bg-zinc-800/50 px-2 py-1 shadow-lg">
               Episode {eposideId}
             </div>
           </div>

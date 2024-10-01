@@ -25,9 +25,9 @@ export default function MovieCover({data} : {data: IMovieInfoType}) {
               <Button variant={"ringHover"} className="font-semibold">
                 <Link href={`/movies/watch/${data.id}`} className="flex gap-2"><PlayCircle className="mr-2 h-4 w-4" /> Play Now</Link>
               </Button>
-              <Button variant="outline" className='font-semibold'>
+              {/* <Button variant="outline" className='font-semibold'>
                 <PlayIcon className="mr-2 h-4 w-4" /> Trailer
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

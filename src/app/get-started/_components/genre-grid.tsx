@@ -75,7 +75,7 @@ export default function GenreGrid() {
               whileHover={{ y: -5 }}
             >
               <Link href={genre.herf}>
-                <Card className="overflow-hidden border-none bg-zinc-400/20 transition-colors duration-300 hover:bg-purple-700">
+                <Card className="overflow-hidden border-none dark:bg-zinc-400/20 transition-colors duration-300 hover:bg-purple-700">
                   <CardHeader className="flex flex-col justify-between pb-4 md:h-36">
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-lg">{genre.name}</CardTitle>
@@ -86,7 +86,7 @@ export default function GenreGrid() {
                         <genre.icon className="h-6 w-6 text-black dark:text-white" />
                       </motion.div>
                     </div>
-                    <CardDescription className="transition-colors duration-300 hover:text-white">
+                    <CardDescription className="transition-colors  dark:text-white text-black  duration-300 ">
                       {genre.description}
                     </CardDescription>
                   </CardHeader>

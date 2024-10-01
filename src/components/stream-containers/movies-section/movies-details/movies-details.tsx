@@ -22,7 +22,7 @@ export default function MovieDetails({ data }: { data: IMovieInfoType }) {
             {/* <Characters data={data.characters ?? []} /> */}
           </div>
           <div className="hidden md:block">
-            <div className="rounded-lg bg-zinc-300 dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div className="rounded-lg shadow-xl dark:border-zinc-800 dark:bg-zinc-900/50">
               <SubContainer data={data} />
             </div>
           </div>

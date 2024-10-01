@@ -33,13 +33,18 @@ export default function TvShowSeasonsEpisodes({
           Array.from({ length: skeletonCount }).map((_, index) => (
             <Skeleton
               key={index}
-              className="aspect-square w-full rounded-lg bg-zinc-800"
+              className="aspect-square w-full rounded-lg dark:bg-zinc-800 bg-slate-400-"
             />
           ))}
+          {data?.episodes.length === 0 && (
+            <div className="col-span-6 font-semibold text-sm dark:text-zinc-400">
+              No episodes found
+            </div>
+          )}
         {data?.episodes.map((episode) => (
           <Link key={episode.id} href={`/tv-shows/watch/${id}/${episode.season_number}/${episode.episode_number}`}>
             <div key={episode.id} className="w-full">
-              <div className="duration-50 flex aspect-square items-center justify-center rounded-lg bg-zinc-800 p-3 transition-all ease-linear hover:scale-105 hover:bg-purple-800 hover:shadow-lg hover:ease-linear">
+              <div className="duration-50 font-medium flex aspect-square items-center justify-center rounded-lg dark:bg-zinc-800 p-3 shadow-lg transition-all ease-linear hover:scale-105 hover:bg-purple-800 hover:shadow-lg hover:ease-linear">
                 {episode.episode_number}
               </div>
             </div>

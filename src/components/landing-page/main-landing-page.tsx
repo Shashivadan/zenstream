@@ -9,7 +9,7 @@ import { TestimonialSection } from "./sections/testimonial";
 import { FAQSection } from "./sections/faq";
 import { FooterSection } from "./sections/footer";
 
-export const dynamic = "force-static";
+
 export default function MainLandingPage() {
   return (
     <>

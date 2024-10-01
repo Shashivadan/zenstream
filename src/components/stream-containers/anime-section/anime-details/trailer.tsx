@@ -15,7 +15,7 @@ export default function Trailer({ src }: { src: string }) {
 
 
   return (
-    <div className=" bg-zinc-900/50 rounded-lg p-2">
+    <div className=" shadow-lg dark:bg-zinc-900/50 rounded-lg p-2">
       <div>
         <h1 className="md:text-4x font-mono text-2xl font-bold leading-tight tracking-tighter">
           Trailer

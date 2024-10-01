@@ -29,7 +29,7 @@ export default function TvShowRecommendations({ id }: { id: string }) {
     setPage((prev) => prev + 1);
   };
   return (
-    <div className="rounded-lg bg-zinc-900/50 p-3">
+    <div className="rounded-lg shadow-2xl dark:bg-zinc-900/50 p-3">
       <div className="flex items-center justify-between">
         <div>
           <div className="text-xl font-semibold">Recommendations</div>
