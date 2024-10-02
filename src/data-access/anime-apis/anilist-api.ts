@@ -4,7 +4,6 @@ import type { AnimeDataResponse, IAnimeSearchResults, IEpisodeSource } from "@/t
 import type { IAnimeInfo } from "@/types";
 import { aniListURL } from "../api-contents";
 
-//https://api-consumet-org-rust.vercel.app/meta/anilist
 
 export async function fetchTrendingAnime(
   page = 1,

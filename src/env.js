@@ -21,6 +21,8 @@ export const env = createEnv({
     CONSUMET_API_URL: z.string(),
     CONSUMET_API_ANILIST_URL: z.string(),
     ANIME_API_URL: z.string(),
+    THEMOVIEDB_KEY: z.string(),
+    PROXY_SERVER: z.string(),
   },
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
@@ -36,6 +38,8 @@ export const env = createEnv({
     CONSUMET_API_URL: process.env.CONSUMET_API_URL,
     CONSUMET_API_ANILIST_URL: process.env.CONSUMET_API_ANILIST_URL,
     ANIME_API_URL: process.env.ANIME_API_URL,
+    THEMOVIEDB_KEY: process.env.THEMOVIEDB_KEY,
+    PROXY_SERVER : process.env.PROXY_SERVER ?? "",
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true,

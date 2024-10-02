@@ -11,8 +11,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Gogoanime from "@consumet/extensions/dist/providers/anime/gogoanime";
-import Anilist from "@consumet/extensions/dist/providers/meta/anilist";
+// import Gogoanime from "@consumet/extensions/dist/providers/anime/gogoanime";
+// import Anilist from "@consumet/extensions/dist/providers/meta/anilist";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAnilistInfoById } from "@/data-access";

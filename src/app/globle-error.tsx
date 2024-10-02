@@ -7,7 +7,7 @@ import {
   ChevronUp,
   RefreshCw,
   MailIcon,
-  TriangleAlert,
+
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -86,46 +86,5 @@ export default function GlobalError(
         </div>
       </body>
     </html>
-  );
-}
-
-function ErrorIllustration({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 900 600"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path fill="rgba(224, 231, 255, .2)" d="M0 0h900v600H0z" />
-      <circle cx="450.609" cy="300" r="251.279" fill="url(#a)" />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M597.848 289.5 525.42 217.02l72.428-72.48 24.146 24.161-48.282 48.319 48.282 48.319-24.146 24.161zm-295.696 0 72.428-72.48-72.428-72.48-24.147 24.161 48.282 48.319-48.282 48.319 24.147 24.161z"
-        fill="#fff"
-      />
-      <circle cx="450" cy="300" r="64" fill="#6366f1" />
-      <path
-        d="M450 282.667v34.666"
-        stroke="#fff"
-        stroke-width="14"
-        stroke-linecap="round"
-      />
-      <circle cx="450" cy="360" r="8" fill="#fff" />
-      <defs>
-        <radialGradient
-          id="a"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="rotate(90 75.304 375.304) scale(251.279)"
-        >
-          <stop stop-color="#7c3aed" />
-          <stop offset="1" stop-color="#3730a3" stop-opacity=".01" />
-        </radialGradient>
-      </defs>
-    </svg>
   );
 }

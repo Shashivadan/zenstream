@@ -1,6 +1,6 @@
 import { env } from "@/env";
-export const API_KEY = "c252dde529d0b4d39533949ed198e5d9";
-export const PROXY = "https://sup-proxy.zephex0-f6c.workers.dev/api-json?url=";
+export const API_KEY = env.THEMOVIEDB_KEY;
+export const PROXY = env.PROXY_SERVER
 export const API_ANILIST_URL = env.CONSUMET_API_ANILIST_URL;
 export const RUST_ANIME_API = env.CONSUMET_API_URL;
 
@@ -40,7 +40,7 @@ export const tvURL = {
   fetchShowRecommendations: (id: string, page = 1): string =>
     `${PROXY}https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${API_KEY}&page=${page}`,
   tvSearch: (query: string, page = 1) =>
-    `https://api.themoviedb.org/3/search/tv?query=${query}&api_key=${API_KEY}`,
+    `https://api.themoviedb.org/3/search/tv?query=${query}&api_key=${API_KEY}&page=${page}`,
 };
 
 export const movieURL = {
@@ -57,7 +57,7 @@ export const movieURL = {
   movieRecommendation: (id: string) =>
     `${PROXY}https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${API_KEY}`,
   movieSearch: (query: string, page = 1) =>
-    `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}`,
+    `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}&page=${page}`,
 };
 
 export const getCastInfoURL = (movieId: string | number) =>
@@ -65,15 +65,14 @@ export const getCastInfoURL = (movieId: string | number) =>
 
 export const dramaURL = {
   popular: (page: number | string) =>
-    `https://api-consumet-org-rust.vercel.app/movies/dramacool/popular?page=${page}`,
-  dramaInfo: (id: string) =>
-    `https://api-consumet-org-rust.vercel.app/movies/dramacool/info?id=${id}`,
+    `${RUST_ANIME_API}/movies/dramacool/popular?page=${page}`,
+  dramaInfo: (id: string) => `${RUST_ANIME_API}/movies/dramacool/info?id=${id}`,
   streamLinks: (
     episodeId: string,
     mediaId: string,
     server?: "asianload" | "mixdrop" | "streamtape" | "streamsb",
   ): string =>
-    `https://api-consumet-org-rust.vercel.app/movies/dramacool/watch?episodeId=${episodeId}&mediaId=${mediaId}&server=${server}`,
+    `${RUST_ANIME_API}/movies/dramacool/watch?episodeId=${episodeId}&mediaId=${mediaId}&server=${server}`,
 
   search: (query: string, page = 1) =>
     `${RUST_ANIME_API}/movies/dramacool/${query}?page=${page}`,

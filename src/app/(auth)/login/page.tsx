@@ -1,5 +1,4 @@
 import LoginButton from "@/components/login-button";
-import { getCurrentUser } from "@/server/auth";
 import type { Metadata } from "next";
 import React from "react";
 
