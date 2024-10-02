@@ -1,7 +1,7 @@
 import { getCurrentUser } from "@/server/auth";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
+import { UserRound } from "lucide-react";
 import DeleteAccount from "./delete-account";
 
 export default async function Avater() {
@@ -19,7 +19,7 @@ export default async function Avater() {
               src={user?.image ?? ""}
               alt={user?.name ?? "profile"}
             />
-            <AvatarFallback>{user?.name}</AvatarFallback>
+            <AvatarFallback><UserRound className="w-14 h-14"  /></AvatarFallback>
           </Avatar>
           <div>
             <div>
@@ -39,9 +39,8 @@ export default async function Avater() {
               irreversible and cannot be undone.
             </div>
           </div>
-          <div className="bg-red-900/60 px-6 p-2">
-          <DeleteAccount/>
-
+          <div className="bg-red-900/60 p-2 px-6">
+            <DeleteAccount />
           </div>
         </div>
       </div>

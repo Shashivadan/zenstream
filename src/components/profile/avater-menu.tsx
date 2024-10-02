@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import SignOutButton from "../sign-out-button";
-
+import { UserRound } from "lucide-react";
 export default async function AvaterMenu() {
   const user = await getCurrentUser();
 
@@ -21,7 +21,7 @@ export default async function AvaterMenu() {
       <DropdownMenuTrigger asChild>
         <Avatar className="h-7 w-7 cursor-pointer">
           <AvatarImage src={user?.image ?? ""} alt="@shadcn" />
-          <AvatarFallback>{user?.name}</AvatarFallback>
+          <AvatarFallback><UserRound className=" w-5 h-5"  /></AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
