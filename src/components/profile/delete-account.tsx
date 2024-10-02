@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,64 +14,79 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { deleteAccount } from "@/actions/index";
+import { toast } from "sonner";
+
 export default function DeleteAccount() {
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const deleted = await deleteAccount();
+      if (deleted) {
+        setIsOpen(false);
+        toast.success("Account deleted successfully");
+        router.push("/");
+      
+      }
+    } catch (error) {
+      toast.error((error as Error).message);
+    }
+  };
 
   return (
-    <Dialog>
-      <DialogTrigger
-        asChild
-        className="border-none bg-red-600/50 hover:bg-red-600"
-      >
-        <Button variant="outline">Delete my account</Button>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <Button
+          variant="outline"
+          className="border-none bg-red-600/50 hover:bg-red-600"
+        >
+          Delete my account
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md md:max-w-lg">
-        <DialogHeader className="md:mb-4">
-          <DialogTitle className="md:mb-4">
-            Are you absolutely sure?
-          </DialogTitle>
-          <DialogDescription className="font-medium">
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our database.
-          </DialogDescription>
-        </DialogHeader>
-        <div>
-          Type <strong>delete my account</strong> to continue:
-        </div>
-        <div className="flex items-center space-x-2">
-          <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
-              Link
-            </Label>
-            <Input
-              type="text"
-              className=""
-              id="link"
-              value={value}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setValue(e.target.value)
-              }
-              placeholder="Type delete my account"
-            />
+        <form onSubmit={handleSubmit}>
+          <DialogHeader className="md:mb-4">
+            <DialogTitle className="md:mb-4">
+              Are you absolutely sure?
+            </DialogTitle>
+            <DialogDescription className="font-medium">
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our database.
+            </DialogDescription>
+          </DialogHeader>
+          <div>
+            Type <strong>delete my account</strong> to continue:
           </div>
-        </div>
-        <DialogFooter className="mt-3 flex items-center justify-between">
-          <Button
-            type="submit"
-            variant="destructive"
-            disabled={value !== "delete my account"}
-            className="w-20 bg-red-600/50 hover:bg-red-600"
-          >
-            Delete
-          </Button>
-        </DialogFooter>
+          <div className="flex items-center space-x-2">
+            <div className="mt-4 grid flex-1 gap-2">
+              <Label htmlFor="confirmDelete" className="sr-only">
+                Confirm deletion
+              </Label>
+              <Input
+                id="confirmDelete"
+                type="text"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                placeholder="Type delete my account"
+              />
+            </div>
+          </div>
+          <DialogFooter className="mt-3 flex items-center justify-between">
+            <Button
+              type="submit"
+              variant="destructive"
+              disabled={value !== "delete my account"}
+              className="w-20 bg-red-600/50 hover:bg-red-600"
+            >
+              Delete
+            </Button>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );
 }
-
-//  <DialogClose asChild>
-//    <Button type="button" className="w-20" variant="secondary">
-//      Close
-//    </Button>
-//  </DialogClose>;

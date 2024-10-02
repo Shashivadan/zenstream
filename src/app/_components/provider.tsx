@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-query";
 import NextTopLoader from "nextjs-toploader";
 import React from "react";
-
+import { Toaster } from "sonner";
 
 // added for caching data for 5 minutes in react query
 const queryClient = new QueryClient({
@@ -38,6 +38,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
             easing="ease"
             speed={200}
           />
+          <Toaster richColors expand={true} />
           {children}
         </ThemeProvider>
       </QueryClientProvider>
