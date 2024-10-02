@@ -1,7 +1,7 @@
 import { getCurrentUser } from "@/server/auth";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "../ui/button";
+
 import DeleteAccount from "./delete-account";
 
 export default async function Avater() {
@@ -40,9 +40,8 @@ export default async function Avater() {
             </div>
           </div>
           <div className="bg-red-900/60 px-6 p-2">
-          <Button className="" asChild variant="outline">
           <DeleteAccount/>
-          </Button>
+
           </div>
         </div>
       </div>

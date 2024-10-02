@@ -16,7 +16,7 @@ const ErrorPage = ({ error, reset }: { error: Error; reset: () => void }) => {
           Oops! Something went wrong
         </h1>
         <p className="text-xl text-purple-200">
-          We're sorry, but it seems there was an error while loading your
+          We&apos;re sorry, but it seems there was an error while loading your
           content.
         </p>
         <div className="rounded-lg bg-purple-800 p-4 shadow-inner">
