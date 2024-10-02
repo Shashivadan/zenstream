@@ -12,6 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchMovieInfoById } from "@/data-access/movies-apis/movies-api";
 import SubContainer from "../movies-details/sub-container";
 import { movieSrc } from "@/lib/movies-stream-urls";
+import MovieDetailsSkeleton from "../movies-details/movie-details-skeleton";
 
 export default function VideoPlayer({ id }: { id: string }) {
   const { data, isLoading, isError } = useQuery({
@@ -61,7 +62,7 @@ export default function VideoPlayer({ id }: { id: string }) {
             </a>
           </Button>
           <div>
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <MovieDetailsSkeleton />}
             {isError && <p>Error</p>}
             {data && <SubContainer data={data} />}
           </div>
