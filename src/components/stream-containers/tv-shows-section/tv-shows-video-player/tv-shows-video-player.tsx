@@ -36,63 +36,78 @@ export default function TvShowsVideoPlayer({
   const handleServerChange = (value: string) => {
     setSelectedServer(value as keyof typeof tvShowsStreamUrls);
   };
-  return (
-    <div className="w-screen-2xl gap-3 md:grid md:grid-cols-6">
-      <div className="col-span-4">
-        <iframe
-          src={tvShowsStreamUrls[selectedServer](id, seasonId, eposideId)}
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="col-span-4 aspect-[1.85/1] rounded-lg"
-        ></iframe>
-      </div>
-      <div className="col-span-1 mt-3 rounded-lg p-4 dark:bg-zinc-900/50 md:col-span-2 md:mt-0">
-        <h3 className="mb-2 text-lg font-semibold">Select Server</h3>
 
-        <div className="mb-3 flex rounded-lg bg-yellow-500/15 p-2 text-xs font-semibold text-yellow-500">
-          <TriangleAlert className="mr-1 h-3 w-3 sm:h-4 sm:w-4" /> Can&apos;t
-          see the video? A quick server change might do the trick.
-        </div>
-        <Select
-          onValueChange={handleServerChange}
-          defaultValue={selectedServer}
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select a server" />
-          </SelectTrigger>
-          <SelectContent>
-            {Object.keys(tvShowsStreamUrls).map((server) => (
-              <SelectItem key={server} value={server}>
-                {server}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <div className="mt-3 flex flex-col gap-2">
-          <Button asChild className="font-semibold">
-            <a
-              href={tvShowsStreamUrls.vidSrcVip(id, seasonId, eposideId)}
-              target="_blank"
-            >
-              Download
-            </a>
-          </Button>
-          <div className="flex items-center gap-3 rounded-lg p-3 text-sm font-medium dark:text-zinc-200 shadow-xl dark:bg-zinc-900/50">
-            <div className="rounded   px-2 py-1 shadow-lg dark:bg-zinc-800/50">
+  return (
+    <div className="">
+      <div className="grid gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <div className="aspect-video w-full overflow-hidden rounded-lg">
+            <iframe
+              src={tvShowsStreamUrls[selectedServer](id, seasonId, eposideId)}
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="h-full w-full object-cover"
+            ></iframe>
+          </div>
+          <div className="mt-4 flex flex-wrap items-center gap-3 rounded-lg p-3 text-sm font-medium shadow-xl dark:bg-zinc-800/50 dark:text-zinc-200">
+            <div className="rounded px-2 py-1 shadow-lg dark:bg-zinc-700/50">
               Season {seasonId}
             </div>
-            <div className="rounded dark:bg-zinc-800/50 px-2 py-1 shadow-lg">
+            <div className="rounded px-2 py-1 shadow-lg dark:bg-zinc-700/50">
               Episode {eposideId}
             </div>
           </div>
+        </div>
 
-          <div>
-            {isLoading && <ShearedSubContainer/>}
-            {isError && <p>Error</p>}
-            {data && <SubContainer data={data} />}
+        <div className="rounded-lg bg-white p-6 shadow-xl dark:bg-zinc-900/50">
+          <h3 className="mb-4 text-lg font-semibold">Select Server</h3>
+
+          <div className="mb-4 flex items-center rounded-lg bg-yellow-500/15 p-3 text-xs font-semibold text-yellow-500">
+            <TriangleAlert className="mr-2 h-4 w-4 flex-shrink-0" />
+            <span>
+              Can&apos;t see the video? A quick server change might do the trick.
+            </span>
+          </div>
+
+          <Select
+            onValueChange={handleServerChange}
+            defaultValue={selectedServer}
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select a server" />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.keys(tvShowsStreamUrls).map((server) => (
+                <SelectItem key={server} value={server}>
+                  {server}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <div className="mt-6 flex flex-col gap-4">
+            <Button asChild className="w-full font-semibold">
+              <a
+                href={tvShowsStreamUrls.vidSrcVip(id, seasonId, eposideId)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download
+              </a>
+            </Button>
+
+            <div>
+              {isLoading && <ShearedSubContainer />}
+              {isError && (
+                <p className="text-red-500">
+                  Error loading TV show information
+                </p>
+              )}
+              {data && <SubContainer data={data} />}
+            </div>
           </div>
         </div>
       </div>

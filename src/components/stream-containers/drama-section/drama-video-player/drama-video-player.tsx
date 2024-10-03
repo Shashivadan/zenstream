@@ -18,26 +18,36 @@ export default async function DramaVideoPlayer({
   id: string;
   eposideId: string;
 }) {
-  const data = await fetchDramaStreamingLinks(eposideId , id);
+  const data = await fetchDramaStreamingLinks(eposideId, id);
 
   if (!data) {
-    return <div>None Found</div>;
+    return <div className="py-8 text-center">No streaming links found</div>;
   }
 
   return (
-    <div className="grid gap-3 md:grid-cols-6">
-      <MediaPlayer
-        autoPlay
-        src={data?.sources[0]?.url}
-        className="col-span-4 aspect-video"
-      >
-        <MediaProvider></MediaProvider>
-        <DefaultVideoLayout icons={defaultLayoutIcons} />
-      </MediaPlayer>
+    <div className="">
+      <div className="grid gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <div className="aspect-video w-full overflow-hidden rounded-lg">
+            <MediaPlayer
+              autoPlay
+              src={data?.sources[0]?.url}
+              className="h-full w-full"
+            >
+              <MediaProvider />
+              <DefaultVideoLayout icons={defaultLayoutIcons} />
+            </MediaPlayer>
+          </div>
+          <div className="mt-4 text-lg dark:bg-zinc-900/50  p-3 rounded-lg shadow-xl font-semibold">
+           {eposideId.replace(/-/g, " ")}
+          </div>
+        </div>
 
-      <Card className="w-full border p-3 shadow-2xl dark:border-none dark:shadow-none md:col-span-2">
-        <EpisodesList id={id} style="grid" />
-      </Card>
+        <Card className="h-full overflow-auto border p-4 shadow-lg dark:border-zinc-700 dark:bg-zinc-800 dark:shadow-none">
+          <h3 className="mb-4 text-xl font-semibold">Episodes</h3>
+          <EpisodesList id={id} style="grid" />
+        </Card>
+      </div>
     </div>
   );
 }
