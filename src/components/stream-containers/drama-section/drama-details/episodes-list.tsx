@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 import Link from "next/link";
+import { removeAlphabetsAndWords } from "@/lib/regex";
 
 export default async function EpisodesList({
   id,
@@ -27,7 +28,7 @@ export default async function EpisodesList({
   }
 
   return (
-    <div className="mx-auto h-fit w-full overflow-hidden rounded-lg px-4 shadow-lg  dark:bg-zinc-900/50">
+    <div className="mx-auto h-fit w-full overflow-hidden rounded-lg px-4 shadow-lg dark:bg-zinc-900/50">
       {style === "list" ? (
         <>
           <Accordion type="single" collapsible className="w-full">
@@ -43,35 +44,11 @@ export default async function EpisodesList({
                   </p>
                 ) : (
                   <ScrollArea
-                    className={` ${data.episodes.length > 9 ? "h-[600px]" : "h-fit"} w-full overflow-hidden rounded-lg p-4  pr-4 `}
+                    className={` ${data.episodes.length > 14 ? "h-96" : "h-fit"} w-full overflow-hidden rounded-lg p-4 pr-4`}
                   >
-                    {data.episodes.map((episode: IDramaEpisode) => (
-                      <Link
-                        key={episode.id}
-                        href={`/drama/watch/${encodeURIComponent(id)}/${episode.id}`}
-                        className="block w-full"
-                      >
-                        <Card
-                          key={episode.id}
-                          className="mb-4 border border-solid dark:border-zinc-800/50"
-                        >
-                          <CardContent className="flex items-center justify-between p-4">
-                            <div className="">
-                              <h3 className="text-sm font-semibold sm:text-base">
-                                {episode.title}
-                              </h3>
-                            </div>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="text-xs sm:text-sm"
-                            >
-                              Watch
-                            </Button>
-                          </CardContent>
-                        </Card>
-                      </Link>
-                    ))}
+                    <div className="grid grid-cols-5 gap-2 p-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-14">
+                      <GridEpisodes data={data.episodes} id={id} />
+                    </div>
                   </ScrollArea>
                 )}
               </AccordionContent>
@@ -81,39 +58,46 @@ export default async function EpisodesList({
       ) : (
         <>
           <div className="w-full">
-            <div className="my-4 w-full font-mono text-lg font-semibold">
-              Episodes {data.episodes.length}
-            </div>
-            <ScrollArea className="aspect-[14.6/16] py-2">
-              {data.episodes.map((episode) => (
-                <Card
-                  key={episode.id}
-                  className="mb-4 mr-4 border border-solid dark:border-zinc-800/50"
-                >
-                  <CardContent className="flex items-center justify-between p-4">
-                    <div className="">
-                      <h3 className="text-sm font-semibold sm:text-base">
-                        {episode.id.replace(/-/g, " ")}
-                      </h3>
-                    </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-xs sm:text-sm"
-                    >
-                      <Link
-                        href={`/drama/watch/${encodeURIComponent(id)}/${episode.id}`}
-                      >
-                        Watch
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+            <ScrollArea
+              className={` ${data.episodes.length > 14 ? "h-96" : "h-fit"}`}
+            >
+              <div className="grid grid-cols-5 gap-2 p-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
+                <GridEpisodes data={data.episodes} id={id} />
+              </div>
             </ScrollArea>
           </div>
         </>
       )}
     </div>
+  );
+}
+
+export function GridEpisodes({
+  data,
+  id,
+}: {
+  data: IDramaEpisode[];
+  id: string;
+}) {
+  return (
+    <>
+      {data.map((episode) => (
+        <Link
+          key={episode.id}
+          href={`/drama/watch/${encodeURIComponent(id)}/${episode.id}`}
+          className="block w-full"
+        >
+          <div>
+            <Card className="transform overflow-hidden border border-solid duration-100 hover:scale-105 hover:bg-purple-600 dark:border-zinc-800/50">
+              <CardContent className="flex items-center justify-center p-4">
+                <span className="">
+                  {removeAlphabetsAndWords(episode.title)}
+                </span>
+              </CardContent>
+            </Card>
+          </div>
+        </Link>
+      ))}
+    </>
   );
 }

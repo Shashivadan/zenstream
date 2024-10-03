@@ -44,7 +44,7 @@ export default async function DramaVideoPlayer({
           </div>
         </div>
 
-        <Card className="h-full overflow-auto border p-4 shadow-lg dark:border-zinc-700 dark:bg-zinc-800 dark:shadow-none">
+        <Card className="h-full overflow-auto border p-4 shadow-lg dark:border-zinc-900 dark:bg-zinc-900/50 dark:shadow-none">
           <h3 className="mb-4 text-xl font-semibold">Episodes</h3>
           <EpisodesList id={id} style="grid" />
         </Card>
