@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Accordion,
@@ -17,18 +15,24 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAnilistInfoById } from "@/data-access";
 
-import { Button } from "@/components/ui/button";
-import { removeHyphens } from "@/lib/regex";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default  function EpisodesList({ id , style }: { id: string , style: 'grid' | 'list' }) {
+export default function EpisodesList({
+  id,
+  style,
+}: {
+  id: string;
+  style: "grid" | "list";
+}) {
   // const anilist = new Anilist(new Gogoanime());
-  const { data:animeData  , isError , isLoading} = useQuery({
+  const {
+    data: animeData,
+    isError,
+    isLoading,
+  } = useQuery({
     queryKey: ["episodes", id],
-    queryFn: async () =>  await fetchAnilistInfoById(id),
-  })
-
-
+    queryFn: async () => await fetchAnilistInfoById(id),
+  });
 
   if (isLoading) {
     return (
@@ -38,8 +42,6 @@ export default  function EpisodesList({ id , style }: { id: string , style: 'gri
     );
   }
 
-
-
   if (isError) {
     return <div>Error</div>;
   }
@@ -48,14 +50,14 @@ export default  function EpisodesList({ id , style }: { id: string , style: 'gri
     return <div>None Found</div>;
   }
 
-  const data = animeData.episodes
+  const data = animeData.episodes;
 
   return (
-    <div className="mx-auto h-fit w-full overflow-hidden rounded-lg px-4 shadow-lg dark:bg-zinc-900/50">
+    <div className="mx-auto h-fit w-full overflow-hidden rounded-lg px-2">
       {style === "grid" ? (
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1" className="border-none">
-            <AccordionTrigger className="text-sm dark:text-zinc-400 font-semibold sm:text-base">
+            <AccordionTrigger className="text-sm font-semibold dark:text-zinc-400 sm:text-base">
               {" "}
               Episodes {data.length}{" "}
             </AccordionTrigger>
@@ -67,37 +69,18 @@ export default  function EpisodesList({ id , style }: { id: string , style: 'gri
               ) : (
                 <ScrollArea
                   type="hover"
-                  className={` ${data.length > 9 ? "h-[600px]" : "h-fit"}   w-full rounded-md border border-none p-4`}
+                  className={` ${data.length > 40 ? "h-96" : "h-fit"} w-full rounded-md border-none p-4`}
                 >
-                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3">
+                  <div className="grid grid-cols-6 gap-2 sm:grid-cols-6 md:grid-cols-11 lg:grid-cols-14">
                     {data.map((episode) => (
                       <Link
                         href={`/anime/watch/${id}/${episode.id}`}
                         key={episode.id}
                       >
-                        <Card
-                          key={episode.id}
-                          className="relative overflow-hidden rounded-lg border-none bg-zinc-900/20 transition-all duration-300 hover:scale-105"
-                        >
-                          <AspectRatio ratio={16 / 9}>
-                            <Image
-                              src={episode.image ?? ""}
-                              alt={episode.title ?? ""}
-                              fill
-                              sizes="100%"
-                              className="object-cover"
-                            />
-                            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black to-transparent"></div>
-                            <CardContent className="absolute bottom-0 left-0 right-0 z-20 p-4">
-                              <h3 className="hidden text-sm font-bold text-white md:block">
-                                {/* {episode.title
-                                  ? episode.title
-                                  : episode.id} */}
-                                {removeHyphens(episode.title ?? "")}
-                              </h3>
-                              <div className="text-xs text-zinc-400">{`Episode ${episode.number}`}</div>
-                            </CardContent>
-                          </AspectRatio>
+                        <Card className="overflow-hidden rounded-lg border-none bg-zinc-900 transition-all duration-300 hover:scale-105 hover:bg-purple-700 hover:shadow-lg">
+                          <CardContent className="flex items-center justify-center p-3">
+                            <div className="text-white">{episode.number}</div>
+                          </CardContent>
                         </Card>
                       </Link>
                     ))}
@@ -113,34 +96,23 @@ export default  function EpisodesList({ id , style }: { id: string , style: 'gri
             <div className="my-4 w-full font-mono text-lg font-semibold">
               Episodes {data.length}
             </div>
-            <ScrollArea className="aspect-[14.6/16] py-2">
-              {data.map((episode) => (
-                <Card
-                  key={episode.id}
-                  className="mb-4 mr-4 border border-solid dark:border-zinc-800/50"
-                >
-                  <CardContent className="flex items-center justify-between p-4">
-                    <div className="">
-                      <h3 className="text-sm font-semibold sm:text-base">
-                        {removeHyphens(episode.id ?? "")}
-                      </h3>
-                      <p className="text-xs text-muted-foreground sm:text-sm">
-                        {/* {format(new Date(episode.airDate), "PPP")} */}
-                        {episode.airDate}
-                      </p>
-                    </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-xs sm:text-sm"
-                    >
-                      <Link href={`/anime/watch/${id}/${episode.id}`}>
-                        Watch
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+            <ScrollArea
+              className={` ${data.length > 40 ? "aspect-[14/16.5]" : "h-fit"} p-2"`}
+            >
+              <div className="grid grid-cols-6 gap-2 p-2 sm:grid-cols-6 md:grid-cols-11 lg:grid-cols-8">
+                {data.map((episode) => (
+                  <Link
+                    href={`/anime/watch/${id}/${episode.id}`}
+                    key={episode.id}
+                  >
+                    <Card className="overflow-hidden rounded-lg border-none bg-zinc-900 transition-all duration-300 hover:scale-105 hover:bg-purple-700 hover:shadow-lg">
+                      <CardContent className="flex items-center justify-center p-3">
+                        <div className="text-white">{episode.number}</div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
             </ScrollArea>
           </div>
         </>

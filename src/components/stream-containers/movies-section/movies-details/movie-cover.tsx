@@ -21,13 +21,11 @@ export default function MovieCover({data} : {data: IMovieInfoType}) {
             <p className="mb-4 text-sm text-zinc-400">
               {data.tagline ? data.tagline : data.overview}
             </p>
-            <div className="flex justify-center gap-3">
-              <Button variant={"ringHover"} className="font-semibold">
-                <Link href={`/movies/watch/${data.id}`} className="flex gap-2"><PlayCircle className="mr-2 h-4 w-4" /> Play Now</Link>
+            <div className="flex justify-center  items-center gap-3">
+              <Button variant={"ringHover"} className="font-semibold  ">
+                <Link href={`/movies/watch/${data.id}`} className="flex gap-2 items-center " ><PlayCircle className="h-4 w-4" /> Play Now</Link>
               </Button>
-              {/* <Button variant="outline" className='font-semibold'>
-                <PlayIcon className="mr-2 h-4 w-4" /> Trailer
-              </Button> */}
+
             </div>
           </div>
         </div>

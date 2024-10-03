@@ -22,7 +22,7 @@ export default function MovieRecommendation({ id } : { id: string }) {
   return (
     <div>
       <h2 className="text-2xl font-bold">Recommendations</h2>
-      <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="mt-3 grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {isLoading
           ? Array.from({ length: 20 }, (_, index) => (
               <MovieSkeleton key={`skeleton-${index}`} />
@@ -57,8 +57,8 @@ function MovieCard({ movie } : { movie: IRecommendedMovie }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         <CardContent className="absolute bottom-0 left-0 p-4 text-white">
-          <h2 className="mb-1 text-2xl font-bold">{movie.title}</h2>
-          <p className="text-sm opacity-80">
+          <h2 className="md:mb-1 text-[12px] md:text-2xl font-bold">{movie.title}</h2>
+          <p className="   text-[10px] md:text-sm opacity-80">
             {new Date(movie.release_date).toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",

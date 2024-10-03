@@ -10,6 +10,7 @@ import {
 import { fetchDramaStreamingLinks } from "@/data-access";
 import { Card } from "@/components/ui/card";
 import EpisodesList from "../drama-details/episodes-list";
+import { formatTitle } from "@/lib/format-title";
 
 export default async function DramaVideoPlayer({
   id,
@@ -39,7 +40,7 @@ export default async function DramaVideoPlayer({
             </MediaPlayer>
           </div>
           <div className="mt-4 text-lg dark:bg-zinc-900/50  p-3 rounded-lg shadow-xl font-semibold">
-           {eposideId.replace(/-/g, " ")}
+           {formatTitle(eposideId)}
           </div>
         </div>
 

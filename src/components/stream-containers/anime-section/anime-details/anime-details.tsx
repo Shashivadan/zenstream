@@ -19,14 +19,18 @@ export const AnimeDetails: React.FC<{ data: IAnimeInfo }> = ({ data }) => {
           <div className="md:hidden">
             <SubContainer data={data} />
           </div>
-          <EpisodesList style="grid" id={data.id} />
+          <div className=' dark:bg-zinc-900/50 rounded-lg px-3 shadow-lg'>
+            <EpisodesList style="grid" id={data.id} />
+          </div>
           <Characters data={data.characters ?? []} />
         </div>
         <div className="hidden md:block">
           <SubContainer data={data} />
           {data.trailer && (
             <div className="mt-3">
-              <Trailer src={`https://www.youtube.com/watch?v=${data.trailer.id}`} />
+              <Trailer
+                src={`https://www.youtube.com/watch?v=${data.trailer.id}`}
+              />
             </div>
           )}
         </div>
