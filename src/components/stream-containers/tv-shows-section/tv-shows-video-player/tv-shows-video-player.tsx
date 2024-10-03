@@ -14,6 +14,7 @@ import SubContainer from "../tv-shows-details/sub-container";
 import { tvShowsStreamUrls } from "@/lib/tv-shows-stream-urls";
 import { fetchTvShowInfoById } from "@/data-access";
 import { TriangleAlert } from "lucide-react";
+import ShearedSubContainer from "../../shared-media-component/shared-sub-container";
 
 export default function TvShowsVideoPlayer({
   id,
@@ -89,7 +90,7 @@ export default function TvShowsVideoPlayer({
           </div>
 
           <div>
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <ShearedSubContainer/>}
             {isError && <p>Error</p>}
             {data && <SubContainer data={data} />}
           </div>

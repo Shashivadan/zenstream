@@ -12,6 +12,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { Skeleton } from "@/components/ui/skeleton";
 import { fetchCastInfoById } from "@/data-access/movies-apis/movies-api";
 import type { ICastMember } from "@/types";
 
@@ -34,7 +35,7 @@ export default function Cast({ id }: { id: string | number }) {
   }
 
   if (isLoading) {
-    return <div>loading</div>;
+    return  <Skeleton className="w-ful h-11" />;
   }
 
   return (
