@@ -31,6 +31,34 @@ export const mainRouteList: RouteProps[] = [
 
 
 
+export const mainNav = [
+  {
+    title: "Movies",
+    image: Movies,
+    href: "/movies",
+    description: "Discover blockbusters and indie films",
+  },
+  {
+    title: "Anime",
+    image: Anime,
+    href: "/anime",
+    description: "Dive into Japanese animation",
+  },
+  {
+    title: "Tv",
+    image: Tv,
+    href: "/tv-shows",
+    description: "Explore popular series and sitcoms",
+  },
+  {
+    title: "Drama",
+    image: Drama,
+    href: "/drama",
+    description: "Watch original online content",
+  }
+];
+
+
 
 export type TypeRouteList = {
   mainNav: FeatureProps[];

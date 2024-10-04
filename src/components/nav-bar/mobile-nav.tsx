@@ -1,11 +1,5 @@
 "use client";
-interface SidebarNavItem {
-  title: string;
-  href: string;
-  items: { title: string; href: string }[];
-  label?: string;
-  disabled?: boolean;
-}
+
 interface MobileLinkProps extends LinkProps {
   onOpenChange?: (open: boolean) => void;
   children: React.ReactNode;
@@ -16,7 +10,7 @@ import * as React from "react";
 import Link, { type LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
-import { routeList } from "./nav-contants";
+import { mainNav, routeList } from "./nav-contants";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Icons } from "./icon";
@@ -30,8 +24,13 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet";
 
+import { useSession } from "next-auth/react";
+import SignOutButton from "../sign-out-button";
+
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
+   const { data: session } = useSession();
+
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -82,9 +81,9 @@ export function MobileNav() {
           <Icons.logo className="mr-2 h-4 w-4" />
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-          <div className="flex flex-col space-y-3">
-            {routeList.mainNav?.map(
+        <ScrollArea className="my-4 h-[calc(100vh-8rem)]">
+          <div className="flex flex-col gap-2 pr-6">
+            {mainNav?.map(
               (item) =>
                 item.href &&
                 typeof item.href === "string" && (
@@ -92,6 +91,7 @@ export function MobileNav() {
                     key={item.title}
                     href={item.href}
                     onOpenChange={setOpen}
+                    className="rounded-md bg-zinc-800 p-2 text-sm text-muted-foreground hover:bg-purple-600"
                   >
                     {item.title}
                   </MobileLink>
@@ -101,34 +101,25 @@ export function MobileNav() {
           <div className="flex flex-col space-y-2">
             {routeList.sidebarNav.map((item, index) => (
               <div key={index} className="flex flex-col space-y-3 pt-6">
-                <h4 className="font-medium">{item.title}</h4>
-                {item?.items?.length &&
-                  item.items.map((item: SidebarNavItem) => (
-                    <React.Fragment key={item.href}>
-                      {!item.disabled &&
-                        (item.href ? (
-                          <MobileLink
-                            href={item.href}
-                            onOpenChange={setOpen}
-                            className="text-muted-foreground"
-                          >
-                            {item.title}
-                            {item.label && (
-                              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                                {item.label}
-                              </span>
-                            )}
-                          </MobileLink>
-                        ) : (
-                          item.title
-                        ))}
-                    </React.Fragment>
-                  ))}
+                <h4 className="font-semibold">{item.title}</h4>
+                <div className="flex flex-col gap-2 pr-6">
+                  {!session?.user.email ? (
+                    <Link
+                      href="/login"
+                      className="rounded-md bg-zinc-800 p-2 text-sm text-muted-foreground hover:bg-purple-600"
+                    >
+                      Login
+                    </Link>
+                  ) : <><SignOutButton /></>}
+                </div>
               </div>
             ))}
           </div>
         </ScrollArea>
-        <SheetDescription> © {new Date().getFullYear()} {siteConfig.name}</SheetDescription>
+        <SheetDescription>
+          {" "}
+          © {new Date().getFullYear()} {siteConfig.name}
+        </SheetDescription>
       </SheetContent>
     </Sheet>
   );
