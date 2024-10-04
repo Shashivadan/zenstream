@@ -9,13 +9,16 @@ import DramaCard from "./drama-card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import DramaCardSkeleton from "./drama-card-skeleton";
+import { useDebounce } from "@uidotdev/usehooks";
 
 export default function DramaContent() {
   const [page, setPage] = useState(2);
 
+  const debouncePage = useDebounce(page, 50);
+
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["drama", page],
-    queryFn: () => fetchPopularDrama(page),
+    queryKey: ["drama", debouncePage],
+    queryFn: () => fetchPopularDrama(debouncePage),
   });
 
   if (isError) {
@@ -87,12 +90,13 @@ export default function DramaContent() {
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <motion.span
+          className="text-lg bg-zinc-900/50 px-3 py-1 rounded-lg font-semibold"
             key={page}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
           >
-            Page {page}
+            {page}
           </motion.span>
           <Button onClick={handleNextPage} variant="outline" size="icon">
             <ChevronRight className="h-4 w-4" />

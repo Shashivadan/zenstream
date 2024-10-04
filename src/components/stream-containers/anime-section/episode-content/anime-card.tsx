@@ -25,6 +25,7 @@ export default function AnimeCard({ anime }: { anime: IAnimeInfo }) {
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               <Image
+              unoptimized
                 fill
                 className="object-cover"
                 src={anime.image}

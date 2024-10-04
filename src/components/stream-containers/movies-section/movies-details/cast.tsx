@@ -64,6 +64,7 @@ export default function Cast({ id }: { id: string | number }) {
                       <AspectRatio ratio={2 / 3}>
                         {item.profile_path ? (
                           <Image
+                          unoptimized
                             loading="lazy"
                             sizes="100%"
                             src={
