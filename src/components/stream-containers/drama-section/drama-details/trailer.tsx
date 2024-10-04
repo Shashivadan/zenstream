@@ -10,9 +10,17 @@ import {
 
 export default function Trailer({ src }: { src: string }) {
   return (
-      <MediaPlayer autoPlay muted controls={false} loop={true} src={src} className=" md:aspect-[16/4.7]">
-        <MediaProvider></MediaProvider>
-        <DefaultVideoLayout icons={defaultLayoutIcons} />
-      </MediaPlayer>
+    <MediaPlayer
+      autoPlay
+      playsInline
+      muted
+      controls={false}
+      loop={true}
+      src={src}
+      className="md:aspect-[16/4.7]"
+    >
+      <MediaProvider></MediaProvider>
+      <DefaultVideoLayout icons={defaultLayoutIcons} />
+    </MediaPlayer>
   );
 }
