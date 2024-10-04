@@ -80,19 +80,21 @@ function TvShowRecommendationsCard({
   return (
     <div>
       <Link href={`/tv-shows/${data.id}`}>
-        <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
+        <div className="group relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
           {data.backdrop_path ? (
             <>
-              <img
-                className="h-full w-full object-cover"
-                src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
-                alt={data.original_name || data.name}
-                sizes="100%"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-              <div className="absolute bottom-2 left-2 right-4 text-white">
+              <div className="absolute inset-0 transition-transform duration-300 ease-in-out group-hover:scale-110">
+                <img
+                  className="h-full w-full object-cover"
+                  src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
+                  alt={data.original_name || data.name}
+                  sizes="100%"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              </div>
+              <div className="absolute bottom-2 left-2 right-4 z-10 text-white">
                 <h2 className="font-bold md:text-xl">
-                  {data.name || data.name}
+                  {data.name || data.original_name}
                 </h2>
                 {data.first_air_date && (
                   <p className="text-xs opacity-80">

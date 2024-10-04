@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { fetchMovieRecommendationById } from "@/data-access";
 
 import type {IRecommendedMovie}from "@/types/index"
+import { ImageIcon } from "lucide-react";
 
 export default function MovieRecommendation({ id } : { id: string }) {
   const { data, isLoading, isError } = useQuery({
@@ -50,15 +51,27 @@ function MovieSkeleton() {
 function MovieCard({ movie } : { movie: IRecommendedMovie }) {
   return (
     <Link href={`/movies/${movie.id}`}>
-      <Card className="relative mx-auto aspect-[16/9] w-full max-w-md overflow-hidden border dark:border-zinc-950">
-        <img
-          src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-          alt={movie.title}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-        <CardContent className="absolute bottom-0 left-0 p-4 text-white">
-          <h2 className="md:mb-1 text-[12px] md:text-2xl font-bold">{movie.title}</h2>
-          <p className="   text-[10px] md:text-sm opacity-80">
+      <Card className="group relative mx-auto aspect-[16/9] w-full max-w-md overflow-hidden border dark:border-zinc-950">
+        <div className="absolute inset-0 transition-transform duration-300 ease-in-out group-hover:scale-110">
+          {movie.poster_path ? (
+            <img
+              className="h-full w-full object-cover"
+              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              alt={movie.title}
+              sizes="100%"
+            />
+          ) : (
+            <div className="flex items-center justify-center">
+              <ImageIcon size={50} className="text-muted" />
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+        </div>
+        <CardContent className="absolute bottom-0 left-0 z-10 p-4 text-white">
+          <h2 className="text-[12px] font-bold md:mb-1 md:text-2xl">
+            {movie.title}
+          </h2>
+          <p className="text-[10px] opacity-80 md:text-sm">
             {new Date(movie.release_date).toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",
