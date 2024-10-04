@@ -91,7 +91,7 @@ export function MobileNav() {
                     key={item.title}
                     href={item.href}
                     onOpenChange={setOpen}
-                    className="rounded-md bg-zinc-800 p-2 text-sm text-muted-foreground hover:bg-purple-600"
+                    className="rounded-md dark:bg-zinc-800 p-2 text-sm shadow-lg dark:text-muted-foreground hover:bg-purple-600"
                   >
                     {item.title}
                   </MobileLink>
@@ -106,7 +106,7 @@ export function MobileNav() {
                   {!session?.user.email ? (
                     <Link
                       href="/login"
-                      className="rounded-md bg-zinc-800 p-2 text-sm text-muted-foreground hover:bg-purple-600"
+                      className="rounded-md shadow-lg dark:bg-zinc-800 p-2 text-sm dark:text-muted-foreground hover:bg-purple-600"
                     >
                       Login
                     </Link>

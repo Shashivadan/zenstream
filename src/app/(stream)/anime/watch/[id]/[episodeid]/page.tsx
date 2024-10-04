@@ -27,7 +27,7 @@ export default async function page({
       <div className="grid gap-3 md:grid-cols-6">
         <div className="flex flex-col gap-2 md:col-span-4">
           <VideoPlayer src={videoSrc ?? ""} />
-          <h2 className="truncate text-ellipsis tracking-wide dark:bg-zinc-900/50 p-2 rounded-lg text-white md:text-xl">
+          <h2 className="text-ellipsis break-words rounded-lg p-2 tracking-wide shadow-lg dark:bg-zinc-900/50 dark:text-white md:text-xl">
             {formatTitle(episodeid)}
           </h2>
         </div>
