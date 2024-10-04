@@ -34,13 +34,14 @@ export default async function DramaVideoPlayer({
               autoPlay
               src={data?.sources[0]?.url}
               className="h-full w-full"
+              playsInline
             >
               <MediaProvider />
               <DefaultVideoLayout icons={defaultLayoutIcons} />
             </MediaPlayer>
           </div>
-          <div className="mt-4 text-lg dark:bg-zinc-900/50  p-3 rounded-lg shadow-xl font-semibold">
-           {formatTitle(eposideId)}
+          <div className="mt-4 rounded-lg p-3 text-lg font-semibold shadow-xl dark:bg-zinc-900/50">
+            {formatTitle(eposideId)}
           </div>
         </div>
 
