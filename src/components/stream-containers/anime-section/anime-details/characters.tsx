@@ -31,13 +31,12 @@ export default function Characters({ data }: { data: ICharacter[] }) {
               <div className="p-1">
                 <Card className="relative overflow-hidden rounded-lg border-none object-cover object-center">
                   <AspectRatio ratio={2/3}>
-                    <Image
-                    unoptimized
+                    <img
+
                       loading="lazy"
                       sizes="100%"
                       src={item.image}
                       alt={item.name.full ?? ""}
-                      fill
                       className="object-cover  h-[300px]  md:h-[200px] "
                     />
                   </AspectRatio>

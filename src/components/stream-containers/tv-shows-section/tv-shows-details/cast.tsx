@@ -104,8 +104,7 @@ export default function Cast({ id }: { id: string | number }) {
                             <div className="relative overflow-hidden rounded-lg border-none object-cover object-center">
                               <AspectRatio ratio={2 / 3}>
                                 {item.profile_path ? (
-                                  <Image
-                                    unoptimized
+                                  <img
                                     loading="lazy"
                                     sizes="100%"
                                     src={

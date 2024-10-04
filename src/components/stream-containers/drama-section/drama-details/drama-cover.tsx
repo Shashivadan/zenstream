@@ -5,9 +5,9 @@ import Trailer from "./trailer";
 export default function DramaCover( {data} : {data : IDetailedDrama}) {
   return (
     <div className="grid md:grid-cols-12 gap-2 ">
-      <Image
-      unoptimized
-    
+      <img
+      loading="lazy"
+
         src={data.image}
         alt={data.title}
         width={270}

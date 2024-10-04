@@ -9,7 +9,6 @@ import type { ITvShowRecommendationsEntry } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 import { ChevronLeft, ChevronRight,  ImageIcon } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -84,9 +83,7 @@ function TvShowRecommendationsCard({
         <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
           {data.backdrop_path ? (
             <>
-              <Image
-                fill
-                unoptimized
+              <img
                 className="h-full w-full object-cover"
                 src={`https://sup-proxy.zephex0-f6c.workers.dev/api-content?url=https://image.tmdb.org/t/p/original${data.backdrop_path}`}
                 alt={data.original_name || data.name}
