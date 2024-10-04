@@ -13,11 +13,11 @@ export default function MoviesCard({ data }: { data: IMovieTypes }) {
         {data.backdrop_path ? (
           <>
             <Image
-              fill
               className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
               src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
               alt={data.title}
               sizes="100%"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
             <div className="absolute bottom-2 left-2 right-4 text-white">
