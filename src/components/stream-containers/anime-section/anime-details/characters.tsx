@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/carousel";
 import type { ICharacter } from "@/types";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import Image from "next/image";
 
 export default function Characters({ data }: { data: ICharacter[] }) {
   return (
