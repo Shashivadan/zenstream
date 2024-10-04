@@ -10,6 +10,14 @@ const config = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "**",
+      },
+      {
+        protocol: "http",
+        hostname: "**",
+      },
+      {
+        protocol: "https",
         hostname: "i.pravatar.cc",
       },
       {
@@ -74,6 +82,7 @@ const config = {
         hostname: "artworks.thetvdb.com",
       },
     ],
+    domains: ["kitsu-production-media.s3.us-west-002.backblazeb2.com"],
   },
 };
 
