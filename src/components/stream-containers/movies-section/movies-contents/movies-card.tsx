@@ -2,7 +2,7 @@
 import type { IMovieTvTypes as IMovieTypes } from "@/types";
 import { format } from "date-fns";
 import { ImageIcon } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -12,7 +12,7 @@ export default function MoviesCard({ data }: { data: IMovieTypes }) {
       <div className="group relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border border-none bg-background/50 shadow">
         {data.backdrop_path ? (
           <>
-            <Image
+            <img
               className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
               src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
               alt={data.title}
