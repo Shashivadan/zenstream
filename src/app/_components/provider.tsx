@@ -1,13 +1,11 @@
 "use client";
 
 import { ThemeProvider } from "@/components/landing-page/theme-provider";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import NextTopLoader from "nextjs-toploader";
 import React from "react";
 import { Toaster } from "sonner";
+import { SessionProvider } from "next-auth/react";
 
 // added for caching data for 5 minutes in react query
 const queryClient = new QueryClient({
@@ -21,27 +19,29 @@ const queryClient = new QueryClient({
 export default function Provider({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NextTopLoader
-            color="#bf37ff"
-            initialPosition={0.08}
-            crawlSpeed={200}
-            height={3}
-            crawl={true}
-            showSpinner={true}
-            easing="ease"
-            speed={200}
-          />
-          <Toaster richColors expand={true} />
-          {children}
-        </ThemeProvider>
-      </QueryClientProvider>
+      <SessionProvider>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NextTopLoader
+              color="#bf37ff"
+              initialPosition={0.08}
+              crawlSpeed={200}
+              height={3}
+              crawl={true}
+              showSpinner={true}
+              easing="ease"
+              speed={200}
+            />
+            <Toaster richColors expand={true} />
+            {children}
+          </ThemeProvider>
+        </QueryClientProvider>
+      </SessionProvider>
     </>
   );
 }

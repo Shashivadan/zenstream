@@ -4,17 +4,20 @@
 
 import React from 'react';
 import { signOut } from 'next-auth/react';
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { Button } from './ui/button';
 
 const SignOutButton = () => {
 
   return (
-    <DropdownMenuItem
+    <Button
+      variant="outline"
+      size="sm"
+      className=' w-full'
       onClick={() => signOut({ callbackUrl: "/", redirect: true })}
     >
       Log out
 
-    </DropdownMenuItem>
+    </Button>
   );
 };
 
