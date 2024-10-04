@@ -15,7 +15,7 @@ Dive into the world of entertainment with ZenStream - Your go-to destination for
 
 Thanks for your interest in contributing to Zenstream. We're happy to have you here.
 
-If you need any help, feel free to reach out to [@Rx](https://twitter.com/shashivadan).
+If you need any help, feel free to reach out to [@Rx](https://twitter.com/shashivadan99).
 
 ## About this repository
 
