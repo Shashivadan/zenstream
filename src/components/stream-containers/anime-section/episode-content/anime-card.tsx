@@ -4,7 +4,6 @@ import React from "react";
 import type { IAnimeInfo } from "@/types";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { ImageIcon } from "lucide-react";
 
 
@@ -24,9 +23,7 @@ export default function AnimeCard({ anime }: { anime: IAnimeInfo }) {
               }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <Image
-              unoptimized
-                fill
+              <img
                 className="object-cover"
                 src={anime.image}
                 alt={anime.title.english ?? ""}

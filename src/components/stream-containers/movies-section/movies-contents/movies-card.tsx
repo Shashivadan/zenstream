@@ -13,7 +13,6 @@ export default function MoviesCard({ data }: { data: IMovieTypes }) {
         {data.backdrop_path ? (
           <>
             <Image
-            unoptimized
               fill
               className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
               src={`https://sup-proxy.zephex0-f6c.workers.dev/api-content?url=https://image.tmdb.org/t/p/original${data.backdrop_path}`}

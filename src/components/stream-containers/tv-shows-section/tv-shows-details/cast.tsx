@@ -17,7 +17,6 @@ import {
 import { fetchCastInfoById } from "@/data-access/movies-apis/movies-api";
 import type { ICastMember } from "@/types";
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Cast({ id }: { id: string | number }) {
@@ -104,8 +103,7 @@ export default function Cast({ id }: { id: string | number }) {
                             <div className="relative overflow-hidden rounded-lg border-none object-cover object-center">
                               <AspectRatio ratio={2 / 3}>
                                 {item.profile_path ? (
-                                  <Image
-                                    unoptimized
+                                  <img
                                     loading="lazy"
                                     sizes="100%"
                                     src={
@@ -113,7 +111,7 @@ export default function Cast({ id }: { id: string | number }) {
                                       item.profile_path
                                     }
                                     alt={item.name}
-                                    fill
+
                                   />
                                 ) : (
                                   <div className="flex h-full w-full items-center justify-center bg-blue-950/50">
