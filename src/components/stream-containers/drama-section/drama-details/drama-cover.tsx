@@ -5,7 +5,7 @@ import Trailer from "./trailer";
 export default function DramaCover( {data} : {data : IDetailedDrama}) {
   return (
     <div className="grid md:grid-cols-12 gap-2 ">
-      <img
+      <Image
       loading="lazy"
 
         src={data.image}
