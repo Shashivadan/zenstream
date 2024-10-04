@@ -47,7 +47,7 @@ export function MainNav() {
                     <Image
                       src={image}
                       alt="shree"
-                      className="h-[350px] w-full overflow-hidden rounded-md object-cover"
+                      className="aspect-square w-full overflow-hidden rounded-md object-cover"
                       width={700}
                       height={700}
                     />
