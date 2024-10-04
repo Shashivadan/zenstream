@@ -35,6 +35,7 @@ export default function Characters({ data }: { data: IDramaCharacter[] }) {
                 <Card className="relative overflow-hidden rounded-lg border-none object-cover object-center">
                   <AspectRatio ratio={2 / 3}>
                     <Image
+                    unoptimized
                       loading="lazy"
                       sizes="100%"
                       src={item.image}

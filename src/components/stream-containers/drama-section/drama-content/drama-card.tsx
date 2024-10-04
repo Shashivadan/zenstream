@@ -2,7 +2,6 @@
 
 import type { IDramaResult } from "@/types";
 import { ImageIcon } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
@@ -33,8 +32,8 @@ export default function DramaCard({ data }: { data: IDramaResult }) {
               }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <Image
-                fill
+              <img
+
                 className="object-cover object-center"
                 src={data.image}
                 alt={data.title}
