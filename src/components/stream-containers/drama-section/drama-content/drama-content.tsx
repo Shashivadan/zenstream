@@ -90,7 +90,7 @@ export default function DramaContent() {
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <motion.span
-          className="text-lg bg-zinc-900/50 px-3 py-1 rounded-lg font-semibold"
+          className="text-lg shadow-xl dark:bg-zinc-900/50 px-3 py-1 rounded-lg font-semibold"
             key={page}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
