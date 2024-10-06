@@ -1,3 +1,10 @@
+
+
+
+
+![landing page](./public/readme/landing-page.png)
+
+
 # ZenStream
 
 ZenStream is a comprehensive OTT (Over-The-Top) platform that offers a diverse range of entertainment content, including movies, anime, K-dramas, and TV shows. This project aims to provide users with a seamless streaming experience, combining a user-friendly interface with a vast library of content across various genres.
