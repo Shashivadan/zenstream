@@ -8,6 +8,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        grediant: "bg-gradient-to-t  to-purple-600 from-purple-400 text-primary-foreground hover:from-purple-500 hover:to-purple-600",
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",

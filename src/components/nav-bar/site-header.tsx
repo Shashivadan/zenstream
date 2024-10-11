@@ -26,7 +26,7 @@ export async function SiteHeader() {
               <AvaterMenu />
             ) : (
               <Button
-                variant="default"
+                variant="grediant"
                 className="hidden h-8 items-center justify-center font-semibold md:flex"
                 asChild
               >

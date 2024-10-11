@@ -5,10 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-
 import { siteConfig } from "@/config/site";
-
-
 
 export const landingPageContent = {
   title: "ZenStream",
@@ -45,7 +42,11 @@ export const HeroSection = () => {
           </p>
 
           <div className="space-y-4 md:space-x-4 md:space-y-0">
-            <Button className="group/arrow w-5/6 font-bold md:w-1/4" asChild>
+            <Button
+              variant="grediant"
+              className="group/arrow w-5/6 bg-gradient-to-t  to-purple-600 from-purple-400 font-bold md:w-1/4"
+              asChild
+            >
               <Link href={"/get-started"}>
                 Get Started
                 <ArrowRight className="ml-2 size-5 transition-transform group-hover/arrow:translate-x-1" />
