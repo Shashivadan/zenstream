@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 import { cn } from "@/lib/utils";
 import Provider from "./_components/provider";
 import { SiteHeader } from "@/components/nav-bar/site-header";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "ZenStream - Your Ultimate Streaming Hub",
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className={cn("")}>
         <Provider>
           <SiteHeader />
+        <Analytics />
           <div className="mx-auto max-w-screen-2xl"> {children}</div>
         </Provider>
       </body>
